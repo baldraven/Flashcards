@@ -7,25 +7,50 @@ class ViewChanger{
     - Cards : View
     - Deck : View
     - Statistics : View
+    - NewCard : View
 }
 
 interface Observer{}
-interface Observable{}
+abstract Observable{}
 class Card{}
+class Decks{}
 class Deck{}
+class Cards{}
 class ViewLearning{} 
 class ViewDecks{}
 class ViewCards{}
 class ViewDeck{}
 class ViewStatistics{}
+class ViewNewCard{}
 class ControllerLearning{}
 class ControllerDecks{}
 class ControllerCards{}
 class ControllerDeck{}
 class ControllerStatistics{}
+class controllerNewCard{}
 
 
-Observer <|.. ViewChanger
+Observer <|-- ViewChanger
+Observer <|-- ViewLearning
+Observer <|-- ViewDecks
+Observer <|-- ViewCards
+Observer <|-- ViewDeck
+Observer <|-- ViewStatistics
+Observable <.. Cards
+Observable <.. Decks
+Observable <.. Deck
+Observable <.. Card
+Cards <-- "*" Card 
+Decks <-- "*" Deck
+ControllerLearning -- ViewLearning
+ControllerDecks -- ViewDecks
+ControllerCards -- ViewCards
+ControllerDeck -- ViewDeck
+ControllerStatistics -- ViewStatistics
+controllerNewCard -- ViewNewCard
+Card "*" -- "1" Deck
+Observable "1" -- "*" Observer
+
 
 
 @enduml
