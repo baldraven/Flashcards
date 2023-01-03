@@ -15,12 +15,15 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("TN's Flashcards");
+        primaryStage.setWidth(800);
+        primaryStage.setHeight(800);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ApprentissageMode.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewLearning.fxml"));
 
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("TN's Flashcards");
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }
