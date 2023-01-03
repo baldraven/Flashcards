@@ -2,12 +2,14 @@
 title "Diagramme de classe - Flashcards"
 
 class ViewChanger {
-    - Learning : View
-    - Decks : View
-    - Cards : View
-    - Deck : View
-    - Statistics : View
-    - NewCard : View
+    - stage : Stage
+    - scene : Scene
+    - rootDeckList : Parent
+    - rootCardList : Parent
+    - rootDeckContent : Parent
+    - rootLearning : Parent
+    - rootNewCard : Parent
+    - rootStatistics : Parent
 }
 
 interface Observer{}
@@ -18,41 +20,26 @@ class CardList{}
 class Deck{}
 class DeckList{}
 
-class ViewLearning{} 
-class ViewDeckList{}
-class ViewCardList{}
-class ViewDeckContent{}
-class ViewStatistics{}
-class ViewNewCard{}
-
 class ControllerLearning{}
-class ControllerDecks{}
-class ControllerCards{}
-class ControllerDeck{}
-class ControllerStatistics{}
+class ControllerDeckList{}
+class ControllerCardList{}
+class ControllerDeckContent{}
 class ControllerNewCard{}
-
+class ControllerStatistics{}
 
 Observer <|.. ViewChanger
 
-Observer <|.. ViewLearning
-Observer <|.. ViewDeckList
-Observer <|.. ViewCardList
-Observer <|.. ViewDeckContent
-Observer <|.. ViewNewCard
-Observer <|.. ViewStatistics
+Observer <|.. ControllerLearning
+Observer <|.. ControllerDeckList
+Observer <|.. ControllerCardList
+Observer <|.. ControllerDeckContent
+Observer <|.. ControllerNewCard
+Observer <|.. ControllerStatistics
 
 Observable <|.. Deck
 
 CardList -- "*" Card
 DeckList -- "*" Deck
-
-ControllerLearning -- ViewLearning
-ControllerDecks -- ViewDeckList
-ControllerCards -- ViewCardList
-ControllerDeck -- ViewDeckContent
-ControllerStatistics -- ViewStatistics
-ControllerNewCard -- ViewNewCard
 
 Card "*" -- "1" Deck
 Observable "1" -- "*" Observer

@@ -1,6 +1,7 @@
 package eu.telecomnancy.flashcards.controller;
 
 import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,13 +15,13 @@ import eu.telecomnancy.flashcards.model.Deck;
 public class ControllerLearning implements Observer
 {
     @FXML
-    public Button repButton;
+    private Button repButton;
     @FXML
-    public Label Rep;
+    private Label Rep;
     @FXML
-    public GridPane gridP;
+    private GridPane gridP;
     @FXML
-    public Label Ques;
+    private Label Ques;
     private Deck deck;
     private Card card;
 
@@ -30,30 +31,36 @@ public class ControllerLearning implements Observer
         this.reagir();
     }
     @FXML
-    public void AffRep()
+    public void AffRep(ActionEvent event)
     {
         Rep.setVisible(true);
         gridP.setVisible(true);
+        repButton.setVisible(false);
     }
     @FXML
-    public void Difficile()
+    public void Difficile(ActionEvent event)
     {
         this.reagir();
     }
     @FXML
-    public void Correct()
+    public void Correct(ActionEvent event)
     {
         this.reagir();
     }
     @FXML
-    public void Revoir()
+    public void Revoir(ActionEvent event)
     {
         this.reagir();
     }
     @FXML
-    public void Facile()
+    public void Facile(ActionEvent event)
     {
         this.reagir();
+    }
+    @FXML
+    public void exit()
+    {
+
     }
     public void reagir()
     {
@@ -64,5 +71,6 @@ public class ControllerLearning implements Observer
         gridP.setVisible(false);
         Ques.setText(card.question);
         Rep.setText(card.answer);
+        repButton.setVisible(true);
     }
 }
