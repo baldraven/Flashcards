@@ -8,5 +8,9 @@ import javafx.stage.Stage;
 
 public class ViewChangeur implements Observer
 {
-    
+
+    @Override
+    public void reagir() {
+
+    }
 }
