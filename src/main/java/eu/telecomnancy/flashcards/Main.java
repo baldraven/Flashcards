@@ -30,6 +30,10 @@ public class Main extends Application {
         loaderNewCard.setLocation(getClass().getResource("ViewNewCard.fxml"));
         loaderNewCard.setControllerFactory(iC->new ControllerNewCard(deck));
         Parent rootNewCard = loaderNewCard.load();
+        FXMLLoader loaderLearning = new FXMLLoader();
+        loaderLearning.setLocation(getClass().getResource("ViewNewCard.fxml"));
+        loaderLearning.setControllerFactory(iC->new ControllerLearning(deck));
+        Parent rootLearning = loaderLearning.load();
 
         Scene scene = new Scene(rootNewCard);
 

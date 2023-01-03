@@ -60,7 +60,7 @@ public class ControllerLearning implements Observer
     @FXML
     public void exit()
     {
-
+        this.deck.setCurrentView("DeckList");
     }
     public void reagir()
     {
