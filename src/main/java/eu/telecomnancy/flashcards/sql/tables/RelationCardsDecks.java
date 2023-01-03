@@ -9,7 +9,7 @@ import java.sql.Statement;
  *
  * @author sqlitetutorial.net
  */
-public class Test {
+public class RelationCardsDecks {
 
     /**
      * Create a new table in the test database
@@ -20,10 +20,12 @@ public class Test {
         String url = "jdbc:sqlite:db/database.db";
         
         // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS warehouses (\n"
-                + "	id integer PRIMARY KEY,\n"
+        String sql = "CREATE TABLE IF NOT EXISTS relationCardsDecks (\n"
                 + "	name text NOT NULL,\n"
-                + "	capacity real\n"
+                + "	question text NOT NULL,\n"
+                + " FOREIGN KEY (name) REFERENCES decks(name),\n"
+                + " FOREIGN KEY (question) REFERENCES cards(question),\n"
+                + " UNIQUE (name, question)"
                 + ");";
         
         try (Connection conn = DriverManager.getConnection(url);
