@@ -3,6 +3,7 @@ package eu.telecomnancy.flashcards.model;
 import eu.telecomnancy.flashcards.Observable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Deck extends Observable {
     
@@ -47,8 +48,10 @@ public class Deck extends Observable {
     public void setCurrentView(String view) {
         this.currentView = view;
         this.notifierObs();
+    }
 
-    /*public ArrayList<Card> getDeck() {
+    public ArrayList<Card> getDeck() {
         return this.deck;
-    }*/
+    }
 }
+
