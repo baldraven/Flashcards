@@ -56,7 +56,7 @@
          <menus>
             <Menu mnemonicParsing="false" text="Pile">
               <items>
-                  <MenuItem mnemonicParsing="false" text="Changer de pile " />
+                  <MenuItem mnemonicParsing="false" text="Changer de pile" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
@@ -87,10 +87,10 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-border-color: red;" text="A revoir" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-                        <Button mnemonicParsing="false" style="-fx-border-color: black;" text="Difficile" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-                        <Button mnemonicParsing="false" style="-fx-border-color: green;" text="Correct" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-                        <Button mnemonicParsing="false" style="-fx-border-color: blue;" text="Facile" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-border-color: red;" text="A revoir" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Revoir"/>
+                        <Button mnemonicParsing="false" style="-fx-border-color: black;" text="Difficile" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Difficile"/>
+                        <Button mnemonicParsing="false" style="-fx-border-color: green;" text="Correct" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Correct"/>
+                        <Button mnemonicParsing="false" style="-fx-border-color: blue;" text="Facile" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Facile"/>
                         <Label text="[Temps]" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
                         <Label text="[Temps]" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
                         <Label text="[Temps]" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
@@ -102,7 +102,7 @@
                <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" mouseTransparent="true" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="179.0" prefWidth="620.0" style="-fx-border-color: #fa6000; -fx-border-width: 3; -fx-border-radius: 40;" text="Placeholder" textAlignment="CENTER">
+                        <Label alignment="CENTER" prefHeight="179.0" prefWidth="620.0" style="-fx-border-color: #fa6000; -fx-border-width: 3; -fx-border-radius: 40;" text="Placeholder" textAlignment="CENTER" fx:id="Ques">
                            <font>
                               <Font name="Bookman Old Style Bold" size="32.0" />
                            </font>
