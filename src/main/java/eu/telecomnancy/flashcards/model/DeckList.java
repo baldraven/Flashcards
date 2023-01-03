@@ -19,4 +19,8 @@ public class DeckList extends Observable {
     public void addDeck(Deck deck) {
         deckList.add(deck);
     }
+
+    public ArrayList<Deck> getDeckList(ArrayList<Deck> deckList) {
+        return this.deckList;
+    }
 }

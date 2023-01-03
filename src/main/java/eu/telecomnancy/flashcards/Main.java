@@ -1,7 +1,9 @@
 package eu.telecomnancy.flashcards;
 
 import eu.telecomnancy.flashcards.controller.ControllerNewCard;
+import eu.telecomnancy.flashcards.controller.ViewChanger;
 import eu.telecomnancy.flashcards.model.Deck;
+import eu.telecomnancy.flashcards.view.ViewNewCard;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -29,6 +31,9 @@ public class Main extends Application {
         Parent rootNewCard = loaderNewCard.load();
 
         Scene scene = new Scene(rootNewCard);
+
+        // A modifier quand on modifie le constructeur de ViewChanger
+        ViewChanger viewChanger = new ViewChanger(deck, primaryStage, scene, rootNewCard);
 
         primaryStage.setScene(scene);
         primaryStage.show();
