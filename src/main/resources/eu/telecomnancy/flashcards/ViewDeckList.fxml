@@ -9,7 +9,7 @@
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#switchToCardList" text="Voir toutes les cartes" />
+                    <MenuItem mnemonicParsing="false" text="Voir toutes les cartes" />
                 </items>
             </Menu>
          <Menu mnemonicParsing="false" text="Configuration">
@@ -26,7 +26,7 @@
     </MenuBar>
    <BorderPane layoutY="26.0" prefHeight="774.0" prefWidth="800.0">
       <center>
-         <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         <ListView fx:id="content" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
       </center>
       <bottom>
          <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />

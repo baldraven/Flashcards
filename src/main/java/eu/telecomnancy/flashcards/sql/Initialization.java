@@ -72,4 +72,10 @@ public class Initialization {
             }
         }
     }
+    public DeckList getDeckList() {
+        return this.deckList;
+    }
+    public CardList getCardList() {
+        return this.cardList;
+    }
 }

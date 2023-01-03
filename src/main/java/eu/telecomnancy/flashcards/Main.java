@@ -14,7 +14,6 @@ public class Main extends Application {
     public static void main(String[] args)
     {
         launch(args);
-        Initialization init = new Initialization();
     }
 
     @Override
@@ -22,12 +21,13 @@ public class Main extends Application {
         primaryStage.setTitle("TN's Flashcards");
         primaryStage.setWidth(800);
         primaryStage.setHeight(800);
+        Initialization init = new Initialization();
 
         Deck deck = new Deck();
 
         FXMLLoader loaderDeckList = new FXMLLoader();
         loaderDeckList.setLocation(getClass().getResource("ViewDeckList.fxml"));
-        loaderDeckList.setControllerFactory(iC->new ControllerDeckList(deck));
+        loaderDeckList.setControllerFactory(iC->new ControllerDeckList(init.getDeckList()));
         Parent rootDeckList = loaderDeckList.load();
 
         FXMLLoader loaderCardList = new FXMLLoader();
