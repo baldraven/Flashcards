@@ -1,5 +1,7 @@
 package eu.telecomnancy.flashcards;
 
+import eu.telecomnancy.flashcards.controller.ControllerNewCard;
+import eu.telecomnancy.flashcards.objects.Deck;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,10 +21,14 @@ public class Main extends Application {
         primaryStage.setWidth(800);
         primaryStage.setHeight(800);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("ViewLearning.fxml"));
+        Deck deck = new Deck();
 
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
+        FXMLLoader loaderNewCard = new FXMLLoader();
+        loaderNewCard.setLocation(getClass().getResource("ViewNewCard.fxml"));
+        loaderNewCard.setControllerFactory(iC->new ControllerNewCard(deck));
+        Parent rootNewCard = loaderNewCard.load();
+
+        Scene scene = new Scene(rootNewCard);
 
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -1,4 +1,4 @@
-package eu.telecomnancy.flashcards.objects;
+package eu.telecomnancy.flashcards.model;
 
 public class Card {
     

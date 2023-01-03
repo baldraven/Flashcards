@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import eu.telecomnancy.flashcards.objects.Card;
-import eu.telecomnancy.flashcards.objects.Deck;
-import eu.telecomnancy.flashcards.objects.DeckList;
+import eu.telecomnancy.flashcards.model.Card;
+import eu.telecomnancy.flashcards.model.Deck;
+import eu.telecomnancy.flashcards.model.DeckList;
 
 import java.sql.PreparedStatement;
 
