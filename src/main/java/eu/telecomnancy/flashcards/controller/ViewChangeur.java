@@ -1,4 +1,4 @@
-package eu.telecomnancy.flashcards;
+package eu.telecomnancy.flashcards.controller;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

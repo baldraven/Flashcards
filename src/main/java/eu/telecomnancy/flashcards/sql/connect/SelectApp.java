@@ -5,11 +5,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
-import eu.telecomnancy.flashcards.objects.Card;
-import eu.telecomnancy.flashcards.objects.Deck;
-import eu.telecomnancy.flashcards.objects.DeckList;
+import eu.telecomnancy.flashcards.model.Card;
+import eu.telecomnancy.flashcards.model.Deck;
+import eu.telecomnancy.flashcards.model.DeckList;
 
 import java.sql.PreparedStatement;
 
@@ -103,7 +102,8 @@ public class SelectApp {
 
     /**
      * Get the cards whith name of the deck
-     * @param capacity 
+     * @param deck
+     * @param name 
      */
     public Deck getCardsWithDeckName(Deck deck, String name){
         String sql = "SELECT question "
