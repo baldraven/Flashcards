@@ -10,6 +10,11 @@ public class Card {
         this.answer = answer;
     }
 
+    public Card() {
+        this.question = null;
+        this.answer = null;
+    }
+
     public void setQuestion(String question) {
         this.question = question;
     }

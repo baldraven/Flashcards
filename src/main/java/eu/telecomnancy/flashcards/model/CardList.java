@@ -14,7 +14,7 @@ public class CardList {
         this.cardList = new ArrayList<Card>();
     }
 
-    public void addCard(ArrayList<Card> cardList, Card card) {
+    public void addCard(Card card) {
         cardList.add(card);
     }
 }

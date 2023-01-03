@@ -5,6 +5,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import eu.telecomnancy.flashcards.objects.Card;
+import eu.telecomnancy.flashcards.objects.Deck;
+import eu.telecomnancy.flashcards.objects.DeckList;
+
 import java.sql.PreparedStatement;
 
 /**
@@ -31,9 +37,9 @@ public class SelectApp {
 
     
     /**
-     * select all rows in the cards table
+     * display all rows in the cards table
      */
-    public void selectAllCards(){
+    public void displayAllCards(){
         String sql = "SELECT question, answer FROM cards";
         
         try (Connection conn = this.connect();
@@ -51,29 +57,76 @@ public class SelectApp {
     }
 
     /**
-     * Get the warehouse whose capacity greater than a specified capacity (example with parameter)
+     * display all rows in the deck table
+     */
+    public void displayAllDecks(){
+        String sql = "SELECT name, description FROM decks";
+        
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getString("name") +  "\t" + 
+                                   rs.getString("description"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * select all rows in the deck table
+     */
+    public DeckList selectAllDecks(DeckList deckList){
+        String sql = "SELECT name, description FROM decks";
+        
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            // loop through the result set
+            while (rs.next()) {
+                Deck deck = new Deck();
+                deck.setName(rs.getString("name"));
+                deck.setDescription(rs.getString("description"));
+
+                deckList.addDeck(deck);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return deckList;
+    }
+
+    /**
+     * Get the cards whith name of the deck
      * @param capacity 
      */
-    public void getCapacityGreaterThan(double capacity){
-        String sql = "SELECT id, name, capacity "
-                   + "FROM warehouses WHERE capacity > ?";
+    public Deck getCardsWithDeckName(Deck deck, String name){
+        String sql = "SELECT question "
+                   + "FROM relationCardsDecks WHERE name = ?";
  
         try (Connection conn = this.connect();
             PreparedStatement pstmt  = conn.prepareStatement(sql)){
             
             // set the value
-            pstmt.setDouble(1,capacity);
+            pstmt.setString(1,name);
             //
             ResultSet rs  = pstmt.executeQuery();
             
             // loop through the result set
             while (rs.next()) {
-                System.out.println(rs.getInt("id") +  "\t" + 
-                                    rs.getString("name") + "\t" +
-                                    rs.getDouble("capacity"));
+                Card card = new Card();
+                card.setQuestion(rs.getString("question"));
+                deck.addCard(card);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+        return deck;
     }
 }

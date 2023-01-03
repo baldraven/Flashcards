@@ -14,7 +14,7 @@ public class DeckList {
         this.deckList = new ArrayList<Deck>();
     }
 
-    public void addDeck(ArrayList<Deck> deckList, Deck deck) {
+    public void addDeck(Deck deck) {
         deckList.add(deck);
     }
 }
