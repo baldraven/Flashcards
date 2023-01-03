@@ -1,7 +1,7 @@
 package eu.telecomnancy.flashcards;
 
 import eu.telecomnancy.flashcards.controller.ControllerNewCard;
-import eu.telecomnancy.flashcards.objects.Deck;
+import eu.telecomnancy.flashcards.model.Deck;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,6 +1,6 @@
 package eu.telecomnancy.flashcards.controller;
 
-import eu.telecomnancy.flashcards.objects.Deck;
+import eu.telecomnancy.flashcards.model.Deck;
 
 public class ControllerNewCard {
 
