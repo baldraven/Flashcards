@@ -60,6 +60,27 @@ public class ViewChanger implements Observer
 
     @Override
     public void reagir() {
-
+        switch (this.deck.getCurrentView()) {
+            case "DeckList":
+                this.setViewDeckList();
+                break;
+            case "CardList":
+                this.setViewCardList();
+                break;
+            case "DeckContent":
+                this.setViewDeckContent();
+                break;
+            case "Learning":
+                this.setViewLearning();
+                break;
+            case "NewCard":
+                this.setViewNewCard();
+                break;
+            case "Statistics":
+                this.setViewStatistics();
+                break;
+            default:
+                break;
+        }
     }
 }

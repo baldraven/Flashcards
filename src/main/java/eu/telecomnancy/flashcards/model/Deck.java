@@ -10,6 +10,7 @@ public class Deck extends Observable {
     public String name;
     public String description;
 
+    private String currentView = "DeckList";
     
     public Deck(ArrayList<Card> deck) {
         this.deck = deck;
@@ -37,5 +38,14 @@ public class Deck extends Observable {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public String getCurrentView() {
+        return this.currentView;
+    }
+
+    public void setCurrentView(String view) {
+        this.currentView = view;
+        this.notifierObs();
     }
 }
