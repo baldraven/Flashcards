@@ -32,39 +32,32 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
+      <MenuBar>
          <menus>
             <Menu mnemonicParsing="false" text="Mode">
               <items>
-                  <MenuItem mnemonicParsing="false" text="Création" />
-                <MenuItem mnemonicParsing="false" text="Apprentissage" />
+                <MenuItem mnemonicParsing="false" text="Création" />
+                  <MenuItem mnemonicParsing="false" text="Apprentissage" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="help">
+            <Menu mnemonicParsing="false" text=" Type">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Cartes" />
+                  <MenuItem mnemonicParsing="false" text="Pile" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
               <items>
                 <MenuItem mnemonicParsing="false" text="About" />
               </items>
             </Menu>
          </menus>
-    </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-      <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
-      </children>
-    </AnchorPane>
+      </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS" />
   </children>
 </VBox>
