@@ -29,7 +29,7 @@ public class SelectApp {
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SelectApp.connect: " + e.getMessage());
         }
         return conn;
     }
@@ -51,7 +51,7 @@ public class SelectApp {
                                    rs.getString("answer"));
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SelectApp.displayAllCards: " + e.getMessage());
         }
     }
 
@@ -71,7 +71,7 @@ public class SelectApp {
                                    rs.getString("description"));
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SelectApp.displayAllDecks: " + e.getMessage());
         }
     }
 
@@ -94,7 +94,7 @@ public class SelectApp {
                 deckList.addDeck(deck);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SelectApp.selectAllDecks: " + e.getMessage());
         }
 
         return deckList;
@@ -124,7 +124,63 @@ public class SelectApp {
                 deck.addCard(card);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("SelectApp.getCardsWithDeckName: " + e.getMessage());
+        }
+
+        return deck;
+    }
+
+    /**
+     * Get the answer whith question of the card
+     * @param card
+     * @param question 
+     */
+    public Card getAnswerWithCardQuestion(Card card, String question){
+        String sql = "SELECT answer "
+                   + "FROM cards WHERE question = ?";
+ 
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            // set the value
+            pstmt.setString(1,question);
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                card.setAnswer(rs.getString("answer"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SelectApp.getAnswerWithCardQuestion: " + e.getMessage());
+        }
+
+        return card;
+    }
+
+    /**
+     * Get the description whith name of the deck
+     * @param deck
+     * @param name 
+     */
+    public Deck getDescriptionWithDeckName(Deck deck, String name){
+        String sql = "SELECT description "
+                   + "FROM decks WHERE name = ?";
+ 
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            // set the value
+            pstmt.setString(1,name);
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                deck.setDescription(rs.getString("description"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SelectApp.getDescriptionWithDeckName: " + e.getMessage());
         }
 
         return deck;
