@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.ViewNewCard">
+    <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
+        <menus>
+            <Menu mnemonicParsing="false" text="Edition">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Voir toutes les cartes" />
+               <MenuItem mnemonicParsing="false" text="Voir toutes les piles" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Configuration">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Statistiques">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+   <Pane layoutY="27.0" prefHeight="775.0" prefWidth="800.0">
+      <children>
+         <VBox prefHeight="775.0" prefWidth="800.0">
+            <children>
+               <Pane prefHeight="99.0" prefWidth="800.0">
+                  <children>
+                     <Label layoutX="259.0" layoutY="28.0" text="Créer une carte">
+                        <font>
+                           <Font size="36.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </Pane>
+               <Pane prefHeight="74.0" prefWidth="800.0">
+                  <children>
+                     <Label layoutX="145.0" layoutY="27.0" text="Piles sélectionnées : ">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </Pane>
+            </children>
+         </VBox>
+      </children>
+   </Pane>
+</AnchorPane>
