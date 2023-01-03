@@ -2,6 +2,7 @@ package eu.telecomnancy.flashcards;
 
 import eu.telecomnancy.flashcards.controller.ControllerNewCard;
 import eu.telecomnancy.flashcards.model.Deck;
+import eu.telecomnancy.flashcards.sql.Initialization;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ public class Main extends Application {
     public static void main(String[] args)
     {
         launch(args);
+        Initialization init = new Initialization();
     }
 
     @Override

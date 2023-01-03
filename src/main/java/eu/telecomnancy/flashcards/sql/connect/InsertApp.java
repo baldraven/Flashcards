@@ -23,7 +23,7 @@ public class InsertApp {
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("InsertApp.connect: " + e.getMessage());
         }
         return conn;
     }
@@ -43,7 +43,7 @@ public class InsertApp {
             pstmt.setString(2, answer);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("InsertApp.insertCard: " + e.getMessage());
         }
     }
 
@@ -62,7 +62,7 @@ public class InsertApp {
             pstmt.setString(2, description);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("InsertApp.insertDeck: " + e.getMessage());
         }
     }
 
@@ -81,7 +81,26 @@ public class InsertApp {
             pstmt.setInt(2, score);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("InsertApp.insertUser: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Insert a new row into the relation cards/decks table
+     *
+     * @param question
+     * @param name
+     */
+    public void insertRelationCardsDecks(String question, String name) {
+        String sql = "INSERT INTO relationCardsDecks(question,name) VALUES(?,?)";
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, question);
+            pstmt.setString(2, name);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("InsertApp.insertRelationCardsDecks: " + e.getMessage());
         }
     }
 }
