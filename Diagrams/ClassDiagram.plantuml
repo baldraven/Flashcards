@@ -1,7 +1,7 @@
-@startuml Diagramme de classe - Flashcards
-title Diagramme de classe - Flashcards
+@startuml
+title "Diagramme de classe - Flashcards"
 
-class ViewChanger{
+class ViewChanger {
     - Learning : View
     - Decks : View
     - Cards : View
@@ -12,45 +12,49 @@ class ViewChanger{
 
 interface Observer{}
 abstract Observable{}
+
 class Card{}
-class Decks{}
+class CardList{}
 class Deck{}
-class Cards{}
+class DeckList{}
+
 class ViewLearning{} 
-class ViewDecks{}
-class ViewCards{}
-class ViewDeck{}
+class ViewDeckList{}
+class ViewCardList{}
+class ViewDeckContent{}
 class ViewStatistics{}
 class ViewNewCard{}
+
 class ControllerLearning{}
 class ControllerDecks{}
 class ControllerCards{}
 class ControllerDeck{}
 class ControllerStatistics{}
-class controllerNewCard{}
+class ControllerNewCard{}
 
 
-Observer <|-- ViewChanger
-Observer <|-- ViewLearning
-Observer <|-- ViewDecks
-Observer <|-- ViewCards
-Observer <|-- ViewDeck
-Observer <|-- ViewStatistics
-Observable <.. Cards
-Observable <.. Decks
-Observable <.. Deck
-Observable <.. Card
-Cards <-- "*" Card 
-Decks <-- "*" Deck
+Observer <|.. ViewChanger
+
+Observer <|.. ViewLearning
+Observer <|.. ViewDeckList
+Observer <|.. ViewCardList
+Observer <|.. ViewDeckContent
+Observer <|.. ViewNewCard
+Observer <|.. ViewStatistics
+
+Observable <|.. Deck
+
+CardList -- "*" Card
+DeckList -- "*" Deck
+
 ControllerLearning -- ViewLearning
-ControllerDecks -- ViewDecks
-ControllerCards -- ViewCards
-ControllerDeck -- ViewDeck
+ControllerDecks -- ViewDeckList
+ControllerCards -- ViewCardList
+ControllerDeck -- ViewDeckContent
 ControllerStatistics -- ViewStatistics
-controllerNewCard -- ViewNewCard
+ControllerNewCard -- ViewNewCard
+
 Card "*" -- "1" Deck
 Observable "1" -- "*" Observer
-
-
 
 @enduml
