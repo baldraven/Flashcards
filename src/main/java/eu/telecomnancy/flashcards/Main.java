@@ -32,7 +32,7 @@ public class Main extends Application {
         loaderNewCard.setControllerFactory(iC->new ControllerNewCard(deck));
         Parent rootNewCard = loaderNewCard.load();
         FXMLLoader loaderLearning = new FXMLLoader();
-        loaderLearning.setLocation(getClass().getResource("ViewNewCard.fxml"));
+        loaderLearning.setLocation(getClass().getResource("ViewLearning.fxml"));
         loaderLearning.setControllerFactory(iC->new ControllerLearning(deck));
         Parent rootLearning = loaderLearning.load();
 
