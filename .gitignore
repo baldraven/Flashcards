@@ -246,3 +246,7 @@ build
 ./build/*
 
 .gradle
+
+# Binary files
+bin
+./bin
