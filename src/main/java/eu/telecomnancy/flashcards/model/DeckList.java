@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class DeckList extends Observable {
     
-    public ArrayList<Deck> deckList;
+    private ArrayList<Deck> deckList;
 
     public DeckList(ArrayList<Deck> deckList) {
         this.deckList = deckList;
@@ -18,5 +18,9 @@ public class DeckList extends Observable {
 
     public void addDeck(Deck deck) {
         deckList.add(deck);
+    }
+
+    public ArrayList<Deck> getDeckList() {
+        return this.deckList;
     }
 }

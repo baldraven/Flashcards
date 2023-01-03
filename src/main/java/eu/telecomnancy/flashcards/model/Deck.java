@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Deck {
     
-    public ArrayList<Card> deck;
-    public String name;
-    public String description;
+    private ArrayList<Card> deck;
+    private String name;
+    private String description;
 
     
     public Deck(ArrayList<Card> deck) {
@@ -35,5 +35,9 @@ public class Deck {
 
     public String getDescription() {
         return this.description;
+    }
+
+    public ArrayList<Card> getDeck() {
+        return this.deck;
     }
 }
