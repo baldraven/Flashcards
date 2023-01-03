@@ -1,6 +1,7 @@
 package eu.telecomnancy.flashcards;
 
 import eu.telecomnancy.flashcards.controller.ControllerNewCard;
+import eu.telecomnancy.flashcards.controller.ControllerLearning;
 import eu.telecomnancy.flashcards.controller.ViewChanger;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.sql.Initialization;

@@ -25,7 +25,7 @@ public class ControllerLearning implements Observer
     private Deck deck;
     private Card card;
 
-    public void ControllerLearning(Deck deck)
+    public ControllerLearning(Deck deck)
     {
         this.deck = deck;
         this.reagir();
