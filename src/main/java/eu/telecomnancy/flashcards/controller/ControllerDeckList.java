@@ -18,7 +18,7 @@ import javafx.scene.layout.HBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerDeckList implements Initializable {
+public class ControllerDeckList implements Initializable, Observer{
     private DeckList deckList;
 
     @FXML
@@ -27,11 +27,18 @@ public class ControllerDeckList implements Initializable {
 
     public ControllerDeckList(DeckList deckList) {
         this.deckList = deckList;
-        //this.deck.ajouterObs(this);
+        deckList.getDeckList().get(0)
+                            .ajouterObs(this);
     } 
 
     public void switchToNewCard() {
-        this.deck.setCurrentView("NewCard");
+        deckList.getDeckList().get(0)
+                .setCurrentView("NewCard");
+    }
+
+    public void switchToCardList() {
+        deckList.getDeckList().get(0)
+                .setCurrentView("CardList");
     }
 
     @Override
@@ -48,5 +55,8 @@ public class ControllerDeckList implements Initializable {
 
     public void toLearning(Deck deck){
         deck.setCurrentView("Learning");
+    }
+
+    public void reagir() {
     }
 }
