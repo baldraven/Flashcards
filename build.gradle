@@ -28,8 +28,12 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'eu.telecomnancy.flashcards'
+    //Main
     mainClass = 'eu.telecomnancy.flashcards.Main'
+    //Create database
     //mainClass = 'eu.telecomnancy.flashcards.sql.connect.Create'
+    //Create tables
+    //mainClass = 'eu.telecomnancy.flashcards.sql.connect.InitializeTables'
 }
 
 javafx {
