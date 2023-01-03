@@ -10,6 +10,7 @@
             <Menu mnemonicParsing="false" text="Edition">
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Voir toutes les piles" />
+               <MenuItem mnemonicParsing="false" onAction="#switchToNewCard" text="Créer une carte" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">

@@ -30,6 +30,10 @@ public class ControllerDeckList implements Initializable {
         //this.deck.ajouterObs(this);
     } 
 
+    public void switchToNewCard() {
+        this.deck.setCurrentView("NewCard");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (Deck deck : deckList.getDeckList()) {
