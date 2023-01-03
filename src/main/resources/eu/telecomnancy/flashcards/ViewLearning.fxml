@@ -50,7 +50,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.ViewLearning">
   <children>
     <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -76,7 +76,7 @@
          <children>
             <HBox alignment="CENTER" layoutY="618.0" prefHeight="115.0" prefWidth="800.0">
                <children>
-                  <GridPane prefHeight="100.0" prefWidth="708.0" visible="false">
+                  <GridPane prefHeight="100.0" prefWidth="708.0" visible="false" fx:id="gridP">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -121,7 +121,7 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-border-radius: 40;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="179.0" prefWidth="620.0" style="-fx-border-color: green; -fx-border-radius: 40; -fx-border-width: 3;" text="Placeholder" textAlignment="CENTER" visible="false">
+                        <Label alignment="CENTER" prefHeight="179.0" prefWidth="620.0" style="-fx-border-color: green; -fx-border-radius: 40; -fx-border-width: 3;" text="Placeholder" textAlignment="CENTER" visible="false" fx:id="Rep">
                            <font>
                               <Font name="Bookman Old Style Bold" size="32.0" />
                            </font>
@@ -130,7 +130,7 @@
                   </AnchorPane>
                </items>
             </SplitPane>
-            <Button alignment="CENTER" layoutX="236.0" layoutY="494.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="329.0" text="Afficher la réponse" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS">
+            <Button alignment="CENTER" layoutX="236.0" layoutY="494.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="329.0" text="Afficher la réponse" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" onAction="#AffRep">
                <font>
                   <Font size="24.0" />
                </font>

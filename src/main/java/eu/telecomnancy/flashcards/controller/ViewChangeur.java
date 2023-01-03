@@ -1,5 +1,6 @@
 package eu.telecomnancy.flashcards.controller;
 
+import eu.telecomnancy.flashcards.Observer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

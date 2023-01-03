@@ -7,17 +7,16 @@
 <AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.VueEtude">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
-            <Menu mnemonicParsing="false" text="Mode">
-                <items>
-                    <MenuItem mnemonicParsing="false" text="Création" />
-                    <MenuItem mnemonicParsing="false" text="Apprentissage" />
-                </items>
-            </Menu>
             <Menu mnemonicParsing="false" text="Edition">
                 <items>
                     <MenuItem mnemonicParsing="false" text="Voir toutes les cartes" />
                 </items>
             </Menu>
+         <Menu mnemonicParsing="false" text="Configuration">
+           <items>
+             <MenuItem mnemonicParsing="false" text="Action 1" />
+           </items>
+         </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
                 <items>
                     <MenuItem mnemonicParsing="false" text="Action 1" />
@@ -33,17 +32,17 @@
          <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
       </bottom>
       <right>
-         <HBox prefHeight="574.0" prefWidth="119.0" BorderPane.alignment="CENTER" />
+         <HBox prefHeight="574.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
       </right>
       <left>
-         <HBox prefHeight="574.0" prefWidth="108.0" BorderPane.alignment="CENTER" />
+         <HBox prefHeight="574.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
       </left>
       <top>
          <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
                <Pane prefHeight="100.0" prefWidth="890.0">
                   <children>
-                     <Label layoutX="306.0" layoutY="28.0" text="Mes decks">
+                     <Label layoutX="306.0" layoutY="28.0" text="Mes piles">
                         <font>
                            <Font size="36.0" />
                         </font>
