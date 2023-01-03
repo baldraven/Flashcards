@@ -4,12 +4,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.ViewCards">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerCardList">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Voir toutes les piles" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Voir toutes les piles" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">

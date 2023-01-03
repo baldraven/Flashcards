@@ -26,10 +26,13 @@ public class ViewChanger implements Observer
 
     private Parent rootStatistics;
 
-    public ViewChanger(Deck deck, Stage stage, Scene scene, Parent rootNewCard) {
+    public ViewChanger(Deck deck, Stage stage, Scene scene, Parent rootDeckList, Parent rootCardList, Parent rootNewCard) {
         this.deck = deck;
         this.stage = stage;
         this.scene = scene;
+        this.rootDeckList = rootDeckList;
+        this.rootCardList = rootCardList;
+        //this.rootLearning = rootLearning;
         this.rootNewCard = rootNewCard;
         this.deck.ajouterObs(this);
     }

@@ -44,6 +44,14 @@ public class ControllerNewCard implements Observer {
         return this.answer;
     }
 
+    public void switchToDeckList() {
+        this.deck.setCurrentView("DeckList");
+    }
+
+    public void switchToCardList() {
+        this.deck.setCurrentView("CardList");
+    }
+
     public void addNewCard(String question, String answer) {
         this.deck.addCard(new Card(question, answer));
     }

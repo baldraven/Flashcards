@@ -1,8 +1,6 @@
 package eu.telecomnancy.flashcards;
 
-import eu.telecomnancy.flashcards.controller.ControllerNewCard;
-import eu.telecomnancy.flashcards.controller.ControllerLearning;
-import eu.telecomnancy.flashcards.controller.ViewChanger;
+import eu.telecomnancy.flashcards.controller.*;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.sql.Initialization;
 import javafx.application.Application;
@@ -27,19 +25,30 @@ public class Main extends Application {
 
         Deck deck = new Deck();
 
+        FXMLLoader loaderDeckList = new FXMLLoader();
+        loaderDeckList.setLocation(getClass().getResource("ViewDeckList.fxml"));
+        loaderDeckList.setControllerFactory(iC->new ControllerDeckList(deck));
+        Parent rootDeckList = loaderDeckList.load();
+
+        FXMLLoader loaderCardList = new FXMLLoader();
+        loaderCardList.setLocation(getClass().getResource("ViewCardList.fxml"));
+        loaderCardList.setControllerFactory(iC->new ControllerCardList(deck));
+        Parent rootCardList = loaderCardList.load();
+
         FXMLLoader loaderNewCard = new FXMLLoader();
         loaderNewCard.setLocation(getClass().getResource("ViewNewCard.fxml"));
         loaderNewCard.setControllerFactory(iC->new ControllerNewCard(deck));
         Parent rootNewCard = loaderNewCard.load();
-        FXMLLoader loaderLearning = new FXMLLoader();
+
+        /*FXMLLoader loaderLearning = new FXMLLoader();
         loaderLearning.setLocation(getClass().getResource("ViewLearning.fxml"));
         loaderLearning.setControllerFactory(iC->new ControllerLearning(deck));
-        Parent rootLearning = loaderLearning.load();
+        Parent rootLearning = loaderLearning.load();*/
 
         Scene scene = new Scene(rootNewCard);
 
         // A modifier quand on modifie le constructeur de ViewChanger
-        ViewChanger viewChanger = new ViewChanger(deck, primaryStage, scene, rootNewCard);
+        ViewChanger viewChanger = new ViewChanger(deck, primaryStage, scene, rootDeckList, rootCardList, rootNewCard);
 
         primaryStage.setScene(scene);
         primaryStage.show();
