@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class Deck extends Observable {
     
-    public ArrayList<Card> deck;
-    public String name;
-    public String description;
+    private ArrayList<Card> deck;
+    private String name;
+    private String description;
 
     private String currentView = "DeckList";
     
@@ -47,5 +47,8 @@ public class Deck extends Observable {
     public void setCurrentView(String view) {
         this.currentView = view;
         this.notifierObs();
-    }
+
+    /*public ArrayList<Card> getDeck() {
+        return this.deck;
+    }*/
 }

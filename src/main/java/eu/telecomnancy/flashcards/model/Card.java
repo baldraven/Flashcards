@@ -2,8 +2,8 @@ package eu.telecomnancy.flashcards.model;
 
 public class Card {
     
-    public String question;
-    public String answer;
+    private String question;
+    private String answer;
     
     public Card(String question, String answer) {
         this.question = question;
