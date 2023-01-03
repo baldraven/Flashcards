@@ -16,6 +16,10 @@ public class ControllerCardList implements Observer {
         this.deck.setCurrentView("DeckList");
     }
 
+    public void switchToNewCard() {
+        this.deck.setCurrentView("NewCard");
+    }
+
     @Override
     public void reagir() {
 
