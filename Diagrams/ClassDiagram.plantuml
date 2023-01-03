@@ -1,0 +1,31 @@
+@startuml Diagramme de classe - Flashcards
+title Diagramme de classe - Flashcards
+
+class ViewChanger{
+    - Learning : View
+    - Decks : View
+    - Cards : View
+    - Deck : View
+    - Statistics : View
+}
+
+interface Observer{}
+interface Observable{}
+class Card{}
+class Deck{}
+class ViewLearning{} 
+class ViewDecks{}
+class ViewCards{}
+class ViewDeck{}
+class ViewStatistics{}
+class ControllerLearning{}
+class ControllerDecks{}
+class ControllerCards{}
+class ControllerDeck{}
+class ControllerStatistics{}
+
+
+Observer <|.. ViewChanger
+
+
+@enduml
