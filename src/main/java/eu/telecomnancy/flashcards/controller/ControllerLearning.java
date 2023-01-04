@@ -39,6 +39,7 @@ public class ControllerLearning implements Observer, Initializable
     private Deck deck;
     private ModelFlashcard model;
     private Card card;
+    private long time;
 
     public ControllerLearning(ModelFlashcard model)
     {
@@ -146,6 +147,10 @@ public class ControllerLearning implements Observer, Initializable
         }
         else
         {
+            for(int j = 0;j < leng;j++)
+            {
+                time = deck.getCard(j).getTimer();
+            }
             Random rand = new Random();
             int i = rand.nextInt(0, leng);
             card = deck.getCard(i);

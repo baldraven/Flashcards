@@ -7,13 +7,15 @@ public class Card {
     private String question;
     private String answer;
     private double ease;
+    private long time;
     private double interval;
     
-    public Card(String question, String answer, double ease, double interval) {
+    public Card(String question, String answer, double ease, double interval, long time) {
         this.question = question;
         this.answer = answer;
         this.ease = ease;
         this.interval = interval;
+        this.time = time;
     }
 
     public Card() {
@@ -21,6 +23,7 @@ public class Card {
         this.answer = null;
         this.ease = 230;
         this.interval = -1;
+        this.time = 0;
     }
 
     public void setQuestion(String question) {
@@ -29,6 +32,11 @@ public class Card {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public void setTimer(long time)
+    {
+        this.time = time;
     }
 
     public void setEase(double ease)
@@ -63,6 +71,11 @@ public class Card {
 
     public String getAnswer() {
         return this.answer;
+    }
+
+    public long getTimer()
+    {
+        return this.time;
     }
 
     public double getEase() {
