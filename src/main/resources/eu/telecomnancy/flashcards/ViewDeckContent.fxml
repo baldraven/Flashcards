@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="eu.telecomnancy.flashcards.controller.ControllerDeckContent"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerDeckContent">
+    <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
+        <menus>
+            <Menu mnemonicParsing="false" text="Edition">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#switchToCardList" text="Voir toutes les cartes" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Voir toutes les piles" />
+                    <SeparatorMenuItem mnemonicParsing="false" />
+                    <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Configuration">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Statistiques">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                </items>
+            </Menu>
+        </menus>
+    </MenuBar>
+   <BorderPane layoutY="27.0" prefHeight="773.0" prefWidth="800.0">
+      <top>
+         <Pane prefHeight="120.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <children>
+               <Label layoutX="308.0" layoutY="28.0" text="Pile [nom]">
+                  <font>
+                     <Font size="36.0" />
+                  </font>
+               </Label>
+                <Label layoutX="192.0" layoutY="84.0" text="Questions">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <Label layoutX="497.0" layoutY="84.0" text="Réponses">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+            </children>
+         </Pane>
+      </top>
+      <left>
+         <Pane prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      </left>
+      <right>
+         <Pane prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      </right>
+      <bottom>
+         <Pane prefHeight="120.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+      </bottom>
+      <center>
+         <ListView fx:id="content" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      </center></BorderPane>
 </AnchorPane>
