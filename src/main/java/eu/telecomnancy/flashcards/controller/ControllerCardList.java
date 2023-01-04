@@ -78,9 +78,12 @@ public class ControllerCardList implements Initializable, Observer {
         }
     }
 
-    public void editCard() {
+    @FXML
+    public void switchToNewCard_mod(){}
 
-    }
+    @FXML
+    public void deleteCard(){}
+
 
     @Override
     public void reagir() {
