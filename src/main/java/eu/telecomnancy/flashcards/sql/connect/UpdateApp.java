@@ -35,7 +35,7 @@ public class UpdateApp {
      * @param newQuestion question of the card after change
      * @param answer answer of the card
      */
-    public void update(String oldQuestion, String newQuestion, String answer) {
+    public void updateCard(String oldQuestion, String newQuestion, String answer) {
         String sql = "UPDATE cards SET question = ? , "
                 + "answer = ? "
                 + "WHERE name = ?";
@@ -47,6 +47,32 @@ public class UpdateApp {
             pstmt.setString(1, newQuestion);
             pstmt.setString(2, answer);
             pstmt.setString(3, oldQuestion);
+            // update 
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Update data of a deck specified by the name
+     *
+     * @param oldName name of the deck before change
+     * @param newName name of the deck after change
+     * @param description description of the deck
+     */
+    public void updateDeck(String oldName, String newName, String description) {
+        String sql = "UPDATE decks SET name = ? , "
+                + "description = ? "
+                + "WHERE name = ?";
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the corresponding param
+            pstmt.setString(1, newName);
+            pstmt.setString(2, description);
+            pstmt.setString(3, oldName);
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {

@@ -2,9 +2,9 @@ package eu.telecomnancy.flashcards.model;
 
 import eu.telecomnancy.flashcards.Observable;
 import eu.telecomnancy.flashcards.sql.connect.InsertApp;
+import eu.telecomnancy.flashcards.sql.connect.UpdateApp;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Deck extends Observable {
     
@@ -36,6 +36,22 @@ public class Deck extends Observable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void updateName(String name) {
+        String oldName = this.name;
+        String newName = name;
+        this.name = newName;
+
+        UpdateApp app = new UpdateApp();
+        app.updateDeck(oldName, newName, this.description);
+    }
+
+    public void updateDescription(String description) {
+        this.description = description;
+
+        UpdateApp app = new UpdateApp();
+        app.updateDeck(this.name, this.name, description);
     }
 
     public String getName() {

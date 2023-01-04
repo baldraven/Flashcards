@@ -1,7 +1,6 @@
 package eu.telecomnancy.flashcards;
 
 import eu.telecomnancy.flashcards.controller.*;
-import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.Initialization;
 import javafx.application.Application;
