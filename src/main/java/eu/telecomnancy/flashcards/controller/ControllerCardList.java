@@ -21,14 +21,7 @@ public class ControllerCardList implements Initializable, Observer {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(model.getCardList());
-        for (Card card : model.getCardList().getCardList()) {
-            HBox hbox = new HBox();
-            Label label1 = new Label(card.getQuestion() + "\t");
-            Label label2 = new Label(card.getAnswer());
-            hbox.getChildren().addAll(label1, label2);
-            content.getItems().add(hbox);
-        }
+        this.displayCards();
     }
     
     public ControllerCardList(ModelFlashcard model) {
@@ -50,5 +43,20 @@ public class ControllerCardList implements Initializable, Observer {
         model.getViewChanger().setView("NewCard");
     }
 
-    public void reagir(){}
+    public void displayCards() {
+        System.out.println(this.model.getCardList());
+        this.content.getItems().clear();
+        for (Card card : this.model.getCardList().getCardList()) {
+            HBox hbox = new HBox();
+            Label label1 = new Label(card.getQuestion() + "\t");
+            Label label2 = new Label(card.getAnswer());
+            hbox.getChildren().addAll(label1, label2);
+            this.content.getItems().add(hbox);
+        }
+    }
+
+    @Override
+    public void reagir() {
+        this.displayCards();
+    }
 }

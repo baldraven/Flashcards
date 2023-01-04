@@ -95,5 +95,13 @@ public class Deck extends Observable {
             return deck.get(i);
         }
     }
+
+    public ArrayList<String> getQuestionsFromDeck() {
+        ArrayList<String> questionsListFromDeck = new ArrayList<>();
+        for (Card card : this.deck) {
+            questionsListFromDeck.add(card.getQuestion());
+        }
+        return questionsListFromDeck;
+    }
 }
 

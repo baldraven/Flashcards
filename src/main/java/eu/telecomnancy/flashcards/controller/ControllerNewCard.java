@@ -83,14 +83,25 @@ public class ControllerNewCard implements Initializable, Observer {
 
     public void addNewCard() {
 
-        Card card = new Card(this.getQuestion().getText(), this.getAnswer().getText());
+        String question = this.getQuestion().getText();
+        String answer = this.getAnswer().getText();
+
+        Card card = new Card(question, answer);
         System.out.println(
-                "Question : " + this.getQuestion().getText() +
-                "\nRéponse : " + this.getAnswer().getText() +
+                "Question : " + question +
+                "\nRéponse : " + answer +
                 "\nDeck : " + this.getSelectedDeck()
         );
-        this.model.getCardList().addCard(card);
-        this.model.getDeckList().searchDeckByName(this.getSelectedDeck()).addCard(card);
+
+        if (!this.model.getCardList().getQuestions().contains(question)) {
+            System.out.println("Ajout dans la card list");
+            this.model.getCardList().addCard(card);
+        }
+
+        if (!this.model.getDeckList().searchDeckByName(this.getSelectedDeck()).getQuestionsFromDeck().contains(question)) {
+            System.out.println("Ajout dans le deck " + this.getSelectedDeck());
+            this.model.getDeckList().searchDeckByName(this.getSelectedDeck()).addCard(card);
+        }
     }
 
     @Override

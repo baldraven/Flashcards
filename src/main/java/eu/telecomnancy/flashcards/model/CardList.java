@@ -21,4 +21,12 @@ public class CardList {
     public ArrayList<Card> getCardList() {
         return this.cardList;
     }
+
+    public ArrayList<String> getQuestions() {
+        ArrayList<String> questionsList = new ArrayList<>();
+        for (Card card : this.cardList) {
+            questionsList.add(card.getQuestion());
+        }
+        return questionsList;
+    }
 }
