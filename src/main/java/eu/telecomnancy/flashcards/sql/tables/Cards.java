@@ -17,12 +17,14 @@ public class Cards {
      */
     public static void createNewTable() {
         // SQLite connection string
-        String url = "jdbc:sqlite:db/database.db";
+        String url = "jdbc:sqlite:database.db";
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS cards (\n"
                 + "	question text PRIMARY KEY,\n"
-                + "	answer text NOT NULL\n"
+                + "	answer text NOT NULL,\n"
+                + "	score integer,\n"
+                + "	percentage integer\n"
                 + ");";
         
         try (Connection conn = DriverManager.getConnection(url);

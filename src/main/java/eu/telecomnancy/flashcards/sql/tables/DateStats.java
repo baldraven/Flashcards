@@ -5,27 +5,24 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author sqlitetutorial.net
- */
-public class RelationCardsDecks {
-
+public class DateStats {
     /**
      * Create a new table in the test database
      *
      */
     public static void createNewTable() {
         // SQLite connection string
-        String url = "jdbc:sqlite:database.db";
+        String url = "jdbc:sqlite:db/database.db";
         
         // SQL statement for creating a new table
-        String sql = "CREATE TABLE IF NOT EXISTS relationCardsDecks (\n"
-                + "	name text NOT NULL,\n"
-                + "	question text NOT NULL,\n"
-                + " FOREIGN KEY (name) REFERENCES decks(name),\n"
-                + " FOREIGN KEY (question) REFERENCES cards(question),\n"
-                + " UNIQUE (name, question)"
+        String sql = "CREATE TABLE IF NOT EXISTS dateStats (\n"
+                + "	date text PRIMARY KEY,\n"
+                + "	created integer,\n"
+                + "	studied integer,\n"
+                + "	again integer,\n"
+                + "	hard integer,\n"
+                + "	good integer,\n"
+                + "	easy integer\n"
                 + ");";
         
         try (Connection conn = DriverManager.getConnection(url);
@@ -43,5 +40,4 @@ public class RelationCardsDecks {
     public static void main(String[] args) {
         createNewTable();
     }
-
 }

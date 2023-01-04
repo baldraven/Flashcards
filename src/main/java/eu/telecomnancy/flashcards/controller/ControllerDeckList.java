@@ -1,5 +1,7 @@
 package eu.telecomnancy.flashcards.controller;
 
+
+import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.geometry.Insets;
@@ -16,10 +18,11 @@ import javafx.application.Platform;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerDeckList implements Initializable {
+
+public class ControllerDeckList implements Initializable, Observer{
     private ModelFlashcard model;
     @FXML
-    private ListView content;
+    private ListView<HBox> content;
 
 
     public ControllerDeckList(ModelFlashcard model) {
@@ -73,4 +76,6 @@ public class ControllerDeckList implements Initializable {
             content.getItems().add(hbox);
         }                              
     }
+    
+    public void reagir(){}
 }

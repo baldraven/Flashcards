@@ -3,6 +3,7 @@ plugins {
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.10'
     id 'org.beryx.jlink' version '2.24.1'
+    id "io.gitlab.plunts.plantuml" version "2.0.1"
 }
 
 group 'eu.telecomnancy'
@@ -60,6 +61,18 @@ jar {
         attributes 'Main-Class': 'eu.telecomnancy.flashcards.Main'
     }
 }
+
+classDiagrams {
+  diagram {
+    name "Visualise Package"
+    include packages().withName("eu.telecomnancy.flashcards").nonRecursive()
+    include packages().withName("eu.telecomnancy.flashcards.controller").nonRecursive()
+    include packages().withName("eu.telecomnancy.flashcards.model").nonRecursive()
+    include classes().withName("eu.telecomnancy.flashcards.sql.Initialization")
+    writeTo file('classDiagram.puml')
+  }
+}
+
 
 jlink {
     imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
