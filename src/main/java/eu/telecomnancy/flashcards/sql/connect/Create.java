@@ -22,7 +22,7 @@ public class Create {
      */
     public static void createNewDatabase(String fileName) {
 
-        String url = "jdbc:sqlite:db/" + fileName;
+        String url = "jdbc:sqlite:" + fileName;
 
         try (Connection conn = DriverManager.getConnection(url)) {
             if (conn != null) {

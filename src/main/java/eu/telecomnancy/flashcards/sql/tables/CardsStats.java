@@ -12,18 +12,19 @@ public class CardsStats {
      */
     public static void createNewTable() {
         // SQLite connection string
-        String url = "jdbc:sqlite:db/database.db";
+        String url = "jdbc:sqlite:database.db";
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS cardsStats (\n"
-                + "	question text PRIMARY KEY,\n"
-                + "	name text PRIMARY KEY,\n"
+                + "	question text,\n"
+                + "	name text,\n"
                 + "	again integer,\n"
                 + "	hard integer,\n"
                 + "	good integer,\n"
                 + "	easy integer,\n"
                 + " FOREIGN KEY (name) REFERENCES relationCardsDecks(name),\n"
-                + " FOREIGN KEY (question) REFERENCES relationCardsDecks(question)\n"
+                + " FOREIGN KEY (question) REFERENCES relationCardsDecks(question),\n"
+                + " UNIQUE (name, question)"
                 + ");";
         
         try (Connection conn = DriverManager.getConnection(url);
