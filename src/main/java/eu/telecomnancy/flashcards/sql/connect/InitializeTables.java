@@ -6,7 +6,7 @@ import eu.telecomnancy.flashcards.sql.tables.RelationCardsDecks;
 import eu.telecomnancy.flashcards.sql.tables.User;
 
 public class InitializeTables {
-    public static void main(String[] args) {
+    public InitializeTables() {
         Cards.createNewTable();
         Decks.createNewTable();
         RelationCardsDecks.createNewTable();

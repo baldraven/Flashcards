@@ -11,6 +11,10 @@ import java.sql.SQLException;
  */
 public class Create {
 
+    public Create() {
+        createNewDatabase("database.db");
+    }
+    
     /**
      * Connect to a sample database
      *
@@ -30,12 +34,5 @@ public class Create {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        createNewDatabase("database.db");
     }
 }
