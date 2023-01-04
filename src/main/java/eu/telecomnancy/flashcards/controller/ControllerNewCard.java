@@ -62,7 +62,7 @@ public class ControllerNewCard extends AbstractControllerMenu implements Initial
         String question = this.getQuestion().getText();
         String answer = this.getAnswer().getText();
 
-        Card card = new Card(question, answer, 320, -1, 0);
+        Card card = new Card(question, answer, 320, -1, 0, 0, 0, 0, 0);
         System.out.println(
                 "Question : " + question +
                 "\nRéponse : " + answer +

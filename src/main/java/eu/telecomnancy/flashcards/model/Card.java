@@ -15,12 +15,16 @@ public class Card {
     private Integer good;
     private Integer easy;
     
-    public Card(String question, String answer, double ease, double interval, long time) {
+    public Card(String question, String answer, double ease, double interval, long time, Integer again, Integer hard, Integer good, Integer easy) {
         this.question = question;
         this.answer = answer;
         this.ease = ease;
         this.interval = interval;
         this.time = time;
+        this.again = again;
+        this.hard = hard;
+        this.good = good;
+        this.easy = easy;
     }
 
     public Card() {
@@ -29,6 +33,10 @@ public class Card {
         this.ease = 230;
         this.interval = -1;
         this.time = 0;
+        this.again = 0;
+        this.hard = 0;
+        this.good = 0;
+        this.easy = 0;
     }
 
     public void setQuestion(String question) {
