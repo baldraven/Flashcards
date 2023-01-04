@@ -33,6 +33,7 @@ public class ControllerLearning implements Observer, Initializable
     public ControllerLearning(ModelFlashcard model)
     {
         this.model = model;
+        this.model.getViewChanger().ajouterObs(this);
     }
     @FXML
     public void AffRep(ActionEvent event)
@@ -44,22 +45,22 @@ public class ControllerLearning implements Observer, Initializable
     @FXML
     public void Difficile(ActionEvent event)
     {
-        this.reagir();
+        this.reagirAction();
     }
     @FXML
     public void Correct(ActionEvent event)
     {
-        this.reagir();
+        this.reagirAction();
     }
     @FXML
     public void Revoir(ActionEvent event)
     {
-        this.reagir();
+        this.reagirAction();
     }
     @FXML
     public void Facile(ActionEvent event)
     {
-        this.reagir();
+        this.reagirAction();
     }
     @FXML
     public void exit()
@@ -70,11 +71,14 @@ public class ControllerLearning implements Observer, Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
-     //   Ques.setText(String.valueOf(test));
-     //   Rep.setText("wat");
+        /* if (this.deck != null)
+        {
+            Ques.setText(deck.getName());
+            Rep.setText(deck.getDescription());
+        } */
     }
 
-    public void reagir()
+    public void reagirAction()
     {
        // int leng = deck.getDeck().size();
         if (3 < 1)
@@ -92,5 +96,13 @@ public class ControllerLearning implements Observer, Initializable
           //  Rep.setText(card.getAnswer());
             repButton.setVisible(true);
         }
+    }
+
+    public void reagir(){
+        System.out.println("---------CALLLED---------");
+        this.deck = this.model.getSelectedDeck();
+        System.out.println("Deck : " + deck.getName());
+        Ques.setText(deck.getName());
+        Rep.setText(deck.getDescription());
     }
 }

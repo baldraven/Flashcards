@@ -47,6 +47,7 @@ public class ControllerDeckList implements Initializable{
         for (Deck deck : model.getDeckList().getDeckList()) {
             Button button = new Button("Etudier");
             HBox hbox = new HBox();
+            model.setSelectedDeck(deck);
             button.setOnAction(action -> model.getViewChanger().setView("Learning"));
             Label label = new Label(deck.getName());
             hbox.getChildren().addAll(label, button);
