@@ -100,13 +100,13 @@
                      </children>
                   </GridPane>
                </children></HBox>
-            <SplitPane dividerPositions="0.5" layoutX="89.0" layoutY="90.0" orientation="VERTICAL" prefHeight="365.0" prefWidth="622.0" style="-fx-border-radius: 40;">
+            <SplitPane dividerPositions="0.5" layoutX="90.0" layoutY="100.0" orientation="VERTICAL" prefHeight="380.0" prefWidth="622.0" style="-fx-border-radius: 40;">
                <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" mouseTransparent="true" prefHeight="100.0" prefWidth="160.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="179.0" prefWidth="620.0" style="-fx-border-color: #fa6000; -fx-border-width: 3; -fx-border-radius: 40;" text="Placeholder" textAlignment="CENTER" fx:id="Ques">
+                        <Label alignment="CENTER" prefHeight="180.0" prefWidth="620.0" style="-fx-border-color: #fa6000; -fx-border-width: 3; -fx-border-radius: 40;" text="Placeholder" textAlignment="CENTER" fx:id="Ques">
                            <font>
-                              <Font name="Bookman Old Style Bold" size="32.0" />
+                              <Font name="Bookman Old Style Bold" size="18.0" />
                            </font>
                         </Label>
                      </children>
@@ -123,9 +123,9 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-border-radius: 40;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="179.0" prefWidth="620.0" style="-fx-border-color: green; -fx-border-radius: 40; -fx-border-width: 3;" text="Placeholder" textAlignment="CENTER" visible="false" fx:id="Rep">
+                        <Label alignment="CENTER" prefHeight="180.0" prefWidth="620.0" style="-fx-border-color: green; -fx-border-radius: 40; -fx-border-width: 3;" text="Placeholder" textAlignment="CENTER" visible="false" fx:id="Rep">
                            <font>
-                              <Font name="Bookman Old Style Bold" size="32.0" />
+                              <Font name="Bookman Old Style Bold" size="18.0" />
                            </font>
                         </Label>
                      </children>
