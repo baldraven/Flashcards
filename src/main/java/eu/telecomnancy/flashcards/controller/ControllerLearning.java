@@ -1,6 +1,7 @@
 package eu.telecomnancy.flashcards.controller;
 
 import javafx.fxml.Initializable;
+import javafx.print.PrintColor;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
+
 public class ControllerLearning implements Observer, Initializable
 {
     @FXML

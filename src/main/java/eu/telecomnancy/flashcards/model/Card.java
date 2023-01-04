@@ -6,15 +6,21 @@ public class Card {
     
     private String question;
     private String answer;
+    private float ease;
+    private int interval;
     
-    public Card(String question, String answer) {
+    public Card(String question, String answer, float ease, int interval) {
         this.question = question;
         this.answer = answer;
+        this.ease = ease;
+        this.interval = interval;
     }
 
     public Card() {
         this.question = null;
         this.answer = null;
+        this.ease = 230;
+        this.interval = -1;
     }
 
     public void setQuestion(String question) {
@@ -23,6 +29,11 @@ public class Card {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public void setEase(float ease)
+    {
+        this.ease = ease;
     }
 
     public void updateQuestion(String question) {
@@ -47,5 +58,14 @@ public class Card {
 
     public String getAnswer() {
         return this.answer;
+    }
+
+    public float getEase() {
+        return this.ease;
+    }
+
+    public int getInterval()
+    {
+        return this.interval;
     }
 }
