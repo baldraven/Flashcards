@@ -25,7 +25,11 @@ public class Cards {
                 + "	answer text NOT NULL,\n"
                 + "	interval real,\n"
                 + "	ease real,\n"
-                + "	time integer\n"
+                + "	time integer,\n"
+                + "	again integer DEFAULT 0 NOT NULL,\n"
+                + "	hard integer DEFAULT 0 NOT NULL,\n"
+                + "	good integer DEFAULT 0 NOT NULL,\n"
+                + "	easy integer DEFAULT 0 NOT NULL\n"
                 + ");";
         
         try (Connection conn = DriverManager.getConnection(url);

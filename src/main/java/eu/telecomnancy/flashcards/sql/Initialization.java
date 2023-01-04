@@ -19,24 +19,22 @@ public class Initialization {
     
     public void InitializeDatabase() {
         InsertApp app = new InsertApp();
-        app.insertCard("Quel est la capitale du monde ?", "Limoges", -1, 230, 0);
-        app.insertCard("Arc-en-ciel en anglais", "Rainbow", -1, 230, 0);
-        app.insertCard("Quelle est la moyenne de la température sur Mars ?", "-63°C", -1, 23, 0);
-        app.insertCard("Combien de temps faut-il pour aller sur Mars ?", "Entre 200 et 350 jours", -1, 230, 0);
-        app.insertCard("Quel est l'angle d'inclinaison de Mars par rapport à son axe ?", "25°", -1, 230, 0);
-        app.insertCard("Quel est l'âge de la Lune ?", "4,53 milliards d'années", -1, 230, 0);
+        app.insertCard("Quel est la capitale du monde ?", "Limoges", -1, 230, 0, 0, 0, 0, 0);
+        app.insertCard("Arc-en-ciel en anglais", "Rainbow", -1, 230, 0, 0, 0, 0, 0);
+        app.insertCard("Quelle est la moyenne de la température sur Mars ?", "-63°C", -1, 23, 0, 0, 0, 0, 0);
+        app.insertCard("Combien de temps faut-il pour aller sur Mars ?", "Entre 200 et 350 jours", -1, 230, 0, 0, 0, 0, 0);
+        app.insertCard("Quel est l'angle d'inclinaison de Mars par rapport à son axe ?", "25°", -1, 230, 0, 0, 0, 0, 0);
+        app.insertCard("Quel est l'âge de la Lune ?", "4,53 milliards d'années", -1, 230, 0, 0, 0, 0, 0);
         
-        app.insertCard("1+1", "2", -1, 230, 0);
-        app.insertCard("2+1", "3", -1, 230, 0);
-        app.insertCard("3+1", "4", -1, 230, 0);
-        app.insertCard("4+1", "5", -1, 230, 0);
-        app.insertCard("5+1", "6", -1, 230, 0);
-        app.insertCard("6+1", "7", -1, 230, 0);
+        app.insertCard("1+1", "2", -1, 230, 0, 0, 0, 0, 0);
+        app.insertCard("2+1", "3", -1, 230, 0, 0, 0, 0, 0);
+        app.insertCard("3+1", "4", -1, 230, 0, 0, 0, 0, 0);
+        app.insertCard("4+1", "5", -1, 230, 0, 0, 0, 0, 0);
+        app.insertCard("5+1", "6", -1, 230, 0, 0, 0, 0, 0);
+        app.insertCard("6+1", "7", -1, 230, 0, 0, 0, 0, 0);
 
-        app.insertDeck("Math", "Additions faciles");
-        app.insertDeck("Culture", "Questions culturelles");
-
-        app.insertUser("Jo", 0);
+        app.insertDeck("Math", "Additions faciles", 0, 0, 0, 0);
+        app.insertDeck("Culture", "Questions culturelles", 0, 0, 0, 0);
 
         app.insertRelationCardsDecks("Quel est la capitale du monde ?", "Culture");
         app.insertRelationCardsDecks("Arc-en-ciel en anglais", "Culture");
