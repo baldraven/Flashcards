@@ -62,6 +62,10 @@ public class ControllerNewCard implements Initializable, Observer {
         this.menuDeckChoice.setValue(deckNames.get(0));
     }
 
+    public String getSelectedDeck() {
+        return this.menuDeckChoice.getValue();
+    }
+
     public void switchToDeckList() {
         this.model.getViewChanger().setView("DeckList");
     }
@@ -70,10 +74,16 @@ public class ControllerNewCard implements Initializable, Observer {
         this.model.getViewChanger().setView("CardList");
     }
 
-    public void addNewCard(String question, String answer) {
-        Card card = new Card(question, answer);
+    public void addNewCard() {
+
+        Card card = new Card(this.getQuestion().getText(), this.getAnswer().getText());
+        System.out.println(
+                "Question : " + this.getQuestion().getText() +
+                "\nRéponse : " + this.getAnswer().getText() +
+                "\nDeck : " + this.getSelectedDeck()
+        );
         this.model.getCardList().addCard(card);
-        this.model.getDeckList().searchDeckByName("aaa").addCard(card);
+        this.model.getDeckList().searchDeckByName(this.getSelectedDeck()).addCard(card);
     }
 
     @Override
