@@ -2,6 +2,7 @@ package eu.telecomnancy.flashcards.model;
 
 import eu.telecomnancy.flashcards.Observable;
 import eu.telecomnancy.flashcards.sql.connect.InsertApp;
+import eu.telecomnancy.flashcards.sql.connect.SelectApp;
 import eu.telecomnancy.flashcards.sql.connect.UpdateApp;
 
 import java.util.ArrayList;
@@ -24,10 +25,17 @@ public class Deck extends Observable {
 
     public void addCard(Card card) {
         this.deck.add(card);
+        
+        SelectApp selectApp = new SelectApp();
+        InsertApp insertApp = new InsertApp();
 
-        InsertApp app = new InsertApp();
-        app.insertCard(card.getQuestion(), card.getAnswer());
-        app.insertRelationCardsDecks(card.getQuestion(), this.name);
+        ArrayList<String> questionList = selectApp.selectAllQuestionsCards();
+
+        if (!questionList.contains(card.getQuestion())) {
+            insertApp.insertCard(card.getQuestion(), card.getAnswer());
+        }
+        
+        insertApp.insertRelationCardsDecks(card.getQuestion(), this.name);
     }
 
     public void setName(String name) {
