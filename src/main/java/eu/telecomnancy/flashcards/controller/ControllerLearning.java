@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -17,6 +18,7 @@ import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
+import eu.telecomnancy.flashcards.sql.connect.UpdateApp;
 
 public class ControllerLearning extends AbstractControllerMenu implements Observer, Initializable
 {
@@ -39,11 +41,13 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
     private Deck deck;
     private Card card;
     private long time;
+    private ArrayList<Card> doneCards;
 
     public ControllerLearning(ModelFlashcard model)
     {
         super(model);
         this.model.getViewChanger().ajouterObs(this);
+        doneCards = new ArrayList<Card>();
     }
 
     public void AffRep(ActionEvent event)
@@ -146,18 +150,31 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         }
         else
         {
+            if(leng == doneCards.size())
+            {
+                doneCards.clear();
+            }
+            long unixtime = System.currentTimeMillis() / (1000L*60L);
+            double max = Double.NEGATIVE_INFINITY;
             for(int j = 0;j < leng;j++)
             {
+                if(doneCards.contains(deck.getCard(j)))
+                {
+                    continue;
+                }
                 time = deck.getCard(j).getTimer();
+                if(max < (unixtime - time - deck.getCard(j).getInterval()))
+                {
+                    max = unixtime - time - deck.getCard(j).getInterval();
+                    card = deck.getCard(j);
+                }
             }
-            Random rand = new Random();
-            int i = rand.nextInt(0, leng);
-            card = deck.getCard(i);
             Rep.setVisible(false);
             gridP.setVisible(false);
             Ques.setText(card.getQuestion());
             Rep.setText(card.getAnswer());
             repButton.setVisible(true);
+            card.setTimer(unixtime);
         }
     }
 
