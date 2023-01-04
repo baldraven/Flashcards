@@ -19,19 +19,19 @@ public class Initialization {
     
     public void InitializeDatabase() {
         InsertApp app = new InsertApp();
-        app.insertCard("Quel est la capitale du monde ?", "Limoges");
-        app.insertCard("Arc-en-ciel en anglais", "Rainbow");
-        app.insertCard("Quelle est la moyenne de la température sur Mars ?", "-63°C");
-        app.insertCard("Combien de temps faut-il pour aller sur Mars ?", "Entre 200 et 350 jours");
-        app.insertCard("Quel est l'angle d'inclinaison de Mars par rapport à son axe ?", "25°");
-        app.insertCard("Quel est l'âge de la Lune ?", "4,53 milliards d'années");
+        app.insertCard("Quel est la capitale du monde ?", "Limoges", -1, 230);
+        app.insertCard("Arc-en-ciel en anglais", "Rainbow", -1, 230);
+        app.insertCard("Quelle est la moyenne de la température sur Mars ?", "-63°C", -1, 230);
+        app.insertCard("Combien de temps faut-il pour aller sur Mars ?", "Entre 200 et 350 jours", -1, 230);
+        app.insertCard("Quel est l'angle d'inclinaison de Mars par rapport à son axe ?", "25°", -1, 230);
+        app.insertCard("Quel est l'âge de la Lune ?", "4,53 milliards d'années", -1, 230);
         
-        app.insertCard("1+1", "2");
-        app.insertCard("2+1", "3");
-        app.insertCard("3+1", "4");
-        app.insertCard("4+1", "5");
-        app.insertCard("5+1", "6");
-        app.insertCard("6+1", "7");
+        app.insertCard("1+1", "2", -1, 230);
+        app.insertCard("2+1", "3", -1, 230);
+        app.insertCard("3+1", "4", -1, 230);
+        app.insertCard("4+1", "5", -1, 230);
+        app.insertCard("5+1", "6", -1, 230);
+        app.insertCard("6+1", "7", -1, 230);
 
         app.insertDeck("Math", "Additions faciles");
         app.insertDeck("Culture", "Questions culturelles");

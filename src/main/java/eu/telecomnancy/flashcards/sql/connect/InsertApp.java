@@ -33,14 +33,18 @@ public class InsertApp {
      *
      * @param question
      * @param answer
+     * @param interval
+     * @param ease
      */
-    public void insertCard(String question, String answer) {
-        String sql = "INSERT INTO cards(question,answer) VALUES(?,?)";
+    public void insertCard(String question, String answer, double interval, double ease) {
+        String sql = "INSERT INTO cards(question,answer,interval,ease) VALUES(?,?,?,?)";
 
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, question);
             pstmt.setString(2, answer);
+            pstmt.setDouble(3, interval);
+            pstmt.setDouble(4, ease);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("InsertApp.insertCard: " + e.getMessage());

@@ -23,8 +23,8 @@ public class Cards {
         String sql = "CREATE TABLE IF NOT EXISTS cards (\n"
                 + "	question text PRIMARY KEY,\n"
                 + "	answer text NOT NULL,\n"
-                + "	score integer,\n"
-                + "	percentage integer\n"
+                + "	score real,\n"
+                + "	percentage real\n"
                 + ");";
         
         try (Connection conn = DriverManager.getConnection(url);
