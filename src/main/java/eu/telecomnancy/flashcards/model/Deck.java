@@ -53,5 +53,18 @@ public class Deck extends Observable {
     public ArrayList<Card> getDeck() {
         return this.deck;
     }
+
+    public Card getCard(int i)
+    {
+        int leng = deck.size();
+        if(i >= leng)
+        {
+            return null;
+        }
+        else
+        {
+            return deck.get(i);
+        }
+    }
 }
 
