@@ -13,6 +13,10 @@ public class Deck extends Observable {
     private ArrayList<Card> deck;
     private String name;
     private String description;
+    private Integer again;
+    private Integer hard;
+    private Integer good;
+    private Integer easy;
 
     private String currentView = "DeckList";
     
@@ -33,7 +37,7 @@ public class Deck extends Observable {
         ArrayList<String> questionList = selectApp.selectAllQuestionsCards();
 
         if (!questionList.contains(card.getQuestion())) {
-            insertApp.insertCard(card.getQuestion(), card.getAnswer(), card.getInterval(), card.getEase(), card.getTimer());
+            insertApp.insertCard(card.getQuestion(), card.getAnswer(), card.getInterval(), card.getEase(), card.getTimer(), card.getAgain(), card.getHard(), card.getGood(), card.getEasy());
         }
         
         insertApp.insertRelationCardsDecks(card.getQuestion(), this.name);
@@ -45,6 +49,22 @@ public class Deck extends Observable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setAgain(Integer again) {
+        this.again = again;
+    }
+
+    public void setHard(Integer hard) {
+        this.hard = hard;
+    }
+
+    public void setGood(Integer good) {
+        this.good = good;
+    }
+
+    public void setEasy(Integer easy) {
+        this.easy = easy;
     }
 
     public void updateName(String name) {
@@ -73,6 +93,22 @@ public class Deck extends Observable {
 
     public String getCurrentView() {
         return this.currentView;
+    }
+
+    public double getAgain() {
+        return this.again;
+    }
+
+    public double getHard() {
+        return this.hard;
+    }
+
+    public double getGood() {
+        return this.good;
+    }
+
+    public double getEasy() {
+        return this.easy;
     }
 
     public void setCurrentView(String view) {

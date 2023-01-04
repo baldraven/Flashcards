@@ -10,6 +10,10 @@ public class Card {
     private double ease;
     private long time;
     private double interval;
+    private Integer again;
+    private Integer hard;
+    private Integer good;
+    private Integer easy;
     
     public Card(String question, String answer, double ease, double interval, long time) {
         this.question = question;
@@ -47,6 +51,22 @@ public class Card {
         this.interval = interval;
     }
 
+    public void setAgain(Integer again) {
+        this.again = again;
+    }
+
+    public void setHard(Integer hard) {
+        this.hard = hard;
+    }
+
+    public void setGood(Integer good) {
+        this.good = good;
+    }
+
+    public void setEasy(Integer easy) {
+        this.easy = easy;
+    }
+
     public void updateQuestion(String question) {
         String oldQuestion = this.question;
         String newQuestion = question;
@@ -81,6 +101,22 @@ public class Card {
 
     public double getInterval() {
         return this.interval;
+    }
+
+    public Integer getAgain() {
+        return this.again;
+    }
+
+    public Integer getHard() {
+        return this.hard;
+    }
+
+    public Integer getGood() {
+        return this.good;
+    }
+
+    public Integer getEasy() {
+        return this.easy;
     }
 
     public void delete() {

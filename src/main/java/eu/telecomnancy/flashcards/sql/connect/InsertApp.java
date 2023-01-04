@@ -36,9 +36,13 @@ public class InsertApp {
      * @param interval
      * @param ease
      * @param time
+     * @param again
+     * @param hard
+     * @param good
+     * @param easy
      */
-    public void insertCard(String question, String answer, double interval, double ease, long time) {
-        String sql = "INSERT INTO cards(question,answer,interval,ease,time) VALUES(?,?,?,?,?)";
+    public void insertCard(String question, String answer, double interval, double ease, long time, Integer again, Integer hard, Integer good, Integer easy) {
+        String sql = "INSERT INTO cards(question,answer,interval,ease,time,again,hard,good,easy) VALUES(?,?,?,?,?,?,?,?,?)";
 
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -47,6 +51,10 @@ public class InsertApp {
             pstmt.setDouble(3, interval);
             pstmt.setDouble(4, ease);
             pstmt.setInt(5, (int)time);
+            pstmt.setInt(6, again);
+            pstmt.setInt(7, hard);
+            pstmt.setInt(8, good);
+            pstmt.setInt(9, easy);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("InsertApp.insertCard: " + e.getMessage());
@@ -59,35 +67,20 @@ public class InsertApp {
      * @param name
      * @param description
      */
-    public void insertDeck(String name, String description) {
-        String sql = "INSERT INTO decks(name,description) VALUES(?,?)";
+    public void insertDeck(String name, String description, Integer again, Integer hard, Integer good, Integer easy) {
+        String sql = "INSERT INTO decks(name,description,again,hard,good,easy) VALUES(?,?,?,?,?,?)";
 
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
             pstmt.setString(2, description);
+            pstmt.setInt(3, again);
+            pstmt.setInt(4, hard);
+            pstmt.setInt(5, good);
+            pstmt.setInt(6, easy);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("InsertApp.insertDeck: " + e.getMessage());
-        }
-    }
-
-    /**
-     * Insert a new row into the user table
-     *
-     * @param name
-     * @param score
-     */
-    public void insertUser(String name, Integer score) {
-        String sql = "INSERT INTO user(name,score) VALUES(?,?)";
-
-        try (Connection conn = this.connect();
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, name);
-            pstmt.setInt(2, score);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("InsertApp.insertUser: " + e.getMessage());
         }
     }
 

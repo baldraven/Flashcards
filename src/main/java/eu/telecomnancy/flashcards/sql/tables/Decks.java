@@ -22,7 +22,11 @@ public class Decks {
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS decks (\n"
                 + "	name text PRIMARY KEY,\n"
-                + "	description text\n"
+                + "	description text,\n"
+                + "	again integer DEFAULT 0 NOT NULL,\n"
+                + "	hard integer DEFAULT 0 NOT NULL,\n"
+                + "	good integer DEFAULT 0 NOT NULL,\n"
+                + "	easy integer DEFAULT 0 NOT NULL\n"
                 + ");";
         
         try (Connection conn = DriverManager.getConnection(url);
