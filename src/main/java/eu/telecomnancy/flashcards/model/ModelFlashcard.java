@@ -1,7 +1,5 @@
 package eu.telecomnancy.flashcards.model;
 
-import java.util.Set;
-
 import eu.telecomnancy.flashcards.controller.ViewChanger;
 
 public class ModelFlashcard {

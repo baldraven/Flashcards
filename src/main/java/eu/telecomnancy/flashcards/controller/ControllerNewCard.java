@@ -4,8 +4,6 @@ import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

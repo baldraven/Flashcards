@@ -17,7 +17,7 @@ public class ControllerCardList implements Initializable, Observer {
     private ModelFlashcard model;
 
     @FXML
-    private ListView content;
+    private ListView<HBox> content;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

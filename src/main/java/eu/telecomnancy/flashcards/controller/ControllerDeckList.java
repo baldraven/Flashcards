@@ -2,32 +2,25 @@ package eu.telecomnancy.flashcards.controller;
 
 import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.controller.ControllerDeckList;
-import eu.telecomnancy.flashcards.model.CardList;
 import eu.telecomnancy.flashcards.model.Deck;
-import eu.telecomnancy.flashcards.model.DeckList;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.Node;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.application.Platform;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerDeckList implements Initializable{
+
+public class ControllerDeckList implements Initializable, Observer{
     private ModelFlashcard model;
     @FXML
-    private ListView content;
+    private ListView<HBox> content;
 
 
     public ControllerDeckList(ModelFlashcard model) {
@@ -61,4 +54,6 @@ public class ControllerDeckList implements Initializable{
             content.getItems().add(hbox);
         }                              
     }
+    
+    public void reagir(){}
 }
