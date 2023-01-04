@@ -17,7 +17,7 @@ public class RelationCardsDecks {
      */
     public static void createNewTable() {
         // SQLite connection string
-        String url = "jdbc:sqlite:db/database.db";
+        String url = "jdbc:sqlite:database.db";
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS relationCardsDecks (\n"

@@ -12,7 +12,7 @@ public class DeleteDatabase {
      * Delete database
      */
     public void delete() {
-        File file = new File("db/database.db");
+        File file = new File("database.db");
 
         if (file.delete()) {
             System.out.println("Database deleted successfully");
