@@ -34,4 +34,8 @@ public class ModelFlashcard {
     public ViewChanger getViewChanger() {
         return this.viewChanger;
     }
+
+    public void setDeckList(DeckList deckList) {
+        this.deckList = deckList;
+    }
 }

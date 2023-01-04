@@ -32,4 +32,15 @@ public class DeckList extends Observable {
         }
         return null;
     }
+
+    public void deleteDeckByName(String name) {
+        ArrayList<Deck> deckListCopy = new ArrayList<>();
+        for (Deck deck : this.deckList) {
+            if (!deck.getName().equals(name)) {
+                //System.out.println("Deck conservé : " + deck.getName());
+                deckListCopy.add(deck);
+            }
+        }
+        this.deckList = deckListCopy;
+    }
 }
