@@ -2,6 +2,7 @@ package eu.telecomnancy.flashcards;
 
 import eu.telecomnancy.flashcards.controller.*;
 import eu.telecomnancy.flashcards.model.Deck;
+import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.Initialization;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -22,22 +23,22 @@ public class Main extends Application {
         primaryStage.setWidth(800);
         primaryStage.setHeight(800);
         Initialization init = new Initialization();
-
-        Deck deck = new Deck();
+        ViewChanger viewChanger = new ViewChanger();
+        ModelFlashcard model = new ModelFlashcard(viewChanger, init.getDeckList(), init.getCardList());
 
         FXMLLoader loaderDeckList = new FXMLLoader();
         loaderDeckList.setLocation(getClass().getResource("ViewDeckList.fxml"));
-        loaderDeckList.setControllerFactory(iC->new ControllerDeckList(init.getDeckList()));
+        loaderDeckList.setControllerFactory(iC->new ControllerDeckList(model));
         Parent rootDeckList = loaderDeckList.load();
 
         FXMLLoader loaderCardList = new FXMLLoader();
         loaderCardList.setLocation(getClass().getResource("ViewCardList.fxml"));
-        loaderCardList.setControllerFactory(iC->new ControllerCardList(deck));
+        loaderCardList.setControllerFactory(iC->new ControllerCardList(model));
         Parent rootCardList = loaderCardList.load();
-
+ 
         FXMLLoader loaderNewCard = new FXMLLoader();
         loaderNewCard.setLocation(getClass().getResource("ViewNewCard.fxml"));
-        loaderNewCard.setControllerFactory(iC->new ControllerNewCard(deck));
+        loaderNewCard.setControllerFactory(iC->new ControllerNewCard(model));
         Parent rootNewCard = loaderNewCard.load();
 
         /*FXMLLoader loaderLearning = new FXMLLoader();
@@ -45,10 +46,13 @@ public class Main extends Application {
         loaderLearning.setControllerFactory(iC->new ControllerLearning(deck));
         Parent rootLearning = loaderLearning.load();*/
 
-        Scene scene = new Scene(rootNewCard);
+        viewChanger.addRoot("DeckList", rootDeckList);
+        viewChanger.addRoot("CardList", rootCardList);
+        viewChanger.addRoot("NewCard", rootNewCard);
+        //viewChanger.addRoot("Learning", rootLearning);
 
-        // A modifier quand on modifie le constructeur de ViewChanger
-        ViewChanger viewChanger = new ViewChanger(deck, primaryStage, scene, rootDeckList, rootCardList, rootNewCard);
+        Scene scene = new Scene(rootDeckList);
+        model.getViewChanger().setScene(scene);
 
         primaryStage.setScene(scene);
         primaryStage.show();

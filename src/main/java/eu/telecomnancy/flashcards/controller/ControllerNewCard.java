@@ -3,6 +3,7 @@ package eu.telecomnancy.flashcards.controller;
 import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
+import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -27,9 +28,10 @@ public class ControllerNewCard implements Observer {
     @FXML
     private Button addCardManyDecks;
 
-    public ControllerNewCard(Deck deck) {
-        this.deck = deck;
-        this.deck.ajouterObs(this);
+    private ModelFlashcard model;
+
+    public ControllerNewCard(ModelFlashcard model) {
+        this.model = model;
     }
 
     public ChoiceBox<String> getMenuDeckChoice() {
@@ -45,11 +47,13 @@ public class ControllerNewCard implements Observer {
     }
 
     public void switchToDeckList() {
-        this.deck.setCurrentView("DeckList");
+        this.model.getViewChanger().setView("DeckList");
+
+        
     }
 
     public void switchToCardList() {
-        this.deck.setCurrentView("CardList");
+        this.model.getViewChanger().setView("CardList");
     }
 
     public void addNewCard(String question, String answer) {

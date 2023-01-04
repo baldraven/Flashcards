@@ -1,28 +1,20 @@
 package eu.telecomnancy.flashcards.controller;
 
-import eu.telecomnancy.flashcards.Observer;
-import eu.telecomnancy.flashcards.model.Deck;
+import eu.telecomnancy.flashcards.model.ModelFlashcard;
 
-public class ControllerCardList implements Observer {
+public class ControllerCardList{
 
-    private Deck deck;
 
-    public ControllerCardList(Deck deck) {
-        this.deck = deck;
-        this.deck.ajouterObs(this);
+    private ModelFlashcard model;
+    public ControllerCardList(ModelFlashcard model) {
+        this.model = model;
     }
 
     public void switchToDeckList() {
-        this.deck.setCurrentView("DeckList");
+        model.getViewChanger().setView("DeckList");
     }
 
     public void switchToNewCard() {
-        this.deck.setCurrentView("NewCard");
+        model.getViewChanger().setView("NewCard");
     }
-
-    @Override
-    public void reagir() {
-
-    }
-
 }
