@@ -1,7 +1,6 @@
 package eu.telecomnancy.flashcards.controller;
 
 import javafx.fxml.Initializable;
-import javafx.print.PrintColor;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

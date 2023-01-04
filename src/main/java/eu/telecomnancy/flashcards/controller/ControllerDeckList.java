@@ -42,14 +42,17 @@ public class ControllerDeckList implements Initializable, Observer{
     public void switchToCardList() {
         model.getViewChanger().setView("CardList");
     }
+    public void switchToLearning(Deck deck) {
+        model.setSelectedDeck(deck);
+        model.getViewChanger().setView("Learning");
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //System.out.println(model.getDeckList());
         for (Deck deck : model.getDeckList().getDeckList()) {
             HBox hbox = new HBox();
-            model.setSelectedDeck(deck);
-
+            
             hbox.setMinHeight(40);
             hbox.setMaxHeight(600);
             hbox.setSpacing(30);
@@ -57,13 +60,9 @@ public class ControllerDeckList implements Initializable, Observer{
             hbox.setAlignment(Pos.CENTER);
 
             Button studyButton = new Button("Etudier");
-            studyButton.setOnAction(action -> this.model.getViewChanger().setView("Learning"));
-
+            studyButton.setOnAction(action -> switchToLearning(deck));
             Button editButton = new Button("Modifier");
-            editButton.setOnAction(action -> this.model.getViewChanger().setView("Learning"));
-
             Button deleteButton = new Button("Supprimer");
-            deleteButton.setOnAction(action -> this.model.getViewChanger().setView("Learning"));
 
             Label deckName = new Label(deck.getName());
             deckName.setStyle("-fx-font-size: 18;");
