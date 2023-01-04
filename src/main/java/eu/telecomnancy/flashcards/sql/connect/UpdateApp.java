@@ -35,10 +35,10 @@ public class UpdateApp {
      * @param newQuestion question of the card after change
      * @param answer answer of the card
      */
-    public void updateCard(String oldQuestion, String newQuestion, String answer) {
+    public void updateCardQuestionAnswer(String oldQuestion, String newQuestion, String answer) {
         String sql = "UPDATE cards SET question = ? , "
                 + "answer = ? "
-                + "WHERE name = ?";
+                + "WHERE question = ?";
 
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -47,6 +47,42 @@ public class UpdateApp {
             pstmt.setString(1, newQuestion);
             pstmt.setString(2, answer);
             pstmt.setString(3, oldQuestion);
+            // update 
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Update data of a card specified by the question
+     *
+     * @param question question of the card
+     * @param newQuestion question of the card after change
+     * @param answer answer of the card
+     */
+    public void updateCardParameters(String question, double ease, long time, double interval, Integer again, Integer hard, Integer good, Integer easy) {
+        String sql = "UPDATE cards SET ease = ? , "
+                + "time = ? "
+                + "interval = ? "
+                + "again = ? "
+                + "hard = ? "
+                + "good = ? "
+                + "easy = ? "
+                + "WHERE question = ?";
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the corresponding param
+            pstmt.setFloat(1, (float)ease);
+            pstmt.setInt(2, (int)time);
+            pstmt.setFloat(3, (float)interval);
+            pstmt.setInt(4, again);
+            pstmt.setInt(5, hard);
+            pstmt.setInt(6, good);
+            pstmt.setInt(7, easy);
+            pstmt.setString(8, question);
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {
