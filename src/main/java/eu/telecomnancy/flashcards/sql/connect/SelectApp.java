@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
@@ -53,6 +54,29 @@ public class SelectApp {
         } catch (SQLException e) {
             System.out.println("SelectApp.displayAllCards: " + e.getMessage());
         }
+    }
+
+    /**
+     * select all rows in the cards table
+     */
+    public ArrayList<String> selectAllQuestionsCards(){
+        String sql = "SELECT question, answer FROM cards";
+        
+        ArrayList<String> questionList = new ArrayList<String>();
+        
+        try (Connection conn = this.connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            // loop through the result set
+            while (rs.next()) {
+                questionList.add(rs.getString("question"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SelectApp.displayAllCards: " + e.getMessage());
+        }
+
+        return questionList;
     }
 
     /**
