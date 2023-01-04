@@ -73,14 +73,24 @@ public class Deck extends Observable {
         this.name = newName;
 
         UpdateApp app = new UpdateApp();
-        app.updateDeck(oldName, newName, this.description);
+        app.updateDeckNameDescription(oldName, newName, this.description);
     }
 
     public void updateDescription(String description) {
         this.description = description;
 
         UpdateApp app = new UpdateApp();
-        app.updateDeck(this.name, this.name, description);
+        app.updateDeckNameDescription(this.name, this.name, description);
+    }
+
+    public void updateStats(Integer again, Integer hard, Integer good, Integer easy) {
+        this.again = again;
+        this.hard = hard;
+        this.good = good;
+        this.easy = easy;
+
+        UpdateApp app = new UpdateApp();
+        app.updateDeckParameters(this.name, again, hard, good, easy);
     }
 
     public String getName() {

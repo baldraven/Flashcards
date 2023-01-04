@@ -58,8 +58,13 @@ public class UpdateApp {
      * Update data of a card specified by the question
      *
      * @param question question of the card
-     * @param newQuestion question of the card after change
-     * @param answer answer of the card
+     * @param ease 
+     * @param time
+     * @param interval
+     * @param again
+     * @param hard
+     * @param good
+     * @param easy
      */
     public void updateCardParameters(String question, double ease, long time, double interval, Integer again, Integer hard, Integer good, Integer easy) {
         String sql = "UPDATE cards SET ease = ? , "
@@ -97,7 +102,7 @@ public class UpdateApp {
      * @param newName name of the deck after change
      * @param description description of the deck
      */
-    public void updateDeck(String oldName, String newName, String description) {
+    public void updateDeckNameDescription(String oldName, String newName, String description) {
         String sql = "UPDATE decks SET name = ? , "
                 + "description = ? "
                 + "WHERE name = ?";
@@ -109,6 +114,38 @@ public class UpdateApp {
             pstmt.setString(1, newName);
             pstmt.setString(2, description);
             pstmt.setString(3, oldName);
+            // update 
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Update data of a deck specified by the name
+     *
+     * @param name name of the deck
+     * @param again
+     * @param hard
+     * @param good
+     * @param easy
+     */
+    public void updateDeckParameters(String name, Integer again, Integer hard, Integer good, Integer easy) {
+        String sql = "UPDATE decks SET again = ? , "
+                + "hard = ? "
+                + "good = ? "
+                + "easy = ? "
+                + "WHERE name = ?";
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the corresponding param
+            pstmt.setInt(1, again);
+            pstmt.setInt(2, hard);
+            pstmt.setInt(3, good);
+            pstmt.setInt(4, easy);
+            pstmt.setString(5, name);
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {
