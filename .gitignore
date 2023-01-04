@@ -250,3 +250,5 @@ build
 # Binary files
 bin
 ./bin
+
+database.db

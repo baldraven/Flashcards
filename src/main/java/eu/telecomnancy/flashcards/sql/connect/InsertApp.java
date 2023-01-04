@@ -18,7 +18,7 @@ public class InsertApp {
      */
     private Connection connect() {
         // SQLite connection string
-        String url = "jdbc:sqlite:db/database.db";
+        String url = "jdbc:sqlite:database.db";
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
