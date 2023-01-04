@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
+import javafx.application.Platform;
 
 public class ControllerCardList implements Initializable, Observer {
 
@@ -33,6 +34,12 @@ public class ControllerCardList implements Initializable, Observer {
     public ControllerCardList(ModelFlashcard model) {
         this.model = model;
         this.model.getViewChanger().ajouterObs(this);
+    }
+
+    @FXML
+    public void quit()
+    {
+        Platform.exit();
     }
 
     public void switchToDeckList() {

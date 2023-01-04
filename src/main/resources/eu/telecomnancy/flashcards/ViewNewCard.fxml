@@ -11,6 +11,8 @@
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#switchToCardList" text="Voir toutes les cartes" />
                <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Voir toutes les piles" />
+               <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quitter l'application" onAction="#quit"/>
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">

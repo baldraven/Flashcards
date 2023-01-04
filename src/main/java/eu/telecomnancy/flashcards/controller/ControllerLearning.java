@@ -2,6 +2,7 @@ package eu.telecomnancy.flashcards.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -63,7 +64,7 @@ public class ControllerLearning implements Observer, Initializable
         this.reagirAction();
     }
     @FXML
-    public void exit()
+    public void leave()
     {
         this.model.getViewChanger().setView("DeckList");
     }
@@ -80,29 +81,32 @@ public class ControllerLearning implements Observer, Initializable
 
     public void reagirAction()
     {
-       // int leng = deck.getDeck().size();
-        if (3 < 1)
+        int leng = deck.getDeck().size();
+        if (leng < 1 || deck == null)
         {
             this.model.getViewChanger().setView("DeckList");
         }
         else
         {
             Random rand = new Random();
-            int i = rand.nextInt(0, 12);
-            //card = deck.getCard(i);
+            int i = rand.nextInt(0, leng);
+            card = deck.getCard(i);
             Rep.setVisible(false);
             gridP.setVisible(false);
-            Ques.setText(String.valueOf(i));
-          //  Rep.setText(card.getAnswer());
+            Ques.setText(card.getQuestion());
+            Rep.setText(card.getAnswer());
             repButton.setVisible(true);
         }
     }
 
     public void reagir(){
-        System.out.println("---------CALLLED---------");
         this.deck = this.model.getSelectedDeck();
-        System.out.println("Deck : " + deck.getName());
-        Ques.setText(deck.getName());
-        Rep.setText(deck.getDescription());
+        this.reagirAction();
+    }
+
+    @FXML
+    public void quit()
+    {
+        Platform.exit();
     }
 }
