@@ -64,13 +64,25 @@ public class ControllerLearning implements Observer
     }
     public void reagir()
     {
-        /*int leng = deck.getDeck().size();
-        int i = new Random().nextInt(leng);
-        card = deck.getDeck().get(i);
-        Rep.setVisible(false);
-        gridP.setVisible(false);
-        Ques.setText(card.getQuestion());
-        Rep.setText(card.getAnswer());
-        repButton.setVisible(true);*/
+        int leng = deck.getDeck().size();
+        if (leng < 1)
+        {
+            this.deck.setCurrentView("DeckList");
+        }
+        else
+        {
+            Random rand = new Random();
+            int i = rand.nextInt(1, leng);
+            card = deck.getCard(i-1);
+            if (card.equals(null))
+            {
+                this.deck.setCurrentView("DeckList");
+            }
+            Rep.setVisible(false);
+            gridP.setVisible(false);
+            Ques.setText(card.getQuestion());
+            Rep.setText(card.getAnswer());
+            repButton.setVisible(true);
+        }
     }
 }
