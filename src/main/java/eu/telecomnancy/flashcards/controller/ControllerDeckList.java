@@ -51,6 +51,6 @@ public class ControllerDeckList implements Initializable{
             Label label = new Label(deck.getName());
             hbox.getChildren().addAll(label, button);
             content.getItems().add(hbox);
-        }                                    
+        }                              
     }
 }

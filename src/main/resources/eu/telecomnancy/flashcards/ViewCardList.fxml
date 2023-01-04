@@ -27,7 +27,7 @@
     </MenuBar>
     <BorderPane layoutY="26.0" prefHeight="774.0" prefWidth="800.0">
         <center>
-            <ListView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="content" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
         </center>
         <bottom>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
