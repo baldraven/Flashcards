@@ -29,7 +29,6 @@ public class ControllerLearning implements Observer, Initializable
     private Deck deck;
     private ModelFlashcard model;
     private Card card;
-    private int test;
 
     public ControllerLearning(ModelFlashcard model)
     {
@@ -81,20 +80,20 @@ public class ControllerLearning implements Observer, Initializable
 
     public void reagirAction()
     {
-        int leng = deck.getDeck().size();
-        if (leng < 1)
+       // int leng = deck.getDeck().size();
+        if (3 < 1)
         {
             this.model.getViewChanger().setView("DeckList");
         }
         else
         {
             Random rand = new Random();
-            int i = rand.nextInt(0, leng);
-            card = deck.getCard(i);
+            int i = rand.nextInt(0, 12);
+            //card = deck.getCard(i);
             Rep.setVisible(false);
             gridP.setVisible(false);
-            Ques.setText(String.valueOf(test));
-            Rep.setText(card.getAnswer());
+            Ques.setText(String.valueOf(i));
+          //  Rep.setText(card.getAnswer());
             repButton.setVisible(true);
         }
     }
