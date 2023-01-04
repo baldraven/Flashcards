@@ -60,6 +60,7 @@ public class ControllerCardList implements Initializable, Observer {
 
             Label questionLabel = new Label(card.getQuestion());
             Label answerLabel = new Label(card.getAnswer());
+            
 
             questionLabel.setStyle("-fx-font-size: 18;");
             questionLabel.setPrefWidth(240);
@@ -79,7 +80,12 @@ public class ControllerCardList implements Initializable, Observer {
     }
 
     @FXML
-    public void switchToNewCard_mod(){}
+    public void switchToModCard(){
+        if (content.getSelectionModel().getSelectedIndex() == -1) return;
+        int card_id = content.getSelectionModel().getSelectedIndex(); //gets the index of the selected card in ListView
+        model.setSelectedCard(model.getCardList().getCardList().get(card_id));
+        model.getViewChanger().setView("ModCard");
+    }
 
     @FXML
     public void deleteCard(){}

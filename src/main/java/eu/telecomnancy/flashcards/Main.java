@@ -51,10 +51,16 @@ public class Main extends Application {
         loaderLearning.setControllerFactory(iC->new ControllerLearning(model));
         Parent rootLearning = loaderLearning.load();
 
+        FXMLLoader loaderModCard = new FXMLLoader();
+        loaderModCard.setLocation(getClass().getResource("ViewModCard.fxml"));
+        loaderModCard.setControllerFactory(iC->new ControllerModCard(model));
+        Parent rootModCard = loaderModCard.load();
+
         viewChanger.addRoot("DeckList", rootDeckList);
         viewChanger.addRoot("CardList", rootCardList);
         viewChanger.addRoot("NewCard", rootNewCard);
         viewChanger.addRoot("Learning", rootLearning);
+        viewChanger.addRoot("ModCard", rootModCard);
 
         Scene scene = new Scene(rootDeckList);
         model.getViewChanger().setScene(scene);

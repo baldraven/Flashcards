@@ -163,6 +163,7 @@ public class ControllerLearning implements Observer, Initializable
     }
 
     public void reagir(){
+        if(this.model.getSelectedDeck() == null) return;
         this.deck = this.model.getSelectedDeck();
         this.reagirAction();
     }

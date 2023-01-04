@@ -7,10 +7,17 @@ public class ModelFlashcard {
     private DeckList deckList;
     private CardList cardList;
     private Deck selectedDeck;
+    private Card selectedCard;
     public ModelFlashcard(ViewChanger viewChanger, DeckList deckList, CardList cardList) {
         this.viewChanger = viewChanger;
         this.deckList = deckList;
         this.cardList = cardList;
+    }
+    public void setSelectedCard(Card card) {
+        this.selectedCard = card;
+    }
+    public Card getSelectedCard() {
+        return this.selectedCard;
     }
     public void setSelectedDeck(Deck deck) {
         this.selectedDeck = deck;
