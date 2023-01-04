@@ -3,12 +3,10 @@ package eu.telecomnancy.flashcards.controller;
 import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
@@ -17,12 +15,10 @@ import javafx.scene.layout.HBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerDeckContent implements Initializable, Observer {
-
-    private ModelFlashcard model;
+public class ControllerDeckContent extends AbstractControllerMenu implements Initializable, Observer {
 
     @FXML
-    private ListView<HBox> content;
+    protected ListView<HBox> content;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -30,22 +26,8 @@ public class ControllerDeckContent implements Initializable, Observer {
     }
 
     public ControllerDeckContent(ModelFlashcard model) {
-        this.model = model;
+        super(model);
         this.model.getViewChanger().ajouterObs(this);
-    }
-
-    @FXML
-    public void quit()
-    {
-        Platform.exit();
-    }
-
-    public void switchToDeckList() {
-        this.model.getViewChanger().setView("DeckList");
-    }
-
-    public void switchToCardList() {
-        this.model.getViewChanger().setView("CardList");
     }
 
     public void displayCards() {

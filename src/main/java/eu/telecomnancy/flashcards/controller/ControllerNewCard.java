@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ControllerNewCard implements Initializable, Observer {
+public class ControllerNewCard extends AbstractControllerMenu implements Initializable, Observer {
 
     @FXML
     private ChoiceBox<String> menuDeckChoice;
@@ -26,16 +26,8 @@ public class ControllerNewCard implements Initializable, Observer {
     @FXML
     private TextArea answer;
 
-    @FXML
-    private Button addCardOneDeck;
-
-    @FXML
-    private Button addCardManyDecks;
-
-    private ModelFlashcard model;
-
     public ControllerNewCard(ModelFlashcard model) {
-        this.model = model;
+        super(model);
     }
 
     public ChoiceBox<String> getMenuDeckChoice() {
@@ -48,12 +40,6 @@ public class ControllerNewCard implements Initializable, Observer {
 
     public TextArea getAnswer() {
         return this.answer;
-    }
-
-    @FXML
-    public void quit()
-    {
-        Platform.exit();
     }
 
     @Override
@@ -69,14 +55,6 @@ public class ControllerNewCard implements Initializable, Observer {
 
     public String getSelectedDeck() {
         return this.menuDeckChoice.getValue();
-    }
-
-    public void switchToDeckList() {
-        this.model.getViewChanger().setView("DeckList");
-    }
-
-    public void switchToCardList() {
-        this.model.getViewChanger().setView("CardList");
     }
 
     public void addNewCard() {
