@@ -93,10 +93,10 @@
                         <Button mnemonicParsing="false" style="-fx-border-color: black;" text="Difficile" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Difficile"/>
                         <Button mnemonicParsing="false" style="-fx-border-color: green;" text="Correct" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Correct"/>
                         <Button mnemonicParsing="false" style="-fx-border-color: blue;" text="Facile" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Facile"/>
-                        <Label text="[Temps]" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
-                        <Label text="[Temps]" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
-                        <Label text="[Temps]" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
-                        <Label text="[Temps]" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="TOP" />
+                        <Label text="[Temps]" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempRev"/>
+                        <Label text="[Temps]" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempHard"/>
+                        <Label text="[Temps]" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempCor"/>
+                        <Label text="[Temps]" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempEasy"/>
                      </children>
                   </GridPane>
                </children></HBox>

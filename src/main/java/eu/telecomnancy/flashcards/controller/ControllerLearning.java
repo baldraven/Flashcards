@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -27,6 +28,14 @@ public class ControllerLearning implements Observer, Initializable
     private GridPane gridP;
     @FXML
     private Label Ques;
+    @FXML
+    private Label tempRev;
+    @FXML
+    private Label tempEasy;
+    @FXML
+    private Label tempHard;
+    @FXML
+    private Label tempCor;
     private Deck deck;
     private ModelFlashcard model;
     private Card card;
@@ -36,14 +45,29 @@ public class ControllerLearning implements Observer, Initializable
         this.model = model;
         this.model.getViewChanger().ajouterObs(this);
     }
-    @FXML
+
     public void AffRep(ActionEvent event)
     {
         Rep.setVisible(true);
         gridP.setVisible(true);
         repButton.setVisible(false);
+        if(card.getInterval() == -1)
+        {
+            tempRev.setText("1 min");
+            tempCor.setText("10 min");
+            tempHard.setText("6 min");
+            tempEasy.setText("4 jour");
+        }
+        else
+        {
+            DecimalFormat df = new DecimalFormat("0.0");
+            tempRev.setText(df.format(card.getInterval()*0.5) + " min");
+            tempCor.setText(df.format(card.getInterval() * card.getEase()) + " min");
+            tempHard.setText(df.format(card.getInterval() * 1.2) + " min");
+            tempEasy.setText(df.format(card.getInterval() * card.getEase()) + " min");
+        }
     }
-    @FXML
+
     public void Difficile(ActionEvent event)
     {
         if (card.getInterval() == -1)
@@ -57,22 +81,47 @@ public class ControllerLearning implements Observer, Initializable
         card.setEase(card.getEase()-15);
         this.reagirAction();
     }
-    @FXML
+
     public void Correct(ActionEvent event)
     {
+        if (card.getInterval() == -1)
+        {
+            card.setInterval(10);
+        }
+        else
+        {
+            card.setInterval(card.getInterval() * card.getEase());;
+        }
         this.reagirAction();
     }
-    @FXML
+
     public void Revoir(ActionEvent event)
     {
+        if (card.getInterval() == -1)
+        {
+            card.setInterval(1);
+        }
+        else
+        {
+            card.setInterval(card.getInterval() * 0.5);;
+        }
+        card.setEase(card.getEase()-20);
         this.reagirAction();
     }
-    @FXML
+
     public void Facile(ActionEvent event)
     {
+        if (card.getInterval() == -1)
+        {
+            card.setInterval(24*60*4);
+        }
+        else
+        {
+            card.setInterval(card.getInterval() * card.getEase());
+        }
         this.reagirAction();
     }
-    @FXML
+
     public void leave()
     {
         this.model.getViewChanger().setView("DeckList");
@@ -113,7 +162,6 @@ public class ControllerLearning implements Observer, Initializable
         this.reagirAction();
     }
 
-    @FXML
     public void quit()
     {
         Platform.exit();
