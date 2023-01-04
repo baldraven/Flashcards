@@ -1,6 +1,7 @@
 package eu.telecomnancy.flashcards.model;
 
 import eu.telecomnancy.flashcards.Observable;
+import eu.telecomnancy.flashcards.sql.connect.InsertApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,11 @@ public class Deck extends Observable {
     }
 
     public void addCard(Card card) {
-        deck.add(card);
+        this.deck.add(card);
+
+        InsertApp app = new InsertApp();
+        app.insertCard(card.getQuestion(), card.getAnswer());
+        app.insertRelationCardsDecks(card.getQuestion(), this.name);
     }
 
     public void setName(String name) {
