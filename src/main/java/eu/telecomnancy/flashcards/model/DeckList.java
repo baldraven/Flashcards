@@ -23,4 +23,13 @@ public class DeckList extends Observable {
     public ArrayList<Deck> getDeckList() {
         return this.deckList;
     }
+
+    public Deck searchDeckByName(String searchedName) {
+        for (Deck deck : this.deckList) {
+            if (deck.getName().equals(searchedName)) {
+                return deck;
+            }
+        }
+        return null;
+    }
 }

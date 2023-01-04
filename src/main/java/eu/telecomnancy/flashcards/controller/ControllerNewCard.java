@@ -4,14 +4,19 @@ import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 
-public class ControllerNewCard implements Observer {
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-    private Deck deck;
+public class ControllerNewCard implements Initializable, Observer {
 
     @FXML
     private ChoiceBox<String> menuDeckChoice;
@@ -46,10 +51,19 @@ public class ControllerNewCard implements Observer {
         return this.answer;
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ArrayList<String> deckNames = new ArrayList<>();
+        for (Deck deck : this.model.getDeckList().getDeckList()) {
+            System.out.println("Name : " + deck.getName());
+            deckNames.add(deck.getName());
+        }
+        this.menuDeckChoice.getItems().addAll(deckNames);
+        this.menuDeckChoice.setValue(deckNames.get(0));
+    }
+
     public void switchToDeckList() {
         this.model.getViewChanger().setView("DeckList");
-
-        
     }
 
     public void switchToCardList() {
@@ -57,11 +71,15 @@ public class ControllerNewCard implements Observer {
     }
 
     public void addNewCard(String question, String answer) {
-        this.deck.addCard(new Card(question, answer));
+        Card card = new Card(question, answer);
+        this.model.getCardList().addCard(card);
+        this.model.getDeckList().searchDeckByName("aaa").addCard(card);
     }
 
     @Override
     public void reagir() {
 
     }
+
+
 }
