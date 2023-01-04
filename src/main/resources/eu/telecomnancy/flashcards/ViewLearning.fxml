@@ -130,7 +130,7 @@
                   </AnchorPane>
                </items>
             </SplitPane>
-            <Button alignment="CENTER" layoutX="236.0" layoutY="494.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="329.0" text="Afficher la réponse" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" onAction="#AffRep">
+            <Button alignment="CENTER" layoutX="236.0" layoutY="494.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="329.0" text="Afficher la réponse" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" onAction="#AffRep" fx:id="repButton">
                <font>
                   <Font size="24.0" />
                </font>

@@ -1,18 +1,22 @@
 package eu.telecomnancy.flashcards.controller;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
+import java.net.URL;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
-public class ControllerLearning implements Observer
+import eu.telecomnancy.flashcards.model.ModelFlashcard;
+public class ControllerLearning implements Observer, Initializable
 {
     @FXML
     private Button repButton;
@@ -23,12 +27,13 @@ public class ControllerLearning implements Observer
     @FXML
     private Label Ques;
     private Deck deck;
+    private ModelFlashcard model;
     private Card card;
+    private int test;
 
-    public ControllerLearning(Deck deck)
+    public ControllerLearning(ModelFlashcard model)
     {
-        this.deck = deck;
-        this.reagir();
+        this.model = model;
     }
     @FXML
     public void AffRep(ActionEvent event)
@@ -60,27 +65,31 @@ public class ControllerLearning implements Observer
     @FXML
     public void exit()
     {
-        this.deck.setCurrentView("DeckList");
+        this.model.getViewChanger().setView("DeckList");
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) 
+    {
+     //   Ques.setText(String.valueOf(test));
+     //   Rep.setText("wat");
+    }
+
     public void reagir()
     {
         int leng = deck.getDeck().size();
         if (leng < 1)
         {
-            this.deck.setCurrentView("DeckList");
+            this.model.getViewChanger().setView("DeckList");
         }
         else
         {
             Random rand = new Random();
-            int i = rand.nextInt(1, leng);
-            card = deck.getCard(i-1);
-            if (card.equals(null))
-            {
-                this.deck.setCurrentView("DeckList");
-            }
+            int i = rand.nextInt(0, leng);
+            card = deck.getCard(i);
             Rep.setVisible(false);
             gridP.setVisible(false);
-            Ques.setText(card.getQuestion());
+            Ques.setText(String.valueOf(test));
             Rep.setText(card.getAnswer());
             repButton.setVisible(true);
         }
