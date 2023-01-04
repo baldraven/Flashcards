@@ -7,20 +7,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
-import eu.telecomnancy.flashcards.sql.connect.UpdateApp;
 
-public class ControllerLearning extends AbstractControllerMenu implements Observer, Initializable
+public class ControllerLearning implements Observer, Initializable
 {
     @FXML
     private Button repButton;
@@ -39,13 +39,14 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
     @FXML
     private Label tempCor;
     private Deck deck;
+    private ModelFlashcard model;
     private Card card;
     private long time;
     private ArrayList<Card> doneCards;
 
     public ControllerLearning(ModelFlashcard model)
     {
-        super(model);
+        this.model = model;
         this.model.getViewChanger().ajouterObs(this);
         doneCards = new ArrayList<Card>();
     }
@@ -156,6 +157,7 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
             }
             long unixtime = System.currentTimeMillis() / (1000L*60L);
             double max = Double.NEGATIVE_INFINITY;
+            int check = 0;
             for(int j = 0;j < leng;j++)
             {
                 if(doneCards.contains(deck.getCard(j)))
@@ -163,11 +165,34 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
                     continue;
                 }
                 time = deck.getCard(j).getTimer();
+                if(deck.getCard(j).getInterval() >= 24L*60L)
+                {
+                    if(deck.getCard(j).getInterval() <= unixtime - deck.getCard(j).getTimer())
+                    {
+                        deck.getCard(j).setInterval(-1);
+                    }
+                    continue;
+                }
                 if(max < (unixtime - time - deck.getCard(j).getInterval()))
                 {
                     max = unixtime - time - deck.getCard(j).getInterval();
                     card = deck.getCard(j);
+                    check++;
                 }
+            }
+            if(check == 0)
+            {
+               /* Stage stage = new Stage();
+                stage.setTitle("Félicitation !");
+                Popup popup = new Popup();
+                Label label = new Label("Bravo ! Vous avez réussi toute les cartes de la pile "+ deck.getName() + " !");
+                label.setMinWidth(150);
+                label.setMinHeight(50);
+                Button button = new Button("Retourner au menu");
+                button.setOnAction(event -> this.model.getViewChanger().setView("DeckList"));
+                popup.getContent().addAll(label, button);
+                stage.show();*/
+                this.model.getViewChanger().setView("DeckList");
             }
             Rep.setVisible(false);
             gridP.setVisible(false);
@@ -175,13 +200,17 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
             Rep.setText(card.getAnswer());
             repButton.setVisible(true);
             card.setTimer(unixtime);
+            doneCards.add(card);
         }
     }
 
     public void reagir(){
-        if(this.model.getSelectedDeck() == null) return;
         this.deck = this.model.getSelectedDeck();
         this.reagirAction();
     }
 
+    public void quit()
+    {
+        Platform.exit();
+    }
 }

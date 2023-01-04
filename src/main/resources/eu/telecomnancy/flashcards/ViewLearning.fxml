@@ -76,7 +76,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" scaleShape="false" VBox.vgrow="ALWAYS">
          <children>
-            <HBox alignment="CENTER" layoutY="618.0" prefHeight="115.0" prefWidth="800.0">
+            <HBox alignment="CENTER" layoutY="500.0" prefHeight="115.0" prefWidth="800.0">
                <children>
                   <GridPane prefHeight="100.0" prefWidth="708.0" visible="false" fx:id="gridP">
                     <columnConstraints>
@@ -89,14 +89,46 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-border-color: red;" text="A revoir" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Revoir"/>
-                        <Button mnemonicParsing="false" style="-fx-border-color: black;" text="Difficile" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Difficile"/>
-                        <Button mnemonicParsing="false" style="-fx-border-color: green;" text="Correct" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Correct"/>
-                        <Button mnemonicParsing="false" style="-fx-border-color: blue;" text="Facile" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Facile"/>
-                        <Label text="[Temps]" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempRev"/>
-                        <Label text="[Temps]" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempHard"/>
-                        <Label text="[Temps]" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempCor"/>
-                        <Label text="[Temps]" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempEasy"/>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-border-color: red;" text="A revoir" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Revoir" prefWidth="100">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-border-color: black;" text="Difficile" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Difficile" prefWidth="100">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-border-color: green;" text="Correct" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Correct" prefWidth="100">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-border-color: blue;" text="Facile" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Facile" prefWidth="100">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                        </Button>
+                        <Label text="[Temps]" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempRev">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        </Label>
+                        <Label text="[Temps]" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempHard">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        </Label>
+                        <Label text="[Temps]" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempCor">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        </Label>
+                        <Label text="[Temps]" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempEasy">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                        </Label>
                      </children>
                   </GridPane>
                </children></HBox>
