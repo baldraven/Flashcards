@@ -40,12 +40,12 @@ public class Initialization {
 
         app.insertRelationCardsDecks("Quel est la capitale du monde ?", "Culture");
         app.insertRelationCardsDecks("Arc-en-ciel en anglais", "Culture");
-        app.insertCard("Quelle est la moyenne de la température sur Mars ?", "Culture");
-        app.insertCard("Combien de temps faut-il pour aller sur Mars ?", "Culture");
-        app.insertCard("Quel est l'angle d'inclinaison de Mars par rapport à son axe ?", "Culture");
+        app.insertRelationCardsDecks("Quelle est la moyenne de la température sur Mars ?", "Culture");
+        app.insertRelationCardsDecks("Combien de temps faut-il pour aller sur Mars ?", "Culture");
+        app.insertRelationCardsDecks("Quel est l'angle d'inclinaison de Mars par rapport à son axe ?", "Culture");
         
-        app.insertCard("Quel est l'âge de la Lune ?", "Culture");
-        app.insertCard("Quel est l'âge de la Lune ?", "Math");
+        app.insertRelationCardsDecks("Quel est l'âge de la Lune ?", "Culture");
+        app.insertRelationCardsDecks("Quel est l'âge de la Lune ?", "Math");
         
         app.insertRelationCardsDecks("1+1", "Culture");
         app.insertRelationCardsDecks("1+1", "Math");
