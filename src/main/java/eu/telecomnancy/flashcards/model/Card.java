@@ -1,5 +1,6 @@
 package eu.telecomnancy.flashcards.model;
 
+import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
 import eu.telecomnancy.flashcards.sql.connect.UpdateApp;
 
 public class Card {
@@ -34,18 +35,15 @@ public class Card {
         this.answer = answer;
     }
 
-    public void setTimer(long time)
-    {
+    public void setTimer(long time) {
         this.time = time;
     }
 
-    public void setEase(double ease)
-    {
+    public void setEase(double ease) {
         this.ease = ease;
     }
 
-    public void setInterval(double interval)
-    {
+    public void setInterval(double interval) {
         this.interval = interval;
     }
 
@@ -73,8 +71,7 @@ public class Card {
         return this.answer;
     }
 
-    public long getTimer()
-    {
+    public long getTimer() {
         return this.time;
     }
 
@@ -82,8 +79,12 @@ public class Card {
         return this.ease;
     }
 
-    public double getInterval()
-    {
+    public double getInterval() {
         return this.interval;
+    }
+
+    public void delete() {
+        DeleteApp deleteApp = new DeleteApp();
+        deleteApp.deleteCard(this.question);
     }
 }

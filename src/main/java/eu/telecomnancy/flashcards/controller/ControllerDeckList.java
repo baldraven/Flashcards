@@ -1,50 +1,28 @@
 package eu.telecomnancy.flashcards.controller;
 
-
 import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
-import javafx.application.Platform;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ControllerDeckList implements Initializable, Observer{
-    private ModelFlashcard model;
-    @FXML
-    private ListView<HBox> content;
+public class ControllerDeckList extends AbstractControllerMenu implements Initializable, Observer {
 
+    @FXML
+    protected ListView<HBox> content;
 
     public ControllerDeckList(ModelFlashcard model) {
-        this.model = model;
-    }
-
-    @FXML
-    public void quit()
-    {
-        Platform.exit();
-    }
-
-    public void switchToNewCard() {
-        model.getViewChanger().setView("NewCard");
-    }
-
-    public void switchToCardList() {
-        model.getViewChanger().setView("CardList");
-    }
-    public void switchToLearning(Deck deck) {
-        model.setSelectedDeck(deck);
-        model.getViewChanger().setView("Learning");
+        super(model);
     }
 
     @Override
@@ -75,6 +53,7 @@ public class ControllerDeckList implements Initializable, Observer{
             content.getItems().add(hbox);
         }                              
     }
-    
+
+    @Override
     public void reagir(){}
 }

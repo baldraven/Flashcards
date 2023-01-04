@@ -70,12 +70,12 @@
                </Pane>
                <Pane prefHeight="164.0" prefWidth="800.0">
                   <children>
-                     <Button fx:id="addCardOneDeck" layoutX="105.0" layoutY="66.0" mnemonicParsing="false" onAction="#addNewCard" text="Ajouter dans un deck">
+                     <Button layoutX="105.0" layoutY="66.0" mnemonicParsing="false" onAction="#addNewCard" text="Ajouter dans un deck">
                         <font>
                            <Font size="18.0" />
                         </font>
                      </Button>
-                     <Button fx:id="addCardManyDecks" layoutX="431.0" layoutY="66.0" mnemonicParsing="false" text="Ajouter dans plusieurs decks">
+                     <Button layoutX="431.0" layoutY="66.0" mnemonicParsing="false" text="Ajouter dans plusieurs decks">
                         <font>
                            <Font size="18.0" />
                         </font>

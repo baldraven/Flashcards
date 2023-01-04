@@ -1,6 +1,7 @@
 package eu.telecomnancy.flashcards.model;
 
 import eu.telecomnancy.flashcards.Observable;
+import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
 import eu.telecomnancy.flashcards.sql.connect.InsertApp;
 import eu.telecomnancy.flashcards.sql.connect.SelectApp;
 import eu.telecomnancy.flashcards.sql.connect.UpdateApp;
@@ -32,7 +33,7 @@ public class Deck extends Observable {
         ArrayList<String> questionList = selectApp.selectAllQuestionsCards();
 
         if (!questionList.contains(card.getQuestion())) {
-            insertApp.insertCard(card.getQuestion(), card.getAnswer(), card.getInterval(), card.getEase());
+            insertApp.insertCard(card.getQuestion(), card.getAnswer(), card.getInterval(), card.getEase(), card.getTimer());
         }
         
         insertApp.insertRelationCardsDecks(card.getQuestion(), this.name);
@@ -102,6 +103,11 @@ public class Deck extends Observable {
             questionsListFromDeck.add(card.getQuestion());
         }
         return questionsListFromDeck;
+    }
+
+    public void delete() {
+        DeleteApp deleteApp = new DeleteApp();
+        deleteApp.deleteDeck(this.name);
     }
 }
 

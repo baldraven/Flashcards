@@ -13,14 +13,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
-import javafx.application.Platform;
 
-public class ControllerCardList implements Initializable, Observer {
-
-    private ModelFlashcard model;
+public class ControllerCardList extends AbstractControllerMenu implements Initializable, Observer {
 
     @FXML
-    private ListView<HBox> content;
+    protected ListView<HBox> content;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -28,26 +25,12 @@ public class ControllerCardList implements Initializable, Observer {
     }
     
     public ControllerCardList(ModelFlashcard model) {
-        this.model = model;
+        super(model);
         this.model.getViewChanger().ajouterObs(this);
     }
 
-    @FXML
-    public void quit()
-    {
-        Platform.exit();
-    }
-
-    public void switchToDeckList() {
-        model.getViewChanger().setView("DeckList");
-    }
-
-    public void switchToNewCard() {
-        model.getViewChanger().setView("NewCard");
-    }
-
     public void displayCards() {
-        System.out.println(this.model.getCardList());
+        //System.out.println(this.model.getCardList());
         this.content.getItems().clear();
         for (Card card : this.model.getCardList().getCardList()) {
             HBox hbox = new HBox();
