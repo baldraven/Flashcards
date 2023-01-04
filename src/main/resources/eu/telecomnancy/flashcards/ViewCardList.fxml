@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerCardList">
+
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerCardList">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
@@ -38,7 +48,13 @@
          <Pane prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
       </right>
       <bottom>
-         <Pane prefHeight="120.0" prefWidth="800.0" BorderPane.alignment="CENTER" />
+         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+               <Button onAction="#switchToNewCard_mod" layoutX="165.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Modifier" />
+               <Button onAction="#switchToNewCard" layoutX="503.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="143.0" text="Supprimer" />
+               <Button onAction="#deleteCard" layoutX="332.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Nouvelle" />
+            </children>
+         </Pane>
       </bottom>
       <top>
           <Pane prefHeight="120.0" prefWidth="800.0" BorderPane.alignment="CENTER">
