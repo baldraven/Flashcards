@@ -47,6 +47,15 @@ public class ControllerLearning implements Observer, Initializable
     @FXML
     public void Difficile(ActionEvent event)
     {
+        if (card.getInterval() == -1)
+        {
+            card.setInterval(6);
+        }
+        else
+        {
+            card.setInterval(card.getInterval() * 1.2);;
+        }
+        card.setEase(card.getEase()-15);
         this.reagirAction();
     }
     @FXML
