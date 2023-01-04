@@ -12,7 +12,7 @@
                     <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Voir toutes les piles" />
                <MenuItem mnemonicParsing="false" onAction="#switchToNewCard" text="Créer une carte" />
                <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quitter l'application" onAction="#quit"/>
+                  <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
@@ -29,7 +29,7 @@
     </MenuBar>
     <BorderPane layoutY="26.0" prefHeight="774.0" prefWidth="800.0">
         <center>
-            <ListView fx:id="content" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="content" prefHeight="200.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
         </center>
         <bottom>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
@@ -41,15 +41,25 @@
             <HBox prefHeight="574.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
         </left>
         <top>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox prefHeight="124.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                 <children>
-                    <Pane prefHeight="100.0" prefWidth="890.0">
+                    <Pane prefHeight="100.0" prefWidth="800.0">
                         <children>
-                            <Label layoutX="306.0" layoutY="28.0" text="Mes cartes">
+                            <Label layoutX="302.0" layoutY="14.0" text="Mes cartes">
                                 <font>
                                     <Font size="36.0" />
                                 </font>
                             </Label>
+                     <Label layoutX="192.0" layoutY="84.0" text="Questions">
+                        <font>
+                           <Font size="22.0" />
+                        </font>
+                     </Label>
+                     <Label layoutX="497.0" layoutY="84.0" text="Réponses">
+                        <font>
+                           <Font size="22.0" />
+                        </font>
+                     </Label>
                         </children>
                     </Pane>
                 </children>

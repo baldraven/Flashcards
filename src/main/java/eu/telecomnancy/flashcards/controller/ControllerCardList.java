@@ -7,8 +7,11 @@ import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.HBox;
 import javafx.application.Platform;
 
@@ -48,11 +51,35 @@ public class ControllerCardList implements Initializable, Observer {
         this.content.getItems().clear();
         for (Card card : this.model.getCardList().getCardList()) {
             HBox hbox = new HBox();
-            Label label1 = new Label(card.getQuestion() + "\t");
-            Label label2 = new Label(card.getAnswer());
-            hbox.getChildren().addAll(label1, label2);
+
+            hbox.setMinHeight(40);
+            hbox.setMaxHeight(600);
+            hbox.setSpacing(60);
+            hbox.setPadding(new Insets(20, 0, 20, 0));
+            hbox.setAlignment(Pos.CENTER);
+
+            Label questionLabel = new Label(card.getQuestion());
+            Label answerLabel = new Label(card.getAnswer());
+
+            questionLabel.setStyle("-fx-font-size: 18;");
+            questionLabel.setPrefWidth(240);
+            questionLabel.setAlignment(Pos.CENTER);
+            questionLabel.setWrapText(true);
+            questionLabel.setTooltip(new Tooltip(questionLabel.getText()));
+
+            answerLabel.setStyle("-fx-font-size: 18;");
+            answerLabel.setPrefWidth(240);
+            answerLabel.setAlignment(Pos.CENTER);
+            answerLabel.setWrapText(true);
+            answerLabel.setTooltip(new Tooltip(answerLabel.getText()));
+
+            hbox.getChildren().addAll(questionLabel, answerLabel);
             this.content.getItems().add(hbox);
         }
+    }
+
+    public void editCard() {
+
     }
 
     @Override
