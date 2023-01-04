@@ -33,7 +33,7 @@ public class DeleteApp {
      *
      * @param question
      */
-    public void delete(String question) {
+    public void deleteCard(String question) {
         String sql = "DELETE FROM cards WHERE question = ?";
 
         try (Connection conn = this.connect();
@@ -41,6 +41,27 @@ public class DeleteApp {
 
             // set the corresponding param
             pstmt.setString(1, question);
+            // execute the delete statement
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Delete a deck specified by the question
+     *
+     * @param name
+     */
+    public void deleteDeck(String name) {
+        String sql = "DELETE FROM decks WHERE name = ?";
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the corresponding param
+            pstmt.setString(1, name);
             // execute the delete statement
             pstmt.executeUpdate();
 
