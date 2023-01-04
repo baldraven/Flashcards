@@ -46,7 +46,7 @@ public class ControllerNewCard extends AbstractControllerMenu implements Initial
     public void initialize(URL location, ResourceBundle resources) {
         ArrayList<String> deckNames = new ArrayList<>();
         for (Deck deck : this.model.getDeckList().getDeckList()) {
-            System.out.println("Name : " + deck.getName());
+            //System.out.println("Name : " + deck.getName());
             deckNames.add(deck.getName());
         }
         this.menuDeckChoice.getItems().addAll(deckNames);

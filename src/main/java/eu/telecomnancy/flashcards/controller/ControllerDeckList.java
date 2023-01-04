@@ -28,7 +28,10 @@ public class ControllerDeckList extends AbstractControllerMenu implements Initia
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //System.out.println(model.getDeckList());
+        //int i = 0;
         for (Deck deck : model.getDeckList().getDeckList()) {
+            //System.out.println("[ControllerDeckList] Name : " + model.getDeckList().getDeckList().get(i).getName());
+            //i++;
             HBox hbox = new HBox();
             
             hbox.setMinHeight(40);
@@ -40,6 +43,7 @@ public class ControllerDeckList extends AbstractControllerMenu implements Initia
             Button studyButton = new Button("Etudier");
             studyButton.setOnAction(action -> switchToLearning(deck));
             Button editButton = new Button("Modifier");
+            editButton.setOnAction(action -> switchToDeckContent(deck));
             Button deleteButton = new Button("Supprimer");
 
             Label deckName = new Label(deck.getName());

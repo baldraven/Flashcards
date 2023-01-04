@@ -11,17 +11,16 @@ import javafx.application.Platform;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerModCard implements Initializable, Observer {
+public class ControllerModCard extends AbstractControllerMenu implements Initializable, Observer {
     @FXML
     private TextArea question;
     @FXML
     private TextArea answer;
 
-    private ModelFlashcard model;
     private Card card;
 
     public ControllerModCard(ModelFlashcard model) {
-        this.model = model;
+        super(model);
         model.getViewChanger().ajouterObs(this);
     }
 
@@ -33,22 +32,9 @@ public class ControllerModCard implements Initializable, Observer {
         return this.answer;
     }
 
-    @FXML
-    public void quit()
-    {
-        Platform.exit();
-    }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    }
 
-    public void switchToDeckList() {
-        this.model.getViewChanger().setView("DeckList");
-    }
-
-    public void goBack() {
-        this.model.getViewChanger().setView("CardList");
     }
 
     public void save() {

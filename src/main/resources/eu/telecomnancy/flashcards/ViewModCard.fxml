@@ -12,12 +12,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerNewCard">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerModCard">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#goBack" text="Voir toutes les cartes" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToCardList" text="Voir toutes les cartes" />
                <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Voir toutes les piles" />
                <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
@@ -73,7 +73,7 @@
                            <Font size="18.0" />
                         </font>
                      </Button>
-                     <Button onAction="#goBack" layoutX="370.0" layoutY="69.0" mnemonicParsing="false" text="Retour"/>
+                     <Button onAction="#switchToCardList" layoutX="370.0" layoutY="69.0" mnemonicParsing="false" text="Retour"/>
                   </children>
                </Pane>
             </children>
