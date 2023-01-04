@@ -24,7 +24,8 @@ public class Cards {
                 + "	question text PRIMARY KEY,\n"
                 + "	answer text NOT NULL,\n"
                 + "	interval real,\n"
-                + "	ease real\n"
+                + "	ease real,\n"
+                + "	time integer\n"
                 + ");";
         
         try (Connection conn = DriverManager.getConnection(url);
