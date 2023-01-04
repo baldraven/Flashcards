@@ -54,9 +54,11 @@
   <children>
     <MenuBar VBox.vgrow="NEVER">
          <menus>
-            <Menu mnemonicParsing="false" text="Pile">
+            <Menu mnemonicParsing="false" text="Edition">
               <items>
-                  <MenuItem mnemonicParsing="false" text="Changer de pile" onAction="#exit"/>
+                  <MenuItem mnemonicParsing="false" text="Changer de pile" onAction="#leave"/>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quitter l'application" onAction="#quit"/>
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">

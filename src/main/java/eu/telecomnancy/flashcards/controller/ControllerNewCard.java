@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
+import javafx.application.Platform;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -49,6 +50,12 @@ public class ControllerNewCard implements Initializable, Observer {
 
     public TextArea getAnswer() {
         return this.answer;
+    }
+
+    @FXML
+    public void quit()
+    {
+        Platform.exit();
     }
 
     @Override

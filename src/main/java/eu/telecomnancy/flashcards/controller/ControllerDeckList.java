@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -31,6 +32,12 @@ public class ControllerDeckList implements Initializable{
 
     public ControllerDeckList(ModelFlashcard model) {
         this.model = model;
+    }
+
+    @FXML
+    public void quit()
+    {
+        Platform.exit();
     }
 
     public void switchToNewCard() {
