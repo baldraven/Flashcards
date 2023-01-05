@@ -32,7 +32,6 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -40,6 +39,8 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -62,7 +63,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
               <items>
-                <MenuItem onAction="#switchToStats" mnemonicParsing="false" text="Dashboard" />
+                <MenuItem mnemonicParsing="false" onAction="#switchToStats" text="Dashboard" />
               </items>
             </Menu>
          </menus>
@@ -79,7 +80,7 @@
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox fx:id="isSec" layoutX="60.0" layoutY="163.0" mnemonicParsing="false" text="Afficher la réponse après plusieurs secondes" onAction="#changingEffect">
+            <CheckBox fx:id="isSec" layoutX="60.0" layoutY="163.0" mnemonicParsing="false" onAction="#changingEffect" text="Afficher la réponse après plusieurs secondes">
                <font>
                   <Font name="Bookman Old Style" size="18.0" />
                </font>
@@ -89,21 +90,21 @@
                   <Font name="Bookman Old Style" size="14.0" />
                </font>
             </TextField>
-            <Button layoutX="168.0" layoutY="304.0" mnemonicParsing="false" text="Enregistrer" onAction="#applyChange">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button layoutX="371.0" layoutY="304.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="110.0" text="Retour" onAction="#switchToDeckList">
-               <font>
-                  <Font name="Bookman Old Style" size="18.0" />
-               </font>
-            </Button>
             <Label layoutX="118.0" layoutY="228.0" text="secondes avant affichage réponse (Plage : 3 - 60)">
                <font>
                   <Font name="Bookman Old Style" size="18.0" />
                </font>
             </Label>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="184.0" layoutY="274.0" onMouseClicked="#applyChange" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/valid.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="396.0" layoutY="274.0" onMouseClicked="#switchToDeckList" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/retour.png" />
+               </image>
+            </ImageView>
       </children>
     </AnchorPane>
   </children>
