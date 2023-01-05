@@ -1,33 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerDeckList">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerDeckList">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#switchToCardList" text="Voir toutes les cartes" />
-               <MenuItem mnemonicParsing="false" onAction="#switchToNewCard" text="Créer une carte" />
-                    <MenuItem mnemonicParsing="false" onAction="#switchToNewDeck" text="Créer une pile" />
                <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
                 </items>
             </Menu>
          <Menu mnemonicParsing="false" text="Configuration">
            <items>
-             <MenuItem mnemonicParsing="false" text="Paramètre" onAction="#accesParam" />
+             <MenuItem mnemonicParsing="false" onAction="#accesParam" text="Paramètre" />
            </items>
          </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
@@ -41,9 +30,6 @@
       <center>
          <ListView fx:id="content" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
       </center>
-      <bottom>
-         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-      </bottom>
       <right>
          <HBox prefHeight="574.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
       </right>
@@ -65,6 +51,17 @@
             </children>
          </HBox>
       </top>
+      <bottom>
+         <Pane prefHeight="150.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <children>
+               <Button layoutX="323.0" layoutY="48.0" mnemonicParsing="false" onAction="#switchToNewDeck" prefHeight="55.0" prefWidth="155.0" text="Nouvelle pile">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Button>
+            </children>
+         </Pane>
+      </bottom>
    </BorderPane>
 
 </AnchorPane>

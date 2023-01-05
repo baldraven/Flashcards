@@ -26,6 +26,7 @@ public class ControllerNewCard extends AbstractControllerMenu implements Initial
 
     public ControllerNewCard(ModelFlashcard model) {
         super(model);
+        this.model.getViewChanger().ajouterObs("NewCard", this);
     }
 
     public ChoiceBox<String> getMenuDeckChoice() {
@@ -42,6 +43,11 @@ public class ControllerNewCard extends AbstractControllerMenu implements Initial
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.loadDeckNames();
+    }
+
+    public void loadDeckNames() {
+        this.menuDeckChoice.getItems().clear();
         ArrayList<String> deckNames = new ArrayList<>();
         for (Deck deck : this.model.getDeckList().getDeckList()) {
             //System.out.println("Name : " + deck.getName());
@@ -55,12 +61,6 @@ public class ControllerNewCard extends AbstractControllerMenu implements Initial
 
     public String getSelectedDeck() {
         return this.menuDeckChoice.getValue();
-    }
-
-    @FXML
-    public void accesParam()
-    {
-        this.model.getViewChanger().setView("Param");
     }
 
     public void addNewCard() {
@@ -88,7 +88,7 @@ public class ControllerNewCard extends AbstractControllerMenu implements Initial
 
     @Override
     public void reagir() {
-
+        this.loadDeckNames();
     }
 
 

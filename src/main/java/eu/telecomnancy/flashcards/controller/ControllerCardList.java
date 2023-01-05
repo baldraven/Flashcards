@@ -3,6 +3,7 @@ package eu.telecomnancy.flashcards.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
 import javafx.fxml.Initializable;
 import eu.telecomnancy.flashcards.model.Card;
@@ -77,20 +78,21 @@ public class ControllerCardList extends AbstractControllerMenu implements Initia
         int card_id = content.getSelectionModel().getSelectedIndex(); //gets the index of the selected card in ListView
         this.model.setSelectedCard(this.model.getCardList().getCardList().get(card_id));
 
-        DeleteApp app = new DeleteApp();
-        app.deleteCard(this.model.getSelectedCard().getQuestion());
-        app.deleteCardInRelationWithQuestion(this.model.getSelectedCard().getQuestion());
+        String question = this.model.getSelectedCard().getQuestion();
 
-        //System.out.println("Deleted card : " + this.model.getSelectedCard().getQuestion());
+        DeleteApp app = new DeleteApp();
+        app.deleteCard(question);
+        app.deleteCardInRelationWithQuestion(question);
+
+        //System.out.println("Deleted card : " + question);
+        for (Deck deck : this.model.getDeckList().getDeckList()) {
+            deck.removeCardByQuestion(question);
+        }
+
         model.getCardList().getCardList().remove(card_id);
         reagir();
     }
 
-    @FXML
-    public void accesParam()
-    {
-        this.model.getViewChanger().setView("Param");
-    }
 
     @Override
     public void reagir() {

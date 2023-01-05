@@ -27,8 +27,7 @@ public class ControllerNewDeck extends AbstractControllerMenu implements Initial
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.deckName.clear();
-        this.deckDescription.clear();
+        this.reagir();
     }
 
     @FXML
@@ -40,7 +39,7 @@ public class ControllerNewDeck extends AbstractControllerMenu implements Initial
     public void createDeck() {
         String name = this.deckName.getText();
         String description = this.deckDescription.getText();
-        System.out.println(this.model.getDeckList().searchDeckByName(name));
+        //System.out.println(this.model.getDeckList().searchDeckByName(name));
         if (this.model.getDeckList().searchDeckByName(name) == null) { // Le nom de la pile est libre
             InsertApp app = new InsertApp();
             app.insertDeck(name, description, 0, 0, 0, 0);
@@ -53,6 +52,7 @@ public class ControllerNewDeck extends AbstractControllerMenu implements Initial
 
     @Override
     public void reagir() {
-
+        this.deckName.clear();
+        this.deckDescription.clear();
     }
 }

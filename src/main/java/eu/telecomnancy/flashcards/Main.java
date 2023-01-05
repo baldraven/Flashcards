@@ -25,7 +25,7 @@ public class Main extends Application {
         
         //Database
         new Reboot();
-        Initialization init = new Initialization(true);
+        Initialization init = new Initialization(false);
 
         ViewChanger viewChanger = new ViewChanger();
         ModelFlashcard model = new ModelFlashcard(viewChanger, init.getDeckList(), init.getCardList(), init.getParam());

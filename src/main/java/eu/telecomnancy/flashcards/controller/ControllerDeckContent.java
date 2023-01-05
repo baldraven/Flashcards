@@ -47,6 +47,8 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
             return;
         }
         for (Card card : this.model.getSelectedDeck().getDeck()) {
+            System.out.println("Question : " + card.getQuestion());
+
             HBox hbox = new HBox();
 
             hbox.setMinHeight(40);
@@ -90,6 +92,7 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
 
         DeleteApp app = new DeleteApp();
         app.deleteCardFromDeck(this.model.getSelectedCard().getQuestion(), this.model.getSelectedDeck().getName());
+        //System.out.println("Question de la carte à retirer : " + this.model.getSelectedCard().getQuestion());
         this.model.getSelectedDeck().removeCardByQuestion(this.model.getSelectedCard().getQuestion());
 
         /*Label questionLabel = (Label) this.content.getSelectionModel().getSelectedItem().getChildren().get(0);
