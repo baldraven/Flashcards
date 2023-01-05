@@ -9,11 +9,12 @@ import eu.telecomnancy.flashcards.model.DateStats;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.SelectApp;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 
@@ -37,7 +38,7 @@ public class ControllerStatistics extends AbstractControllerMenu {
     @FXML
     NumberAxis number;
     @FXML
-    BarChart<String,Number> barChart;
+    StackedBarChart<String,Number> barChart;
     
     public ControllerStatistics(ModelFlashcard model) {
         super(model);
@@ -79,14 +80,18 @@ public class ControllerStatistics extends AbstractControllerMenu {
         number.setLabel("Nombre de cartes");
 
         XYChart.Series<String, Number> dataSeries1 = new XYChart.Series<String, Number>();
+        XYChart.Series<String, Number> dataSeries2 = new XYChart.Series<String, Number>();
         dataSeries1.setName("Cartes étudiées");
+        dataSeries2.setName("Cartes créées");
 
         ArrayList<DateStats> statList = selectApp.getAllStats();
         for (DateStats stat : statList) {
+            System.out.println(stat.getDate() + " " + stat.getStudied());
             dataSeries1.getData().add(new XYChart.Data<String, Number>(stat.getDate(), stat.getStudied()));
+            dataSeries2.getData().add(new XYChart.Data<String, Number>(stat.getDate(), stat.getCreated()));
         }
 
-        barChart.getData().add(dataSeries1);
+        barChart.setData(FXCollections.observableArrayList(dataSeries1, dataSeries2));
     }
 
     @Override

@@ -50,6 +50,10 @@ public class DateStats {
         this.easy = easy;
     }
 
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public Integer getCreated() {
         return this.created;
     }

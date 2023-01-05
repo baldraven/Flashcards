@@ -394,7 +394,7 @@ public class SelectApp {
      * Get the stats of a day
      */
     public ArrayList<DateStats> getAllStats(){
-        String sql = "SELECT created,studied,again,hard,good,easy "
+        String sql = "SELECT date,created,studied,again,hard,good,easy "
                    + "FROM dateStats";
         
         ArrayList<DateStats> statList = new ArrayList<DateStats>();
@@ -409,6 +409,7 @@ public class SelectApp {
             while (rs.next()) {
                 DateStats dateStats = new DateStats();
 
+                dateStats.setDate(rs.getString("date"));
                 dateStats.setCreated(rs.getInt("created"));
                 dateStats.setStudied(rs.getInt("studied"));
                 dateStats.setAgain(rs.getInt("again"));

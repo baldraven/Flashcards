@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 
@@ -58,11 +59,6 @@
       <center>
          <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-               <Pane prefHeight="30.0" prefWidth="800.0">
-                  <children>
-                     <ChoiceBox layoutX="300.0" layoutY="2.0" prefWidth="200.0" />
-                  </children>
-               </Pane>
                <HBox prefHeight="40.0" prefWidth="800.0">
                   <children>
                      <Label fx:id="nbDecks" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="400.0" text="Nombre de decks:">
@@ -84,14 +80,14 @@
                </HBox>
                <VBox prefHeight="316.0" prefWidth="800.0">
                   <children>
-                     <BarChart fx:id="barChart">
-                       <xAxis>
+                     <StackedBarChart fx:id="barChart">
+                        <xAxis>
                            <CategoryAxis fx:id="category" side="BOTTOM" />
-                       </xAxis>
-                       <yAxis>
+                        </xAxis>
+                        <yAxis>
                            <NumberAxis fx:id="number" side="LEFT" />
-                       </yAxis>
-                     </BarChart>
+                        </yAxis>
+                     </StackedBarChart>
                   </children>
                </VBox>
                <HBox prefHeight="354.0" prefWidth="800.0">

@@ -60,7 +60,15 @@ public class Initialization {
         app.insertRelationCardsDecks("6+1", "Math");
 
         app.insertParameters(0, false, false, 10);
-        
+
+        app.insertStats("2022-12-29", 31, 15, 5, 5, 5, 0);
+        app.insertStats("2022-12-30", 6, 11, 4, 4, 1, 2);
+        app.insertStats("2022-12-31", 24, 30, 12, 5, 7, 6);
+        app.insertStats("2023-01-01", 8, 21, 7, 7, 7, 0);
+        app.insertStats("2023-01-02", 5, 16, 4, 4, 4, 4);
+        app.insertStats("2023-01-03", 10, 4, 1, 0, 2, 1);
+        app.insertStats("2023-01-04", 2, 3, 1, 0, 2, 0);
+        app.insertStats("2023-01-05", 3, 19, 3, 6, 6, 4);
     }
     
     public void InitializeModels() {
