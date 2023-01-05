@@ -14,7 +14,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class ControllerParam implements Observer, Initializable
+public class ControllerParam extends AbstractControllerMenu implements Observer, Initializable
 {
     @FXML
     private CheckBox oneSelec;
@@ -27,7 +27,8 @@ public class ControllerParam implements Observer, Initializable
 
     public ControllerParam(ModelFlashcard model)
     {
-        this.model = model;
+        super(model);
+        this.model.getViewChanger().ajouterObs("Param", this);
     }
 
     public void reagir(){
