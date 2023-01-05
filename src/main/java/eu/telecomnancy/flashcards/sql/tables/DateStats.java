@@ -16,13 +16,16 @@ public class DateStats {
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS dateStats (\n"
-                + "	date text PRIMARY KEY,\n"
+                + "	date text,\n"
+                + " name text,\n"
                 + "	created integer,\n"
                 + "	studied integer,\n"
                 + "	again integer,\n"
                 + "	hard integer,\n"
                 + "	good integer,\n"
-                + "	easy integer\n"
+                + "	easy integer,\n"
+                + " FOREIGN KEY (name) REFERENCES decks(name),\n"
+                + " UNIQUE (date, name)"
                 + ");";
         
         try (Connection conn = DriverManager.getConnection(url);

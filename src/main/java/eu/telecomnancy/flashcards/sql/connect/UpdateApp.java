@@ -23,7 +23,7 @@ public class UpdateApp {
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("UpdateApp.connect: " + e.getMessage());
         }
         return conn;
     }
@@ -50,7 +50,7 @@ public class UpdateApp {
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("UpdateApp.updateCardQuestionAnswer: " + e.getMessage());
         }
     }
 
@@ -68,11 +68,11 @@ public class UpdateApp {
      */
     public void updateCardParameters(String question, double ease, long time, double interval, Integer again, Integer hard, Integer good, Integer easy) {
         String sql = "UPDATE cards SET ease = ? , "
-                + "time = ? "
-                + "interval = ? "
-                + "again = ? "
-                + "hard = ? "
-                + "good = ? "
+                + "time = ? , "
+                + "interval = ? , "
+                + "again = ? , "
+                + "hard = ? , "
+                + "good = ? , "
                 + "easy = ? "
                 + "WHERE question = ?";
 
@@ -91,7 +91,7 @@ public class UpdateApp {
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("UpdateApp.updateCardParameters: " + e.getMessage());
         }
     }
 
@@ -117,7 +117,7 @@ public class UpdateApp {
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("UpdateApp.updateDeckNameDescription: " + e.getMessage());
         }
     }
 
@@ -149,7 +149,7 @@ public class UpdateApp {
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("UpdateApp.updateDeckParameters: " + e.getMessage());
         }
     }
 }
