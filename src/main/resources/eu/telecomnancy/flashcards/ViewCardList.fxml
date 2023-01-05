@@ -51,8 +51,8 @@
          <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
                <Button onAction="#switchToModCard" layoutX="165.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Modifier" />
-               <Button onAction="#switchToNewCard" layoutX="503.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="143.0" text="Supprimer" />
-               <Button onAction="#deleteCard" layoutX="332.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Nouvelle" />
+               <Button onAction="#deleteCard" layoutX="503.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="143.0" text="Supprimer" />
+               <Button onAction="#switchToNewCard" layoutX="332.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Nouvelle" />
             </children>
          </Pane>
       </bottom>

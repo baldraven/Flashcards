@@ -70,8 +70,17 @@ public class ControllerCardList extends AbstractControllerMenu implements Initia
     }
 
     @FXML
-    public void deleteCard(){}
+    public void deleteCard(){
+        if (content.getSelectionModel().getSelectedIndex() == -1) return;
+        int card_id = content.getSelectionModel().getSelectedIndex(); //gets the index of the selected card in ListView
+        model.getCardList().getCardList().remove(card_id);
+        reagir();
+    }
 
+    @FXML 
+    public void switchToNewCard(){
+        model.getViewChanger().setView("NewCard");
+    }
 
     @Override
     public void reagir() {
