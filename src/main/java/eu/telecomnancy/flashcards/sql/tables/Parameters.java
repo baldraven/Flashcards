@@ -17,7 +17,7 @@ public class Parameters {
         
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS parameters (\n"
-                + "	parameterID integer PRIMARY KEY AUTOINCREMENT,\n"
+                + "	parameterID integer PRIMARY KEY,\n"
                 + "	isSecond integer,\n"
                 + "	oneTime integer,\n"
                 + "	second integer\n"
