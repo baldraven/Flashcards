@@ -85,6 +85,7 @@ public class ControllerLearning implements Observer, Initializable
         }
         card.setEase(card.getEase()-15);
         card.setHard(card.getHard() + 1);
+        card.updateParameters();
         this.reagirAction();
     }
 
@@ -99,6 +100,7 @@ public class ControllerLearning implements Observer, Initializable
             card.setInterval(card.getInterval() * card.getEase());;
         }
         card.setGood(card.getGood() + 1);
+        card.updateParameters();
         this.reagirAction();
     }
 
@@ -114,6 +116,7 @@ public class ControllerLearning implements Observer, Initializable
         }
         card.setEase(card.getEase()-20);
         card.setAgain(card.getAgain() + 1);
+        card.updateParameters();
         this.reagirAction();
     }
 
@@ -128,6 +131,7 @@ public class ControllerLearning implements Observer, Initializable
             card.setInterval(card.getInterval() * card.getEase());
         }
         card.setEasy(card.getEasy() + 1);
+        card.updateParameters();
         this.reagirAction();
     }
 
@@ -148,7 +152,6 @@ public class ControllerLearning implements Observer, Initializable
 
     public void reagirAction()
     {
-        card.updateParameters();
         int leng = deck.getDeck().size();
         if (leng < 1 || deck == null)
         {
