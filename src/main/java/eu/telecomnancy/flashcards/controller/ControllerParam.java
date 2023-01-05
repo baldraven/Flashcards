@@ -80,7 +80,7 @@ public class ControllerParam extends AbstractControllerMenu implements Observer,
             param.updateParam();
             Alert alert = new Alert(AlertType.CONFIRMATION);
             alert.setTitle("Enregistrer !");
-            alert.setContentText("Les paramètres ont été modifié avec succès !");
+            alert.setContentText("Les paramètres ont été modifiés avec succès !");
             alert.showAndWait();
             this.model.getViewChanger().setView("DeckList");
         }
@@ -88,7 +88,7 @@ public class ControllerParam extends AbstractControllerMenu implements Observer,
         {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Erreur");
-            alert.setContentText("Le nombre de seconde indiqué est incorrecte.");
+            alert.setContentText("Le nombre de secondes indiqué est incorrect.");
             alert.showAndWait();
         }
     }
