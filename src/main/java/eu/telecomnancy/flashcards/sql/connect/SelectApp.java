@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.DateStats;
@@ -389,5 +388,40 @@ public class SelectApp {
         }
 
         return dateStats;
+    }
+
+    /**
+     * Get the stats of a day
+     */
+    public ArrayList<DateStats> getAllStats(){
+        String sql = "SELECT created,studied,again,hard,good,easy "
+                   + "FROM dateStats";
+        
+        ArrayList<DateStats> statList = new ArrayList<DateStats>();
+
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                DateStats dateStats = new DateStats();
+
+                dateStats.setCreated(rs.getInt("created"));
+                dateStats.setStudied(rs.getInt("studied"));
+                dateStats.setAgain(rs.getInt("again"));
+                dateStats.setHard(rs.getInt("hard"));
+                dateStats.setGood(rs.getInt("good"));
+                dateStats.setEasy(rs.getInt("easy"));
+
+                statList.add(dateStats);
+            }
+        } catch (SQLException e) {
+            System.out.println("SelectApp.getAnswerWithCardQuestion: " + e.getMessage());
+        }
+
+        return statList;
     }
 }
