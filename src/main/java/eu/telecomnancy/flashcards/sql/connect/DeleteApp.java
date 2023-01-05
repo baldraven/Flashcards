@@ -69,4 +69,28 @@ public class DeleteApp {
             System.out.println(e.getMessage());
         }
     }
+
+    /**
+     * Delete a card specified by the deck
+     *
+     * @param question question of the card
+     * @param name name of the deck
+     */
+    public void deleteCardFromDeck(String question, String name) {
+        String sql = "DELETE FROM relationCardsDecks WHERE name = ?,"
+                + " question = ?";
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the corresponding param
+            pstmt.setString(1, name);
+            pstmt.setString(2, question);
+            // execute the delete statement
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

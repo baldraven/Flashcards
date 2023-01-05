@@ -155,5 +155,10 @@ public class Deck extends Observable {
         DeleteApp deleteApp = new DeleteApp();
         deleteApp.deleteDeck(this.name);
     }
+
+    public void deleteCardFromDeck(String question) {
+        DeleteApp deleteApp = new DeleteApp();
+        deleteApp.deleteCardFromDeck(question, this.name);
+    }
 }
 
