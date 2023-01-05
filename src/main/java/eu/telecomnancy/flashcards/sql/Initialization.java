@@ -12,8 +12,10 @@ public class Initialization {
     private DeckList deckList = new DeckList();
     private CardList cardList = new CardList();
 
-    public Initialization() {
-        this.InitializeDatabase();
+    public Initialization(boolean reboot) {
+        if (reboot == true) {
+            this.InitializeDatabase();
+        }
         this.InitializeModels();
     }
     

@@ -3,9 +3,7 @@ package eu.telecomnancy.flashcards;
 import eu.telecomnancy.flashcards.controller.*;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.Initialization;
-import eu.telecomnancy.flashcards.sql.connect.Create;
-import eu.telecomnancy.flashcards.sql.connect.DeleteDatabase;
-import eu.telecomnancy.flashcards.sql.connect.InitializeTables;
+//import eu.telecomnancy.flashcards.sql.connect.Reboot;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,10 +22,11 @@ public class Main extends Application {
         primaryStage.setTitle("TN's Flashcards");
         primaryStage.setWidth(800);
         primaryStage.setHeight(800);
-        new DeleteDatabase();
-        new Create();
-        new InitializeTables();
-        Initialization init = new Initialization();
+        
+        //Database
+        //new Reboot();
+        Initialization init = new Initialization(false);
+
         ViewChanger viewChanger = new ViewChanger();
         ModelFlashcard model = new ModelFlashcard(viewChanger, init.getDeckList(), init.getCardList());
 
