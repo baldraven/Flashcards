@@ -99,7 +99,7 @@
                   <Font name="Bookman Old Style" size="18.0" />
                </font>
             </Button>
-            <Label layoutX="118.0" layoutY="228.0" text="secondes avant affichage réponse">
+            <Label layoutX="118.0" layoutY="228.0" text="secondes avant affichage réponse (Plage : 3 - 60)">
                <font>
                   <Font name="Bookman Old Style" size="18.0" />
                </font>
