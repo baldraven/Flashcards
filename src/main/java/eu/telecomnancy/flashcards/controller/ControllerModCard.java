@@ -31,6 +31,12 @@ public class ControllerModCard extends AbstractControllerMenu implements Initial
         return this.answer;
     }
 
+    @FXML
+    public void accesParam()
+    {
+        this.model.getViewChanger().setView("Param");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

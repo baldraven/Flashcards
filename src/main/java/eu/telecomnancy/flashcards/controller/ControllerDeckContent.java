@@ -35,6 +35,12 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
         this.model.getViewChanger().ajouterObs("DeckContent", this);
     }
 
+    @FXML
+    public void accesParam()
+    {
+        this.model.getViewChanger().setView("Param");
+    }
+
     public void displayCards() {
         this.content.getItems().clear();
         if (this.model.getSelectedDeck() == null) {

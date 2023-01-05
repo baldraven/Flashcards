@@ -3,7 +3,10 @@ package eu.telecomnancy.flashcards;
 import eu.telecomnancy.flashcards.controller.*;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.Initialization;
+<<<<<<< HEAD
 //import eu.telecomnancy.flashcards.sql.connect.Reboot;
+=======
+>>>>>>> 3847f993b2842e1f5ccc1f6d2b6b373132054517
 import eu.telecomnancy.flashcards.sql.connect.Reboot;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -29,7 +32,7 @@ public class Main extends Application {
         Initialization init = new Initialization(true);
 
         ViewChanger viewChanger = new ViewChanger();
-        ModelFlashcard model = new ModelFlashcard(viewChanger, init.getDeckList(), init.getCardList());
+        ModelFlashcard model = new ModelFlashcard(viewChanger, init.getDeckList(), init.getCardList(), init.getParam());
 
         FXMLLoader loaderDeckList = new FXMLLoader();
         loaderDeckList.setLocation(getClass().getResource("ViewDeckList.fxml"));

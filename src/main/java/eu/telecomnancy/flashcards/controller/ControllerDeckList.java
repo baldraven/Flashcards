@@ -71,6 +71,12 @@ public class ControllerDeckList extends AbstractControllerMenu implements Initia
         this.reagir();
     }
 
+    @FXML
+    public void accesParam()
+    {
+        this.model.getViewChanger().setView("Param");
+    }
+
     @Override
     public void reagir() {
         this.displayDecks();

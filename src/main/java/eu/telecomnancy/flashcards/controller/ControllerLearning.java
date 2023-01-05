@@ -145,6 +145,12 @@ public class ControllerLearning implements Observer, Initializable
         this.model.getViewChanger().setView("DeckList");
     }
 
+    @FXML
+    public void accesParam()
+    {
+        this.model.getViewChanger().setView("Param");
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {

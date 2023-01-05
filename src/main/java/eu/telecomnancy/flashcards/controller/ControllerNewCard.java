@@ -57,6 +57,12 @@ public class ControllerNewCard extends AbstractControllerMenu implements Initial
         return this.menuDeckChoice.getValue();
     }
 
+    @FXML
+    public void accesParam()
+    {
+        this.model.getViewChanger().setView("Param");
+    }
+
     public void addNewCard() {
 
         String question = this.getQuestion().getText();

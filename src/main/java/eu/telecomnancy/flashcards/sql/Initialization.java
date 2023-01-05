@@ -4,6 +4,7 @@ import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.CardList;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.DeckList;
+import eu.telecomnancy.flashcards.model.Param;
 import eu.telecomnancy.flashcards.sql.connect.InsertApp;
 import eu.telecomnancy.flashcards.sql.connect.SelectApp;
 
@@ -11,6 +12,7 @@ public class Initialization {
 
     private DeckList deckList = new DeckList();
     private CardList cardList = new CardList();
+    private Param param = new Param();
 
     public Initialization(boolean reboot) {
         if (reboot == true) {
@@ -56,6 +58,8 @@ public class Initialization {
         app.insertRelationCardsDecks("4+1", "Math");
         app.insertRelationCardsDecks("5+1", "Math");
         app.insertRelationCardsDecks("6+1", "Math");
+
+        app.insertParameters(false, false, 10);
         
     }
     
@@ -63,6 +67,7 @@ public class Initialization {
         SelectApp app = new SelectApp();
 
         this.deckList = app.selectAllDecks(this.deckList);
+        this.param = app.selectAllParam(this.param);
 
         for (Deck deck : this.deckList.getDeckList()) {
             deck = app.getCardsWithDeckName(deck, deck.getName());
@@ -76,7 +81,12 @@ public class Initialization {
     public DeckList getDeckList() {
         return this.deckList;
     }
+
     public CardList getCardList() {
         return this.cardList;
+    }
+
+    public Param getParam() {
+        return this.param;
     }
 }

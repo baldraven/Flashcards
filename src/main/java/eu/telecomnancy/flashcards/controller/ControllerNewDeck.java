@@ -31,6 +31,12 @@ public class ControllerNewDeck extends AbstractControllerMenu implements Initial
         this.deckDescription.clear();
     }
 
+    @FXML
+    public void accesParam()
+    {
+        this.model.getViewChanger().setView("Param");
+    }
+
     public void createDeck() {
         String name = this.deckName.getText();
         String description = this.deckDescription.getText();
