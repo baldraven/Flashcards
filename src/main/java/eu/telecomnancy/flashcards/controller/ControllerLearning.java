@@ -29,6 +29,7 @@ import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
+import eu.telecomnancy.flashcards.sql.connect.StatsAdmin;
 
 public class ControllerLearning extends AbstractControllerMenu implements Observer, Initializable
 {
@@ -104,6 +105,8 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         card.setEase(card.getEase()-15);
         card.setHard(card.getHard() + 1);
         card.updateParameters();
+        StatsAdmin admin = new StatsAdmin();
+        admin.incrementStats(0,1,0,1,0,0);
         this.reagirAction(); 
     } 
     
@@ -120,6 +123,8 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         }
         card.setGood(card.getGood() + 1);
         card.updateParameters();
+        StatsAdmin admin = new StatsAdmin();
+        admin.incrementStats(0,1,0,0,1,0);
         this.reagirAction();
     }
 
@@ -137,6 +142,8 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         card.setEase(card.getEase()-20);
         card.setAgain(card.getAgain() + 1);
         card.updateParameters();
+        StatsAdmin admin = new StatsAdmin();
+        admin.incrementStats(0,1,1,0,0,0);
         this.reagirAction();
     }
 
@@ -154,6 +161,8 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         card.setEasy(card.getEasy() + 1);
         card.setEase(card.getEase()+20);
         card.updateParameters();
+        StatsAdmin admin = new StatsAdmin();
+        admin.incrementStats(0,1,0,0,0,1);
         this.reagirAction();
     }
 
