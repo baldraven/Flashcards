@@ -19,6 +19,16 @@ public class Deck extends Observable {
     private Integer easy;
 
     private String currentView = "DeckList";
+
+    public Deck(String name, String description, Integer again, Integer hard, Integer good, Integer easy) {
+        this.deck = new ArrayList<Card>();
+        this.name = name;
+        this.description = description;
+        this.again = again;
+        this.hard = hard;
+        this.good = good;
+        this.easy = easy;
+    }
     
     public Deck(ArrayList<Card> deck) {
         this.deck = deck;

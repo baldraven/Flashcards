@@ -77,7 +77,7 @@ public class DeleteApp {
      * @param name name of the deck
      */
     public void deleteCardFromDeck(String question, String name) {
-        String sql = "DELETE FROM relationCardsDecks WHERE name = ?,"
+        String sql = "DELETE FROM relationCardsDecks WHERE name = ? AND"
                 + " question = ?";
 
         try (Connection conn = this.connect();

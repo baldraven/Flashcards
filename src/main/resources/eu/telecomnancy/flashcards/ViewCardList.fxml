@@ -21,6 +21,7 @@
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Voir toutes les piles" />
                <MenuItem mnemonicParsing="false" onAction="#switchToNewCard" text="Créer une carte" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToNewDeck" text="Créer une pile" />
                <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
                 </items>

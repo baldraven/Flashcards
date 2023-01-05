@@ -1,8 +1,10 @@
 package eu.telecomnancy.flashcards.controller;
 
 import eu.telecomnancy.flashcards.Observer;
+import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
+import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -45,9 +47,6 @@ public class ControllerDeckList extends AbstractControllerMenu implements Initia
             editButton.setOnAction(action -> switchToDeckContent(deck));
             Button deleteButton = new Button("Supprimer");
             deleteButton.setOnAction(action -> deleteDeck(deck));
-            // Problèmes si :
-            // - Le dernier deck existant est supprimé
-            // - Le deck actuel est supprimé
 
             Label deckName = new Label(deck.getName());
             deckName.setStyle("-fx-font-size: 18;");
@@ -62,9 +61,14 @@ public class ControllerDeckList extends AbstractControllerMenu implements Initia
     }
 
     public void deleteDeck(Deck deck) {
-        this.model.getDeckList().deleteDeckByName(deck.getName());
+        //System.out.println("Deleted deck : " + deck.getName());
+        DeleteApp app = new DeleteApp();
+        for (Card card : deck.getDeck()) {
+            app.deleteCardFromDeck(card.getQuestion(), deck.getName());
+        }
         deck.delete();
-        this.reagir();;
+        this.model.getDeckList().deleteDeckByName(deck.getName());
+        this.reagir();
     }
 
     @Override
