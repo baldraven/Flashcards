@@ -1,24 +1,25 @@
 package eu.telecomnancy.flashcards.controller;
 
-import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ControllerDeckContent extends AbstractControllerMenu implements Initializable, Observer {
+public class ControllerDeckContent extends AbstractControllerMenu {
 
     @FXML
     protected ListView<HBox> content;
+    @FXML
+    private ImageView home;
 
     @FXML
     private Label deckNameLabel;
@@ -26,6 +27,8 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.displayCards();
+        Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
+        tooltip.install(home, tooltip);
     }
 
     public ControllerDeckContent(ModelFlashcard model) {

@@ -1,10 +1,8 @@
 package eu.telecomnancy.flashcards.model;
 
-import eu.telecomnancy.flashcards.Observable;
-
 import java.util.ArrayList;
 
-public class DeckList extends Observable {
+public class DeckList {
     
     private ArrayList<Deck> deckList;
 

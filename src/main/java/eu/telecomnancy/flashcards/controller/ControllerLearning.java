@@ -1,37 +1,30 @@
 package eu.telecomnancy.flashcards.controller;
 
-import javafx.fxml.Initializable;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
-import java.sql.Time;
 import java.text.DecimalFormat;
 import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.StatsAdmin;
 
-public class ControllerLearning extends AbstractControllerMenu implements Observer, Initializable
+public class ControllerLearning extends AbstractControllerMenu 
 {
     @FXML
     private Button repButton;
@@ -51,6 +44,8 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
     private Label tempCor;
     @FXML
     private Label affTimer;
+    @FXML
+    public ImageView home;
     private int secondTimer;
     private Deck deck;
     private Card card;
@@ -196,6 +191,8 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         tempEasy.setVisible(false);
         tempCor.setVisible(false);
         tempRev.setVisible(false);
+        Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
+        tooltip.install(home, tooltip);
     }
 
     public void reagirAction()

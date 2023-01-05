@@ -8,9 +8,7 @@ import java.util.ResourceBundle;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
 import eu.telecomnancy.flashcards.sql.connect.InsertApp;
-import javafx.fxml.Initializable;
 import eu.telecomnancy.flashcards.model.Card;
-import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -19,18 +17,23 @@ import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
-public class ControllerCardList extends AbstractControllerMenu implements Initializable, Observer {
+public class ControllerCardList extends AbstractControllerMenu {
 
     @FXML
     protected ListView<HBox> content;
+    @FXML
+    private ImageView home;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.displayCards();
+        Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
+        tooltip.install(home, tooltip);
     }
-    
+
     public ControllerCardList(ModelFlashcard model) {
         super(model);
         this.model.getViewChanger().ajouterObs("CardList", this);
