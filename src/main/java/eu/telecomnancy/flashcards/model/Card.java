@@ -91,23 +91,14 @@ public class Card {
         app.updateCardQuestionAnswer(this.question, this.question, answer);
     }
 
-    public void updateParameters(double ease, long time, double interval) {
-        this.ease = ease;
-        this.time = time;
-        this.interval = interval;
-
+    public void updateParameters() {
         UpdateApp app = new UpdateApp();
-        app.updateCardParameters(this.question, ease, time, interval, this.again, this.hard, this.good, this.easy);
+        app.updateCardParameters(this.question, this.ease, this.time, this.interval, this.again, this.hard, this.good, this.easy);
     }
 
-    public void updateStats(Integer again, Integer hard, Integer good, Integer easy) {
-        this.again = again;
-        this.hard = hard;
-        this.good = good;
-        this.easy = easy;
-
+    public void updateStats() {
         UpdateApp app = new UpdateApp();
-        app.updateCardParameters(this.question, this.ease, this.time, this.interval, again, hard, good, easy);
+        app.updateCardParameters(this.question, this.ease, this.time, this.interval, this.again, this.hard, this.good, this.easy);
     }
 
     public String getQuestion() {

@@ -1,19 +1,16 @@
 package eu.telecomnancy.flashcards;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class Observable {
 
-    private ArrayList<Observer> obs = new ArrayList<>();
+    private HashMap<String, Observer> obs = new HashMap<String, Observer>();
 
-    public void ajouterObs(Observer o) {
-        this.obs.add(o);
+    public void ajouterObs(String name, Observer o) {
+        this.obs.put(name, o);
     }
 
-    public void notifierObs() {
-        for (Observer o : this.obs) {
-            o.reagir();
-        }
+    public void notifierObs(String name) {
+        obs.get(name).reagir();
     }
-
 }

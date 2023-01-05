@@ -30,7 +30,7 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
 
     public ControllerDeckContent(ModelFlashcard model) {
         super(model);
-        this.model.getViewChanger().ajouterObs(this);
+        this.model.getViewChanger().ajouterObs("DeckContent", this);
     }
 
     public void displayCards() {

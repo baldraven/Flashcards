@@ -7,8 +7,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -47,7 +45,7 @@ public class ControllerLearning implements Observer, Initializable
     public ControllerLearning(ModelFlashcard model)
     {
         this.model = model;
-        this.model.getViewChanger().ajouterObs(this);
+        this.model.getViewChanger().ajouterObs("Learning" ,this);
         doneCards = new ArrayList<Card>();
     }
 

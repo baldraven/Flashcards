@@ -121,11 +121,6 @@ public class Deck extends Observable {
         return this.easy;
     }
 
-    public void setCurrentView(String view) {
-        this.currentView = view;
-        this.notifierObs();
-    }
-
     public ArrayList<Card> getDeck() {
         return this.deck;
     }
@@ -154,6 +149,11 @@ public class Deck extends Observable {
     public void delete() {
         DeleteApp deleteApp = new DeleteApp();
         deleteApp.deleteDeck(this.name);
+    }
+
+    public void deleteCardFromDeck(String question) {
+        DeleteApp deleteApp = new DeleteApp();
+        deleteApp.deleteCardFromDeck(question, this.name);
     }
 }
 
