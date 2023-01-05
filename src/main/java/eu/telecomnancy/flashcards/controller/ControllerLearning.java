@@ -78,7 +78,7 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
             tempRev.setText("1 min");
             tempCor.setText("10 min");
             tempHard.setText("6 min");
-            tempEasy.setText("4 jour"); 
+            tempEasy.setText("4 jours");
         }
         else
         {
@@ -234,7 +234,7 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
             if(check == 0)
             {
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Félicitation !");
+                alert.setTitle("Félicitations !");
                 alert.setContentText("Bravo ! Vous avez fini cette pile de cartes !");
                 alert.setHeaderText(null);
                 alert.showAndWait();

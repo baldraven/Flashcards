@@ -30,7 +30,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Paramètre" onAction="#switchToParam" />
+                    <MenuItem mnemonicParsing="false" text="Paramètres" onAction="#switchToParam" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">

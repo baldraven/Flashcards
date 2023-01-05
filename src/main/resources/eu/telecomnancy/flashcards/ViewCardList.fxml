@@ -16,7 +16,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#switchToParam" text="Paramètre" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToParam" text="Paramètres" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
