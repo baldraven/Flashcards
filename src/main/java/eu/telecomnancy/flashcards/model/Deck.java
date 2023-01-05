@@ -121,11 +121,6 @@ public class Deck extends Observable {
         return this.easy;
     }
 
-    public void setCurrentView(String view) {
-        this.currentView = view;
-        this.notifierObs();
-    }
-
     public ArrayList<Card> getDeck() {
         return this.deck;
     }

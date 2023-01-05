@@ -26,11 +26,10 @@ public class ControllerCardList extends AbstractControllerMenu implements Initia
     
     public ControllerCardList(ModelFlashcard model) {
         super(model);
-        this.model.getViewChanger().ajouterObs(this);
+        this.model.getViewChanger().ajouterObs("CardList", this);
     }
 
     public void displayCards() {
-        //System.out.println(this.model.getCardList());
         this.content.getItems().clear();
         for (Card card : this.model.getCardList().getCardList()) {
             HBox hbox = new HBox();

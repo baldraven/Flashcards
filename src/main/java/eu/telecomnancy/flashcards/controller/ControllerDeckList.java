@@ -3,7 +3,6 @@ package eu.telecomnancy.flashcards.controller;
 import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
-import eu.telecomnancy.flashcards.sql.connect.InsertApp;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import java.net.URL;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -22,12 +20,11 @@ public class ControllerDeckList extends AbstractControllerMenu implements Initia
 
     public ControllerDeckList(ModelFlashcard model) {
         super(model);
-        this.model.getViewChanger().ajouterObs(this);
+        this.model.getViewChanger().ajouterObs("DeckList", this);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //System.out.println(model.getDeckList());
         this.displayDecks();
     }
 
@@ -66,7 +63,7 @@ public class ControllerDeckList extends AbstractControllerMenu implements Initia
     public void deleteDeck(Deck deck) {
         this.model.getDeckList().deleteDeckByName(deck.getName());
         deck.delete();
-        this.model.getViewChanger().notifierObs();
+        this.reagir();;
     }
 
     @Override

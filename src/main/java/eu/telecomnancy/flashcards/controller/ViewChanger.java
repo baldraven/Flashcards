@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import eu.telecomnancy.flashcards.Observable;
-import eu.telecomnancy.flashcards.Observer;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -23,14 +22,6 @@ public class ViewChanger extends Observable
 
     public void setView(String name) {
         this.scene.setRoot(this.roots.get(name));
-        notifierObs();  //Possibilite de modifier pour specifier un observateur 
-    }
-
-    public void ajouterObs(Observer o) {
-        super.ajouterObs(o);
-    }
-
-    public void notifierObs() {
-        super.notifierObs();
+        notifierObs(name);  //Possibilite de modifier pour specifier un observateur 
     }
 }

@@ -6,7 +6,6 @@ import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
-import javafx.application.Platform;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +20,7 @@ public class ControllerModCard extends AbstractControllerMenu implements Initial
 
     public ControllerModCard(ModelFlashcard model) {
         super(model);
-        model.getViewChanger().ajouterObs(this);
+        model.getViewChanger().ajouterObs("ModCard", this);
     }
 
     public TextArea getQuestion() {
