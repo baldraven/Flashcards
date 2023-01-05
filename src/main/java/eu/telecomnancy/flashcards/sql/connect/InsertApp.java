@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javafx.beans.binding.When.BooleanConditionBuilder;
+
 /**
  *
  * @author sqlitetutorial.net
@@ -97,6 +99,27 @@ public class InsertApp {
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, question);
             pstmt.setString(2, name);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("InsertApp.insertRelationCardsDecks: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Insert a new row into the parameters table
+     *
+     * @param isSecond
+     * @param oneTime
+     * @param second
+     */
+    public void insertParameters(Boolean isSecond, Boolean oneTime, Integer second) {
+        String sql = "INSERT INTO parameters(isSecond,oneTime,second) VALUES(?,?,?)";
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setInt(1, isSecond ? 1 : 0);
+            pstmt.setInt(2, oneTime ? 1 : 0);
+            pstmt.setInt(2, second);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("InsertApp.insertRelationCardsDecks: " + e.getMessage());

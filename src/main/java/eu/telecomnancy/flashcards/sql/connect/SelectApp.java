@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.DeckList;
+import eu.telecomnancy.flashcards.model.Param;
 
 import java.sql.PreparedStatement;
 
@@ -208,5 +209,31 @@ public class SelectApp {
         }
 
         return deck;
+    }
+
+    /**
+     * Get the parameters of the app
+     */
+    public Param selectAllParam(Param param){
+        String sql = "SELECT isSecond,oneTime,second "
+                   + "FROM parameters WHERE parameterID = 0";
+ 
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                param.setIsSecond((rs.getInt("isSecond")) == 1);
+                param.setOneTime(rs.getInt("oneTime") == 1);
+                param.setSecond(rs.getInt("second"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SelectApp.selectAllParam: " + e.getMessage());
+        }
+
+        return param;
     }
 }
