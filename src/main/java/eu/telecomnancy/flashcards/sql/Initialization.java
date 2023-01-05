@@ -59,7 +59,7 @@ public class Initialization {
         app.insertRelationCardsDecks("5+1", "Math");
         app.insertRelationCardsDecks("6+1", "Math");
 
-        app.insertParameters(false, false, 10);
+        app.insertParameters(0, false, false, 10);
         
     }
     

@@ -112,14 +112,15 @@ public class InsertApp {
      * @param oneTime
      * @param second
      */
-    public void insertParameters(Boolean isSecond, Boolean oneTime, Integer second) {
-        String sql = "INSERT INTO parameters(isSecond,oneTime,second) VALUES(?,?,?)";
+    public void insertParameters(Integer parameterID, Boolean isSecond, Boolean oneTime, Integer second) {
+        String sql = "INSERT INTO parameters(parameterID,isSecond,oneTime,second) VALUES(?,?,?,?)";
 
         try (Connection conn = this.connect();
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, isSecond ? 1 : 0);
-            pstmt.setInt(2, oneTime ? 1 : 0);
-            pstmt.setInt(2, second);
+            pstmt.setInt(1, parameterID);
+            pstmt.setInt(2, isSecond ? 1 : 0);
+            pstmt.setInt(3, oneTime ? 1 : 0);
+            pstmt.setInt(4, second);
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("InsertApp.insertRelationCardsDecks: " + e.getMessage());

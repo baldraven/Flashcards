@@ -162,7 +162,7 @@ public class UpdateApp {
      */
     public void updateParameters(Boolean isSecond, Boolean oneTime, Integer second) {
         String sql = "UPDATE parameters SET isSecond = ? , "
-                + "oneTime = ? "
+                + "oneTime = ? , "
                 + "second = ? "
                 + "WHERE parameterID = 0";
 
@@ -176,7 +176,7 @@ public class UpdateApp {
             // update 
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("UpdateApp.updateDeckParameters: " + e.getMessage());
+            System.out.println("UpdateApp.updateParameters: " + e.getMessage());
         }
     }
 }

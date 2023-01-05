@@ -62,7 +62,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
               <items>
-                <MenuItem mnemonicParsing="false" text="Stats Global" />
+                <MenuItem onAction="#switchToStats" mnemonicParsing="false" text="Dashboard" />
               </items>
             </Menu>
          </menus>

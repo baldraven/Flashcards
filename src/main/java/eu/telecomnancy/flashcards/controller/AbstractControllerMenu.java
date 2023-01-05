@@ -49,4 +49,8 @@ public abstract class AbstractControllerMenu {
     {
         model.getViewChanger().setView("Param");
     }
+
+    public void switchToStats() {
+        model.getViewChanger().setView("Stats");
+    }
 }
