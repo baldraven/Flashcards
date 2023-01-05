@@ -31,7 +31,7 @@
       <top>
          <Pane prefHeight="120.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
-               <Label layoutX="308.0" layoutY="28.0" text="Pile [nom]">
+               <Label fx:id="deckNameLabel" layoutX="308.0" layoutY="28.0" text="Pile [nom]">
                   <font>
                      <Font size="36.0" />
                   </font>

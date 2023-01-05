@@ -45,8 +45,9 @@ public class ControllerDeckList extends AbstractControllerMenu implements Initia
             Button studyButton = new Button("Etudier");
             studyButton.setOnAction(action -> switchToLearning(deck));
             Button editButton = new Button("Modifier");
+            editButton.setOnAction(action -> switchToDeckContent(deck));
             Button deleteButton = new Button("Supprimer");
-            //deleteButton.setOnAction(action -> deleteDeck(deck));
+            deleteButton.setOnAction(action -> deleteDeck(deck));
             // Problèmes si :
             // - Le dernier deck existant est supprimé
             // - Le deck actuel est supprimé

@@ -35,6 +35,11 @@ public abstract class AbstractControllerMenu {
         model.getViewChanger().setView("CardList");
     }
 
+    public void switchToDeckContent(Deck deck) {
+        model.setSelectedDeck(deck);
+        model.getViewChanger().setView("DeckContent");
+    }
+
     public void switchToLearning(Deck deck) {
         model.setSelectedDeck(deck);
         model.getViewChanger().setView("Learning");

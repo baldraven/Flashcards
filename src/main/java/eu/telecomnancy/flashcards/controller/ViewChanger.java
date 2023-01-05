@@ -26,11 +26,4 @@ public class ViewChanger extends Observable
         notifierObs();  //Possibilite de modifier pour specifier un observateur 
     }
 
-    public void ajouterObs(Observer o) {
-        super.ajouterObs(o);
-    }
-
-    public void notifierObs() {
-        super.notifierObs();
-    }
 }

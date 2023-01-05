@@ -20,6 +20,9 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
     @FXML
     protected ListView<HBox> content;
 
+    @FXML
+    private Label deckNameLabel;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.displayCards();
@@ -32,7 +35,10 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
 
     public void displayCards() {
         this.content.getItems().clear();
-        for (Card card : this.model.getDeckList().searchDeckByName("Math").getDeck()) {
+        if (this.model.getSelectedDeck() == null) {
+            return;
+        }
+        for (Card card : this.model.getSelectedDeck().getDeck()) {
             HBox hbox = new HBox();
 
             hbox.setMinHeight(40);
@@ -55,6 +61,8 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
             answerLabel.setAlignment(Pos.CENTER);
             answerLabel.setWrapText(true);
             answerLabel.setTooltip(new Tooltip(answerLabel.getText()));
+
+            this.deckNameLabel.setText("Pile " + this.model.getSelectedDeck().getName());
 
             hbox.getChildren().addAll(questionLabel, answerLabel);
             this.content.getItems().add(hbox);
