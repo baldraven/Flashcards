@@ -23,18 +23,20 @@ public class ControllerParam extends AbstractControllerMenu implements Observer,
     @FXML
     private TextField sec;
     private Param param;
-    private ModelFlashcard model;
 
     public ControllerParam(ModelFlashcard model)
     {
         super(model);
         this.model.getViewChanger().ajouterObs("Param", this);
+        this.reagir();
     }
 
+    @Override
     public void reagir(){
         this.param = this.model.getParam();
     }
 
+    @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
         if(param.getOneTime())
