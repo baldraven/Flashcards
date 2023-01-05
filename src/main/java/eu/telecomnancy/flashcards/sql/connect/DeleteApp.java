@@ -23,7 +23,7 @@ public class DeleteApp {
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("DeleteApp.connect:" + e.getMessage());
         }
         return conn;
     }
@@ -45,7 +45,7 @@ public class DeleteApp {
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("DeleteApp.deleteCard:" + e.getMessage());
         }
     }
 
@@ -66,7 +66,7 @@ public class DeleteApp {
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("DeleteApp.deleteDeck:" + e.getMessage());
         }
     }
 
@@ -90,7 +90,23 @@ public class DeleteApp {
             pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("DeleteApp.deleteCardFromDeck:" + e.getMessage());
+        }
+    }
+
+    public void deleteCardInRelationWithQuestion(String question) {
+        String sql = "DELETE FROM relationCardsDecks WHERE question = ?";
+
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the corresponding param
+            pstmt.setString(1, question);
+            // execute the delete statement
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("DeleteApp.deleteCardInRelationWithQuestion:" + e.getMessage());
         }
     }
 }

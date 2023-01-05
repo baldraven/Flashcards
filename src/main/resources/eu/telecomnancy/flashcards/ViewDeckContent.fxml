@@ -31,17 +31,17 @@
       <top>
          <Pane prefHeight="120.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
-               <Label fx:id="deckNameLabel" layoutX="308.0" layoutY="16.0" text="Pile [nom]">
+               <Label fx:id="deckNameLabel" alignment="CENTER" layoutX="308.0" layoutY="16.0" text="Pile [nom]">
                   <font>
                      <Font name="Bookman Old Style Bold" size="36.0" />
                   </font>
                </Label>
-                <Label layoutX="164.0" layoutY="84.0" text="Questions">
+                <Label layoutX="198.0" layoutY="84.0" text="Questions">
                     <font>
                         <Font size="22.0" />
                     </font>
                 </Label>
-                <Label layoutX="393.0" layoutY="84.0" text="Réponses">
+                <Label layoutX="491.0" layoutY="84.0" text="Réponses">
                     <font>
                         <Font size="22.0" />
                     </font>
@@ -58,7 +58,7 @@
       <bottom>
          <Pane prefHeight="150.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
-               <Button layoutX="304.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="193.0" text="Ajouter une carte">
+               <Button layoutX="304.0" layoutY="50.0" mnemonicParsing="false" onAction="#removeCardInDeck" prefHeight="50.0" prefWidth="193.0" text="Retirer du deck">
                   <font>
                      <Font size="18.0" />
                   </font>

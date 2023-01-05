@@ -2,6 +2,8 @@ package eu.telecomnancy.flashcards.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
 import javafx.fxml.Initializable;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.Observer;
@@ -73,13 +75,15 @@ public class ControllerCardList extends AbstractControllerMenu implements Initia
     public void deleteCard(){
         if (content.getSelectionModel().getSelectedIndex() == -1) return;
         int card_id = content.getSelectionModel().getSelectedIndex(); //gets the index of the selected card in ListView
+        this.model.setSelectedCard(this.model.getCardList().getCardList().get(card_id));
+
+        DeleteApp app = new DeleteApp();
+        app.deleteCard(this.model.getSelectedCard().getQuestion());
+        app.deleteCardInRelationWithQuestion(this.model.getSelectedCard().getQuestion());
+
+        //System.out.println("Deleted card : " + this.model.getSelectedCard().getQuestion());
         model.getCardList().getCardList().remove(card_id);
         reagir();
-    }
-
-    @FXML 
-    public void switchToNewCard(){
-        model.getViewChanger().setView("NewCard");
     }
 
     @Override

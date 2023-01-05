@@ -48,7 +48,9 @@ public class ControllerNewCard extends AbstractControllerMenu implements Initial
             deckNames.add(deck.getName());
         }
         this.menuDeckChoice.getItems().addAll(deckNames);
-        this.menuDeckChoice.setValue(deckNames.get(0));
+        if (deckNames.size() > 0) {
+            this.menuDeckChoice.setValue(deckNames.get(0));
+        }
     }
 
     public String getSelectedDeck() {

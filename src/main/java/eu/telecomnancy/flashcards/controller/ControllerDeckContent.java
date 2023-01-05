@@ -45,7 +45,7 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
 
             hbox.setMinHeight(40);
             hbox.setMaxHeight(600);
-            hbox.setSpacing(20);
+            hbox.setSpacing(30);
             hbox.setPadding(new Insets(20, 0, 20, 0));
             hbox.setAlignment(Pos.CENTER);
 
@@ -64,20 +64,32 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
             answerLabel.setWrapText(true);
             answerLabel.setTooltip(new Tooltip(answerLabel.getText()));
 
-            Button removeButton = new Button("Supprimer");
-            removeButton.setOnAction(action -> removeCardInDeck(card));
+            //Button removeButton = new Button("Retirer");
+            //removeButton.setOnAction(action -> removeCardInDeck(card));
 
             this.deckNameLabel.setText("Pile " + this.model.getSelectedDeck().getName());
 
-            hbox.getChildren().addAll(questionLabel, answerLabel, removeButton);
+            hbox.getChildren().addAll(questionLabel, answerLabel);
             this.content.getItems().add(hbox);
         }
     }
 
-    public void removeCardInDeck(Card card) {
+    @FXML
+    public void removeCardInDeck() {
+        if (content.getSelectionModel().getSelectedIndex() == -1) return;
+        int card_id = content.getSelectionModel().getSelectedIndex();
+        this.model.setSelectedCard(this.model.getSelectedDeck().getCard(card_id));
+        //System.out.println("Selected card : " + this.model.getSelectedCard().getQuestion() + ", " + this.model.getSelectedCard().getAnswer());
+        //System.out.println("Selected deck : " + this.model.getSelectedDeck().getName());
+
         DeleteApp app = new DeleteApp();
-        app.deleteCardFromDeck(card.getQuestion(), this.model.getSelectedDeck().getName());
-        this.model.getSelectedDeck().removeCardByQuestion(card.getQuestion());
+        app.deleteCardFromDeck(this.model.getSelectedCard().getQuestion(), this.model.getSelectedDeck().getName());
+        this.model.getSelectedDeck().removeCardByQuestion(this.model.getSelectedCard().getQuestion());
+
+        /*Label questionLabel = (Label) this.content.getSelectionModel().getSelectedItem().getChildren().get(0);
+        String question = questionLabel.getText();
+        System.out.println("Question : " + question);*/
+
         this.reagir();
     }
 
