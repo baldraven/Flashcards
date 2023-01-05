@@ -8,10 +8,12 @@ public class ModelFlashcard {
     private CardList cardList;
     private Deck selectedDeck;
     private Card selectedCard;
-    public ModelFlashcard(ViewChanger viewChanger, DeckList deckList, CardList cardList) {
+    private Param param;
+    public ModelFlashcard(ViewChanger viewChanger, DeckList deckList, CardList cardList, Param param) {
         this.viewChanger = viewChanger;
         this.deckList = deckList;
         this.cardList = cardList;
+        this.param = param;
     }
     public void setSelectedCard(Card card) {
         this.selectedCard = card;
@@ -33,6 +35,14 @@ public class ModelFlashcard {
     }
     public ViewChanger getViewChanger() {
         return this.viewChanger;
+    }
+    public Param getParam()
+    {
+        return this.param;
+    }
+    public void setParam(Param param)
+    {
+        this.param = param;
     }
 
     public void setDeckList(DeckList deckList) {
