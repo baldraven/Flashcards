@@ -1,5 +1,7 @@
 package eu.telecomnancy.flashcards.model;
 
+import eu.telecomnancy.flashcards.sql.connect.UpdateApp;
+
 public class Param
 {
     private Boolean oneTime;
@@ -48,5 +50,10 @@ public class Param
     public Boolean getisSecond()
     {
         return this.isSecond;
+    }
+
+    public void updateParam() {
+        UpdateApp app = new UpdateApp();
+        app.updateParameters(this.isSecond, this.oneTime, this.second);
     }
 }  

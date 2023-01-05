@@ -152,4 +152,31 @@ public class UpdateApp {
             System.out.println("UpdateApp.updateDeckParameters: " + e.getMessage());
         }
     }
+
+    /**
+     * Update data of a deck specified by the name
+     *
+     * @param isSecond name of the deck
+     * @param oneTime
+     * @param second
+     */
+    public void updateParameters(Boolean isSecond, Boolean oneTime, Integer second) {
+        String sql = "UPDATE parameters SET isSecond = ? , "
+                + "oneTime = ? "
+                + "second = ? "
+                + "WHERE parameterID = 0";
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            // set the corresponding param
+            pstmt.setInt(1, isSecond ? 1 : 0);
+            pstmt.setInt(2, oneTime ? 1 : 0);
+            pstmt.setInt(3, second);
+            // update 
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("UpdateApp.updateDeckParameters: " + e.getMessage());
+        }
+    }
 }
