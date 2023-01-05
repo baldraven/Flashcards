@@ -5,9 +5,6 @@ module eu.telecomnancy.flashcards {
     requires transitive org.controlsfx.controls;
     requires java.sql;
 
-    requires org.junit.jupiter.api;
-    requires org.testfx;
-
     opens eu.telecomnancy.flashcards to javafx.fxml, java.sql, org.testfx, org.junit.jupiter.api;
 
     exports eu.telecomnancy.flashcards;
