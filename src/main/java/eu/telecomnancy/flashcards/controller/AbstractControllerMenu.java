@@ -20,7 +20,7 @@ public abstract class AbstractControllerMenu {
     }
 
     public void switchToNewCard() {
-        model.getViewChanger().setView("NewCard", );
+        model.getViewChanger().setView("NewCard");
     }
 
     public void switchToNewDeck() {
