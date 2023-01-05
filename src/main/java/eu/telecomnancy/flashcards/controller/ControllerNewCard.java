@@ -1,11 +1,9 @@
 package eu.telecomnancy.flashcards.controller;
 
-import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 
@@ -13,7 +11,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ControllerNewCard extends AbstractControllerMenu implements Initializable, Observer {
+public class ControllerNewCard extends AbstractControllerMenu {
 
     @FXML
     private ChoiceBox<String> menuDeckChoice;

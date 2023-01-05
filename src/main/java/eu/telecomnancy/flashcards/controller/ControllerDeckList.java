@@ -1,6 +1,5 @@
 package eu.telecomnancy.flashcards.controller;
 
-import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
@@ -9,13 +8,12 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ControllerDeckList extends AbstractControllerMenu implements Initializable, Observer {
+public class ControllerDeckList extends AbstractControllerMenu {
 
     @FXML
     protected ListView<HBox> content;

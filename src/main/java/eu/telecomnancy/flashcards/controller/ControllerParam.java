@@ -3,18 +3,16 @@ package eu.telecomnancy.flashcards.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.model.Param;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class ControllerParam extends AbstractControllerMenu implements Observer, Initializable
+public class ControllerParam extends AbstractControllerMenu 
 {
     @FXML
     private CheckBox oneSelec;

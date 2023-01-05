@@ -1,11 +1,13 @@
 package eu.telecomnancy.flashcards.controller;
 
+import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
-public abstract class AbstractControllerMenu {
+public abstract class AbstractControllerMenu implements Observer, Initializable{
 
     protected ModelFlashcard model;
 
