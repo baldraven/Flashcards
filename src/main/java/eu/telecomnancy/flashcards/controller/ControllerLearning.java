@@ -1,17 +1,27 @@
 package eu.telecomnancy.flashcards.controller;
 
 import javafx.fxml.Initializable;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.PauseTransition;
+import javafx.animation.SequentialTransition;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Popup;
-import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.Time;
 import java.text.DecimalFormat;
+import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -38,6 +48,9 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
     private Label tempHard;
     @FXML
     private Label tempCor;
+    @FXML
+    private Label affTimer;
+    private int secondTimer;
     private Deck deck;
     private Card card;
     private long time;
@@ -55,6 +68,7 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         Rep.setVisible(true);
         gridP.setVisible(true);
         repButton.setVisible(false);
+        affTimer.setVisible(false);
         if(card.getInterval() == -1)
         {
           /*   tempRev.setText("1 min");
@@ -150,6 +164,12 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         this.model.getViewChanger().setView("Param");
     }
 
+    public void affTimer()
+    {
+        affTimer.setText(String.valueOf(secondTimer));
+        secondTimer--;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -204,16 +224,11 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
             }
             if(check == 0)
             {
-               /* Stage stage = new Stage();
-                stage.setTitle("Félicitation !");
-                Popup popup = new Popup();
-                Label label = new Label("Bravo ! Vous avez réussi toute les cartes de la pile "+ deck.getName() + " !");
-                label.setMinWidth(150);
-                label.setMinHeight(50);
-                Button button = new Button("Retourner au menu");
-                button.setOnAction(event -> this.model.getViewChanger().setView("DeckList"));
-                popup.getContent().addAll(label, button);
-                stage.show();*/
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Félicitation !");
+                alert.setContentText("Bravo ! Vous avez fini cette pile de cartes !");
+                alert.setHeaderText(null);
+                alert.showAndWait();
                 this.model.getViewChanger().setView("DeckList");
             }
             else
@@ -225,7 +240,23 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
             gridP.setVisible(false);
             Ques.setText(card.getQuestion());
             Rep.setText(card.getAnswer());
-            repButton.setVisible(true); 
+            if(this.model.getParam().getisSecond())
+            {
+                secondTimer = this.model.getParam().getsecond();
+                repButton.setVisible(false);
+                affTimer.setVisible(true);
+                affTimer.setText(String.valueOf(secondTimer));
+                var pause = new PauseTransition(Duration.seconds(1));
+                pause.setOnFinished(action -> affTimer());
+                var timer = new SequentialTransition(pause);
+                timer.setCycleCount(secondTimer);
+                timer.setOnFinished(action -> AffRep(null));
+                timer.play();
+            }
+            else
+            {
+                repButton.setVisible(true); 
+            }
         }
     }
 

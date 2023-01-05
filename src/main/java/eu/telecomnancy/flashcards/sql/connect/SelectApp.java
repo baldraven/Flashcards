@@ -236,4 +236,88 @@ public class SelectApp {
 
         return param;
     }
+
+    /**
+     * Get the number of cards
+     */
+    public Integer selectCardCount(){
+        String sql = "SELECT * "
+                + "FROM cards";
+        
+                   try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            Integer count = 0;
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                count++;
+            }
+            return count;
+        } catch (SQLException e) {
+            System.out.println("SelectApp.selectAllParam: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the number of decks
+     */
+    public Integer selectDeckCount(){
+        String sql = "SELECT * "
+                + "FROM decks";
+        
+                   try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            Integer count = 0;
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                count++;
+            }
+            return count;
+        } catch (SQLException e) {
+            System.out.println("SelectApp.selectAllParam: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+
+    /**
+     * Get the description whith name of the deck
+     * @param deck
+     * @param name 
+     */
+    public Deck getDeckParameters(Deck deck, String name){
+        String sql = "SELECT again,hard,good,easy "
+                   + "FROM decks WHERE name = ?";
+ 
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            // set the value
+            pstmt.setString(1,name);
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                deck.setAgain(rs.getInt("again"));
+                deck.setHard(rs.getInt("hard"));
+                deck.setGood(rs.getInt("good"));
+                deck.setEasy(rs.getInt("easy"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SelectApp.getDescriptionWithDeckName: " + e.getMessage());
+        }
+
+        return deck;
+    }
 }

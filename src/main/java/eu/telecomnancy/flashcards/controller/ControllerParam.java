@@ -74,21 +74,36 @@ public class ControllerParam extends AbstractControllerMenu implements Observer,
         try
         {
             int i = Integer.parseInt(sec.getText());
-            param.setIsSecond(isSec.isSelected());
-            param.setOneTime(oneSelec.isSelected());
-            param.setSecond(i);
-            param.updateParam();
-            Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.setTitle("Enregistrer !");
-            alert.setContentText("Les paramètres ont été modifiés avec succès !");
-            alert.showAndWait();
-            this.model.getViewChanger().setView("DeckList");
+
+            if(i < 3 || i > 60)
+            {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setContentText("Plage de valeur incorrecte.");
+                alert.setHeaderText(null);
+                alert.showAndWait();
+            }
+            else
+            {
+                param.setIsSecond(isSec.isSelected());
+                param.setOneTime(oneSelec.isSelected());
+                param.setSecond(i);
+                param.updateParam();
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Enregistré !");
+                alert.setContentText("Les paramètres ont été modifiés avec succès !");
+                alert.setHeaderText(null);
+                alert.showAndWait();
+                this.model.getViewChanger().setView("DeckList");
+            }
         }
         catch(NumberFormatException nfe)
         {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Erreur");
+
             alert.setContentText("Le nombre de secondes indiqué est incorrect.");
+            alert.setHeaderText(null);
             alert.showAndWait();
         }
     }
