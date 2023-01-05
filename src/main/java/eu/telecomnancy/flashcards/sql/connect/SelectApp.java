@@ -6,8 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 
 import eu.telecomnancy.flashcards.model.Card;
+import eu.telecomnancy.flashcards.model.DateStats;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.DeckList;
 import eu.telecomnancy.flashcards.model.Param;
@@ -235,5 +237,157 @@ public class SelectApp {
         }
 
         return param;
+    }
+
+    /**
+     * Get the number of cards
+     */
+    public Integer selectCardCount(){
+        String sql = "SELECT * "
+                + "FROM cards";
+        
+                   try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            Integer count = 0;
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                count++;
+            }
+            return count;
+        } catch (SQLException e) {
+            System.out.println("SelectApp.selectAllParam: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the number of decks
+     */
+    public Integer selectDeckCount(){
+        String sql = "SELECT * "
+                + "FROM decks";
+        
+                   try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            Integer count = 0;
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                count++;
+            }
+            return count;
+        } catch (SQLException e) {
+            System.out.println("SelectApp.selectAllParam: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+
+    /**
+     * Get the description whith name of the deck
+     * @param deck
+     * @param name 
+     */
+    public Deck getDeckParameters(Deck deck, String name){
+        String sql = "SELECT again,hard,good,easy "
+                   + "FROM decks WHERE name = ?";
+ 
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            // set the value
+            pstmt.setString(1,name);
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                deck.setAgain(rs.getInt("again"));
+                deck.setHard(rs.getInt("hard"));
+                deck.setGood(rs.getInt("good"));
+                deck.setEasy(rs.getInt("easy"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SelectApp.getDescriptionWithDeckName: " + e.getMessage());
+        }
+
+        return deck;
+    }
+
+    /**
+     * Get the answer whith question of the card
+     * @param card
+     * @param question 
+     */
+    public Card getCardParameters(Card card, String question){
+        String sql = "SELECT interval,ease,time,again,hard,good,easy "
+                   + "FROM cards WHERE question = ?";
+ 
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            // set the value
+            pstmt.setString(1,question);
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                card.setInterval(rs.getInt("interval"));
+                card.setEase(rs.getInt("ease"));
+                card.setTimer(rs.getInt("time"));
+                card.setAgain(rs.getInt("again"));
+                card.setHard(rs.getInt("hard"));
+                card.setGood(rs.getInt("good"));
+                card.setEasy(rs.getInt("easy"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SelectApp.getAnswerWithCardQuestion: " + e.getMessage());
+        }
+
+        return card;
+    }
+
+    /**
+     * Get the stats of a day
+     * @param date
+     */
+    public DateStats getDeckDateStats(String date){
+        String sql = "SELECT created,studied,again,hard,good,easy "
+                   + "FROM dateStats WHERE date = ?";
+        
+        DateStats dateStats = new DateStats();
+
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            // set the value
+            pstmt.setString(1, date);
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                dateStats.setCreated(rs.getInt("created"));
+                dateStats.setStudied(rs.getInt("studied"));
+                dateStats.setAgain(rs.getInt("again"));
+                dateStats.setHard(rs.getInt("hard"));
+                dateStats.setGood(rs.getInt("good"));
+                dateStats.setEasy(rs.getInt("easy"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SelectApp.getAnswerWithCardQuestion: " + e.getMessage());
+        }
+
+        return dateStats;
     }
 }

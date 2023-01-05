@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerDeckList">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerDeckList">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
@@ -16,12 +27,12 @@
             </Menu>
          <Menu mnemonicParsing="false" text="Configuration">
            <items>
-             <MenuItem mnemonicParsing="false" onAction="#accesParam" text="Paramètre" />
+             <MenuItem mnemonicParsing="false" onAction="#accesParam" text="Paramètres" />
            </items>
          </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
                 <items>
-                    <MenuItem onAction="#switchToStats" mnemonicParsing="false" text="Dashboard" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToStats" text="Dashboard" />
                 </items>
             </Menu>
         </menus>
@@ -54,11 +65,11 @@
       <bottom>
          <Pane prefHeight="150.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
-               <Button layoutX="323.0" layoutY="48.0" mnemonicParsing="false" onAction="#switchToNewDeck" prefHeight="55.0" prefWidth="155.0" text="Nouvelle pile">
-                  <font>
-                     <Font size="18.0" />
-                  </font>
-               </Button>
+               <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="370.0" layoutY="14.0" onMouseClicked="#switchToNewDeck" pickOnBounds="true" preserveRatio="true" fx:id="add">
+                  <image>
+                     <Image url="@../../../img/add.png" />
+                  </image>
+               </ImageView>
             </children>
          </Pane>
       </bottom>

@@ -132,8 +132,8 @@ public class UpdateApp {
      */
     public void updateDeckParameters(String name, Integer again, Integer hard, Integer good, Integer easy) {
         String sql = "UPDATE decks SET again = ? , "
-                + "hard = ? "
-                + "good = ? "
+                + "hard = ?, "
+                + "good = ?, "
                 + "easy = ? "
                 + "WHERE name = ?";
 
@@ -177,6 +177,39 @@ public class UpdateApp {
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("UpdateApp.updateParameters: " + e.getMessage());
+        }
+    }
+
+
+    /**
+     * Update the stats of a day
+     * @param date
+     */
+    public void updateDateStats(String date, Integer created, Integer studied, Integer again, Integer hard, Integer good, Integer easy){
+        String sql = "UPDATE dateStats SET created = ?, "
+                   + "studied = ?,"
+                   + "again = ?,"
+                   + "hard = ?,"
+                   + "good = ?,"
+                   + "easy = ? "
+                   + "WHERE date = ?";
+
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            // set the value
+            pstmt.setInt(1, created);
+            pstmt.setInt(2, studied);
+            pstmt.setInt(3, again);
+            pstmt.setInt(4, hard);
+            pstmt.setInt(5, good);
+            pstmt.setInt(6, easy);
+            pstmt.setString(7, date);
+            // update 
+            pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println("UpdateApp.updateDateStats: " + e.getMessage());
         }
     }
 }

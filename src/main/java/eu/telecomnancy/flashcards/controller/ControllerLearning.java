@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
+import eu.telecomnancy.flashcards.sql.connect.StatsAdmin;
 
 public class ControllerLearning extends AbstractControllerMenu 
 {
@@ -67,20 +68,24 @@ public class ControllerLearning extends AbstractControllerMenu
         gridP.setVisible(true);
         repButton.setVisible(false);
         affTimer.setVisible(false);
+        tempHard.setVisible(true);
+        tempEasy.setVisible(true);
+        tempCor.setVisible(true);
+        tempRev.setVisible(true);
         if(card.getInterval() == -1)
         {
-          /*   tempRev.setText("1 min");
+            tempRev.setText("1 min");
             tempCor.setText("10 min");
             tempHard.setText("6 min");
-            tempEasy.setText("4 jour"); */
+            tempEasy.setText("4 jours");
         }
         else
         {
-           /*  DecimalFormat df = new DecimalFormat("0.0");
+            DecimalFormat df = new DecimalFormat("0.0");
             tempRev.setText(df.format(card.getInterval()*0.5) + " min");
-            tempCor.setText(df.format(card.getInterval() * card.getEase()) + " min");
+            tempCor.setText(df.format(card.getInterval() * (card.getEase()/100)) + " min");
             tempHard.setText(df.format(card.getInterval() * 1.2) + " min");
-            tempEasy.setText(df.format(card.getInterval() * card.getEase()) + " min"); */
+            tempEasy.setText(df.format(card.getInterval() * (card.getEase()/100)) + " min"); 
         }
     }
 
@@ -98,6 +103,8 @@ public class ControllerLearning extends AbstractControllerMenu
         card.setEase(card.getEase()-15);
         card.setHard(card.getHard() + 1);
         card.updateParameters();
+        StatsAdmin admin = new StatsAdmin();
+        admin.incrementStats(0,1,0,1,0,0);
         this.reagirAction(); 
     } 
     
@@ -110,10 +117,12 @@ public class ControllerLearning extends AbstractControllerMenu
         }
         else
         {
-            card.setInterval(card.getInterval() * card.getEase());;
+            card.setInterval(card.getInterval() * (card.getEase()/100));;
         }
         card.setGood(card.getGood() + 1);
         card.updateParameters();
+        StatsAdmin admin = new StatsAdmin();
+        admin.incrementStats(0,1,0,0,1,0);
         this.reagirAction();
     }
 
@@ -131,6 +140,8 @@ public class ControllerLearning extends AbstractControllerMenu
         card.setEase(card.getEase()-20);
         card.setAgain(card.getAgain() + 1);
         card.updateParameters();
+        StatsAdmin admin = new StatsAdmin();
+        admin.incrementStats(0,1,1,0,0,0);
         this.reagirAction();
     }
 
@@ -143,10 +154,13 @@ public class ControllerLearning extends AbstractControllerMenu
         }
         else
         {
-            card.setInterval(card.getInterval() * card.getEase());
+            card.setInterval(card.getInterval() * (card.getEase()/100));
         }
         card.setEasy(card.getEasy() + 1);
+        card.setEase(card.getEase()+20);
         card.updateParameters();
+        StatsAdmin admin = new StatsAdmin();
+        admin.incrementStats(0,1,0,0,0,1);
         this.reagirAction();
     }
 
@@ -194,6 +208,10 @@ public class ControllerLearning extends AbstractControllerMenu
             if(leng == doneCards.size())
             {
                 doneCards.clear();
+                if(model.getParam().getOneTime())
+                {
+                    model.getViewChanger().setView("DeckList");
+                }
             }
             long unixtime = System.currentTimeMillis() / (1000L*60L);
             double max = Double.NEGATIVE_INFINITY;
@@ -223,7 +241,7 @@ public class ControllerLearning extends AbstractControllerMenu
             if(check == 0)
             {
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Félicitation !");
+                alert.setTitle("Félicitations !");
                 alert.setContentText("Bravo ! Vous avez fini cette pile de cartes !");
                 alert.setHeaderText(null);
                 alert.showAndWait();
@@ -248,6 +266,7 @@ public class ControllerLearning extends AbstractControllerMenu
                 pause.setOnFinished(action -> affTimer());
                 var timer = new SequentialTransition(pause);
                 timer.setCycleCount(secondTimer);
+                secondTimer--;
                 timer.setOnFinished(action -> AffRep(null));
                 timer.play();
             }

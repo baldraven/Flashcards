@@ -30,7 +30,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Paramètre" onAction="#switchToParam" />
+                    <MenuItem mnemonicParsing="false" text="Paramètres" onAction="#switchToParam" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
@@ -62,12 +62,12 @@
                </Pane>
                <HBox prefHeight="40.0" prefWidth="800.0">
                   <children>
-                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="400.0" text="Nombre de decks:">
+                     <Label fx:id="nbDecks" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="400.0" text="Nombre de decks:">
                         <font>
                            <Font size="16.0" />
                         </font>
                      </Label>
-                     <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="400.0" text="Nombre de cartes:">
+                     <Label fx:id="nbCards" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="400.0" text="Nombre de cartes:">
                         <font>
                            <Font size="16.0" />
                         </font>
@@ -96,13 +96,13 @@
                      <VBox prefHeight="200.0" prefWidth="400.0">
                         <children>
                            <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="400.0" text="Répartition cartes" />
-                           <PieChart />
+                           <PieChart fx:id="repartition" />
                         </children>
                      </VBox>
                      <VBox prefHeight="200.0" prefWidth="400.0">
                         <children>
                            <Label alignment="CENTER" contentDisplay="CENTER" prefWidth="400.0" text="Résultats" />
-                           <PieChart />
+                           <PieChart fx:id="results" />
                         </children>
                      </VBox>
                   </children>

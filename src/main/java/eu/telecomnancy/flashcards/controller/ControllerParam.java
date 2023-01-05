@@ -72,11 +72,12 @@ public class ControllerParam extends AbstractControllerMenu
         try
         {
             int i = Integer.parseInt(sec.getText());
+
             if(i < 3 || i > 60)
             {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Erreur");
-                alert.setContentText("Plage de valeur incorrect.");
+                alert.setContentText("Plage de valeur incorrecte.");
                 alert.setHeaderText(null);
                 alert.showAndWait();
             }
@@ -87,8 +88,8 @@ public class ControllerParam extends AbstractControllerMenu
                 param.setSecond(i);
                 param.updateParam();
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Enregistrer !");
-                alert.setContentText("Les paramètres ont été modifié avec succès !");
+                alert.setTitle("Enregistré !");
+                alert.setContentText("Les paramètres ont été modifiés avec succès !");
                 alert.setHeaderText(null);
                 alert.showAndWait();
                 this.model.getViewChanger().setView("DeckList");
@@ -98,7 +99,8 @@ public class ControllerParam extends AbstractControllerMenu
         {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Erreur");
-            alert.setContentText("Le nombre de seconde indiqué est incorrecte.");
+
+            alert.setContentText("Le nombre de secondes indiqué est incorrect.");
             alert.setHeaderText(null);
             alert.showAndWait();
         }
