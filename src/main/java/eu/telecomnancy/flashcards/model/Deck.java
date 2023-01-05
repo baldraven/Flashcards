@@ -156,6 +156,16 @@ public class Deck extends Observable {
         return questionsListFromDeck;
     }
 
+    public void removeCardByQuestion(String question) { // La carte n'est pas supprimée, seulement retirée d'un deck
+        ArrayList<Card> deckCopy = new ArrayList<>();
+        for (Card card : this.deck) {
+            if (!card.getQuestion().equals(question)) {
+                deckCopy.add(card);
+            }
+        }
+        this.deck = deckCopy;
+    }
+
     public void delete() {
         DeleteApp deleteApp = new DeleteApp();
         deleteApp.deleteDeck(this.name);
