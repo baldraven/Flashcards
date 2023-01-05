@@ -53,7 +53,7 @@ public class ControllerDeckList extends AbstractControllerMenu implements Initia
             deckName.setPrefWidth(200);
             deckName.setAlignment(Pos.CENTER);
             deckName.setWrapText(true);
-            deckName.setTooltip(new Tooltip(deckName.getText()));
+            deckName.setTooltip(new Tooltip(deck.getDescription()));
 
             hbox.getChildren().addAll(deckName, studyButton, editButton, deleteButton);
             content.getItems().add(hbox);

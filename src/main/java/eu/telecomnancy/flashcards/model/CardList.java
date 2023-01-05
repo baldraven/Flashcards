@@ -39,4 +39,13 @@ public class CardList {
         }
         this.cardList = cardListCopy;
     }
+
+    public boolean isQuestionInCardList(String question) {
+        for (Card card : this.cardList) {
+            if (card.getQuestion().equals(question)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

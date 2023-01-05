@@ -24,7 +24,7 @@ public class Main extends Application {
         primaryStage.setHeight(800);
         
         //Database
-        Boolean reboot = false;
+        Boolean reboot = true;
         new Reboot(reboot);
         Initialization init = new Initialization(reboot);
 

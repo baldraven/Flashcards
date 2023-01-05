@@ -21,7 +21,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
                 <items>
-                    <MenuItem onAction="#switchToStats" mnemonicParsing="false" text="Dashboard" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToStats" text="Dashboard" />
                 </items>
             </Menu>
         </menus>
@@ -39,18 +39,23 @@
       <bottom>
          <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-               <Button layoutX="323.0" layoutY="63.0" mnemonicParsing="false" onAction="#switchToModCard" prefHeight="55.0" prefWidth="155.0" text="Modifier">
+               <Button layoutX="423.0" layoutY="63.0" mnemonicParsing="false" onAction="#switchToModCard" prefHeight="55.0" prefWidth="165.0" text="Modifier">
                   <font>
-                     <Font size="18.0" />
+                     <Font size="16.0" />
                   </font></Button>
-               <Button layoutX="530.0" layoutY="63.0" mnemonicParsing="false" onAction="#deleteCard" prefHeight="55.0" prefWidth="155.0" text="Supprimer">
+               <Button layoutX="609.0" layoutY="63.0" mnemonicParsing="false" onAction="#deleteCard" prefHeight="55.0" prefWidth="165.0" text="Supprimer">
                   <font>
-                     <Font size="18.0" />
+                     <Font size="16.0" />
                   </font></Button>
-               <Button layoutX="110.0" layoutY="63.0" mnemonicParsing="false" onAction="#switchToNewCard" prefHeight="55.0" prefWidth="155.0" text="Nouvelle carte">
+               <Button layoutX="36.0" layoutY="63.0" mnemonicParsing="false" onAction="#switchToNewCard" prefHeight="55.0" prefWidth="165.0" text="Nouvelle carte">
                   <font>
-                     <Font size="18.0" />
+                     <Font size="16.0" />
                   </font></Button>
+               <Button layoutX="235.0" layoutY="63.0" mnemonicParsing="false" onAction="#addCardToDeck" prefHeight="55.0" prefWidth="165.0" text="Ajouter à une pile">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Button>
             </children>
          </Pane>
       </bottom>

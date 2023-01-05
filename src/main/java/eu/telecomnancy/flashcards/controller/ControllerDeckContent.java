@@ -8,13 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControllerDeckContent extends AbstractControllerMenu implements Initializable, Observer {
@@ -35,19 +33,13 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
         this.model.getViewChanger().ajouterObs("DeckContent", this);
     }
 
-    @FXML
-    public void accesParam()
-    {
-        this.model.getViewChanger().setView("Param");
-    }
-
     public void displayCards() {
         this.content.getItems().clear();
         if (this.model.getSelectedDeck() == null) {
             return;
         }
         for (Card card : this.model.getSelectedDeck().getDeck()) {
-            System.out.println("Question : " + card.getQuestion());
+            //System.out.println("Question : " + card.getQuestion());
 
             HBox hbox = new HBox();
 
@@ -100,6 +92,20 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
         System.out.println("Question : " + question);*/
 
         this.reagir();
+    }
+
+    @FXML
+    public void renameDeck() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("TN's Flashcards");
+        dialog.setHeaderText("Renommer la pile");
+        dialog.setContentText("Saisissez le nouveau nom de la pile : ");
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            System.out.println(result.get());
+            this.model.getSelectedDeck().updateName(result.get());
+            this.reagir();
+        }
     }
 
     @Override
