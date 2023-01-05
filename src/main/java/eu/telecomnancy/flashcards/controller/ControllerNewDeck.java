@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,6 +22,9 @@ public class ControllerNewDeck extends AbstractControllerMenu implements Initial
     @FXML
     private TextArea deckDescription;
 
+    @FXML
+    private ImageView home;
+
     public ControllerNewDeck(ModelFlashcard model) {
         super(model);
         this.model.getViewChanger().ajouterObs("NewDeck", this);
@@ -28,6 +33,8 @@ public class ControllerNewDeck extends AbstractControllerMenu implements Initial
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.reagir();
+        Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
+        tooltip.install(home, tooltip);
     }
 
     @FXML

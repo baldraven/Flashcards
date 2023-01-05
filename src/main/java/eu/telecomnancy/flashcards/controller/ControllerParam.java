@@ -6,13 +6,14 @@ import java.util.ResourceBundle;
 import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.model.Param;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 
 public class ControllerParam extends AbstractControllerMenu implements Observer, Initializable
 {
@@ -22,6 +23,8 @@ public class ControllerParam extends AbstractControllerMenu implements Observer,
     private CheckBox isSec;
     @FXML
     private TextField sec;
+    @FXML
+    private ImageView home;
     private Param param;
 
     public ControllerParam(ModelFlashcard model)
@@ -39,6 +42,8 @@ public class ControllerParam extends AbstractControllerMenu implements Observer,
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
+        Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
+        tooltip.install(home, tooltip);
         if(param.getOneTime())
         {
             oneSelec.setSelected(true);

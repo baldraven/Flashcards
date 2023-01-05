@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
@@ -19,6 +20,8 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
 
     @FXML
     protected ListView<HBox> content;
+    @FXML
+    private ImageView home;
 
     @FXML
     private Label deckNameLabel;
@@ -26,6 +29,8 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.displayCards();
+        Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
+        tooltip.install(home, tooltip);
     }
 
     public ControllerDeckContent(ModelFlashcard model) {
