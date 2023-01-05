@@ -320,4 +320,38 @@ public class SelectApp {
 
         return deck;
     }
+
+    /**
+     * Get the answer whith question of the card
+     * @param card
+     * @param question 
+     */
+    public Card getCardParameters(Card card, String question){
+        String sql = "SELECT interval,ease,time,again,hard,good,easy "
+                   + "FROM cards WHERE question = ?";
+ 
+        try (Connection conn = this.connect();
+            PreparedStatement pstmt  = conn.prepareStatement(sql)){
+            
+            // set the value
+            pstmt.setString(1,question);
+            //
+            ResultSet rs  = pstmt.executeQuery();
+            
+            // loop through the result set
+            while (rs.next()) {
+                card.setInterval(rs.getInt("interval"));
+                card.setEase(rs.getInt("ease"));
+                card.setTimer(rs.getInt("time"));
+                card.setAgain(rs.getInt("again"));
+                card.setHard(rs.getInt("hard"));
+                card.setGood(rs.getInt("good"));
+                card.setEasy(rs.getInt("easy"));
+            }
+        } catch (SQLException e) {
+            System.out.println("SelectApp.getAnswerWithCardQuestion: " + e.getMessage());
+        }
+
+        return card;
+    }
 }

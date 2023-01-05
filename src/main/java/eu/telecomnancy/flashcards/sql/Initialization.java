@@ -31,15 +31,15 @@ public class Initialization {
         app.insertCard("Quel est l'angle d'inclinaison de Mars par rapport à son axe ?", "25°", -1, 230, 0, 0, 0, 0, 0);
         app.insertCard("Quel est l'âge de la Lune ?", "4,53 milliards d'années", -1, 230, 0, 0, 0, 0, 0);
         
-        app.insertCard("1+1", "2", -1, 230, 0, 0, 0, 0, 0);
-        app.insertCard("2+1", "3", -1, 230, 0, 0, 0, 0, 0);
-        app.insertCard("3+1", "4", -1, 230, 0, 0, 0, 0, 0);
-        app.insertCard("4+1", "5", -1, 230, 0, 0, 0, 0, 0);
-        app.insertCard("5+1", "6", -1, 230, 0, 0, 0, 0, 0);
-        app.insertCard("6+1", "7", -1, 230, 0, 0, 0, 0, 0);
+        app.insertCard("1+1", "2", -1, 230, 0, 4, 3, 5, 2);
+        app.insertCard("2+1", "3", -1, 230, 0, 3, 2, 6, 4);
+        app.insertCard("3+1", "4", -1, 230, 0, 1, 5, 9, 1);
+        app.insertCard("4+1", "5", -1, 230, 0, 2, 1, 4, 1);
+        app.insertCard("5+1", "6", -1, 230, 0, 1, 2, 5, 0);
+        app.insertCard("6+1", "7", -1, 230, 0, 4, 3, 1, 0);
 
-        app.insertDeck("Math", "Additions faciles", 6, 4, 2,1);
-        app.insertDeck("Culture", "Questions culturelles", 5, 2, 2, 3);
+        app.insertDeck("Math", "Additions faciles", 0, 0, 0,0);
+        app.insertDeck("Culture", "Questions culturelles", 0, 0, 0, 0);
 
         app.insertRelationCardsDecks("Quel est la capitale du monde ?", "Culture");
         app.insertRelationCardsDecks("Arc-en-ciel en anglais", "Culture");
@@ -78,6 +78,7 @@ public class Initialization {
                     this.cardList.addCard(card);
                 }
                 card = app.getAnswerWithCardQuestion(card, card.getQuestion());
+                card = app.getCardParameters(card, card.getQuestion());
             }
         }
     }

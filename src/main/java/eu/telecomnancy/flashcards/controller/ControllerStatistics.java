@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import eu.telecomnancy.flashcards.Observer;
+import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.SelectApp;
@@ -47,11 +48,13 @@ public class ControllerStatistics extends AbstractControllerMenu implements Obse
         for (Deck deck : this.model.getDeckList().getDeckList()) {
             System.out.println(deck.getName());
             PieChart.Data slice = new PieChart.Data(deck.getName(), deck.getDeck().size());
-            repartition.getData().add(slice);            
-            this.again += deck.getAgain();
-            this.hard += deck.getHard();
-            this.good += deck.getGood();
-            this.easy += deck.getEasy();
+            repartition.getData().add(slice);
+            for (Card card : deck.getDeck()) {
+                this.again += card.getAgain();
+                this.hard += card.getHard();
+                this.good += card.getGood();
+                this.easy += card.getEasy();
+            }
         }
         PieChart.Data slice1 = new PieChart.Data("A revoir", again);
         PieChart.Data slice2 = new PieChart.Data("Difficile", hard);
