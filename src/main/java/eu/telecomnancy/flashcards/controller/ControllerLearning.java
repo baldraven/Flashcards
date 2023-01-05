@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -45,7 +47,7 @@ public class ControllerLearning implements Observer, Initializable
     public ControllerLearning(ModelFlashcard model)
     {
         this.model = model;
-        this.model.getViewChanger().ajouterObs("Learning" ,this);
+        this.model.getViewChanger().ajouterObs("Learning", this);
         doneCards = new ArrayList<Card>();
     }
 
@@ -82,6 +84,8 @@ public class ControllerLearning implements Observer, Initializable
             card.setInterval(card.getInterval() * 1.2);;
         }
         card.setEase(card.getEase()-15);
+        card.setHard(card.getHard() + 1);
+        card.updateParameters();
         this.reagirAction();
     }
 
@@ -95,6 +99,8 @@ public class ControllerLearning implements Observer, Initializable
         {
             card.setInterval(card.getInterval() * card.getEase());;
         }
+        card.setGood(card.getGood() + 1);
+        card.updateParameters();
         this.reagirAction();
     }
 
@@ -109,6 +115,8 @@ public class ControllerLearning implements Observer, Initializable
             card.setInterval(card.getInterval() * 0.5);;
         }
         card.setEase(card.getEase()-20);
+        card.setAgain(card.getAgain() + 1);
+        card.updateParameters();
         this.reagirAction();
     }
 
@@ -122,6 +130,8 @@ public class ControllerLearning implements Observer, Initializable
         {
             card.setInterval(card.getInterval() * card.getEase());
         }
+        card.setEasy(card.getEasy() + 1);
+        card.updateParameters();
         this.reagirAction();
     }
 
@@ -192,13 +202,16 @@ public class ControllerLearning implements Observer, Initializable
                 stage.show();*/
                 this.model.getViewChanger().setView("DeckList");
             }
+            else
+            {
+                card.setTimer(unixtime);
+                doneCards.add(card);
+            }
             Rep.setVisible(false);
             gridP.setVisible(false);
             Ques.setText(card.getQuestion());
             Rep.setText(card.getAnswer());
-            repButton.setVisible(true);
-            card.setTimer(unixtime);
-            doneCards.add(card);
+            repButton.setVisible(true); 
         }
     }
 

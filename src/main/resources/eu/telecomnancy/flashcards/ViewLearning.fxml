@@ -38,10 +38,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -56,9 +54,9 @@
          <menus>
             <Menu mnemonicParsing="false" text="Edition">
               <items>
-                  <MenuItem mnemonicParsing="false" text="Changer de pile" onAction="#leave"/>
+                  <MenuItem mnemonicParsing="false" onAction="#leave" text="Changer de pile" />
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quitter l'application" onAction="#quit"/>
+                  <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
@@ -78,7 +76,7 @@
          <children>
             <HBox alignment="CENTER" layoutY="500.0" prefHeight="115.0" prefWidth="800.0">
                <children>
-                  <GridPane prefHeight="100.0" prefWidth="708.0" visible="false" fx:id="gridP">
+                  <GridPane fx:id="gridP" prefHeight="100.0" prefWidth="708.0" visible="false">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -89,86 +87,69 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" style="-fx-border-color: red;" text="A revoir" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Revoir" prefWidth="100">
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                        </Button>
-                        <Button mnemonicParsing="false" style="-fx-border-color: black;" text="Difficile" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Difficile" prefWidth="100">
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                        </Button>
-                        <Button mnemonicParsing="false" style="-fx-border-color: green;" text="Correct" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Correct" prefWidth="100">
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                        </Button>
-                        <Button mnemonicParsing="false" style="-fx-border-color: blue;" text="Facile" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" onAction="#Facile" prefWidth="100">
-                        <font>
-                           <Font size="18.0" />
-                        </font>
-                        </Button>
-                        <Label text="[Temps]" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempRev">
+                        <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Difficile" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                           <image>
+                              <Image url="@../../../img/hard.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="tempRev" text="[Temps]" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                         <font>
                            <Font size="16.0" />
                         </font>
                         </Label>
-                        <Label text="[Temps]" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempHard">
+                        <Label fx:id="tempHard" text="[Temps]" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                         <font>
                            <Font size="16.0" />
                         </font>
                         </Label>
-                        <Label text="[Temps]" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempCor">
+                        <Label fx:id="tempCor" text="[Temps]" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                         <font>
                            <Font size="16.0" />
                         </font>
                         </Label>
-                        <Label text="[Temps]" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="TOP" fx:id="tempEasy">
+                        <Label fx:id="tempEasy" text="[Temps]" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                         <font>
                            <Font size="16.0" />
                         </font>
                         </Label>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Revoir" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                           <image>
+                              <Image url="@../../../img/Again.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Correct" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                           <image>
+                              <Image url="@../../../img/correct.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Facile" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                           <image>
+                              <Image url="@../../../img/easy.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </GridPane>
                </children></HBox>
-            <SplitPane dividerPositions="0.5" layoutX="90.0" layoutY="100.0" orientation="VERTICAL" prefHeight="380.0" prefWidth="622.0" style="-fx-border-radius: 40;">
-               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" mouseTransparent="true" prefHeight="100.0" prefWidth="160.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="180.0" prefWidth="620.0" style="-fx-border-color: #fa6000; -fx-border-width: 3; -fx-border-radius: 40;" text="Placeholder" textAlignment="CENTER" fx:id="Ques">
-                           <font>
-                              <Font name="Bookman Old Style Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <effect>
-                        <Lighting>
-                           <bumpInput>
-                              <Shadow />
-                           </bumpInput>
-                           <light>
-                              <Light.Distant />
-                           </light>
-                        </Lighting>
-                     </effect>
-                  </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-border-radius: 40;">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="180.0" prefWidth="620.0" style="-fx-border-color: green; -fx-border-radius: 40; -fx-border-width: 3;" text="Placeholder" textAlignment="CENTER" visible="false" fx:id="Rep">
-                           <font>
-                              <Font name="Bookman Old Style Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </AnchorPane>
-               </items>
-            </SplitPane>
-            <Button alignment="CENTER" layoutX="236.0" layoutY="494.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="329.0" text="Afficher la réponse" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS" onAction="#AffRep" fx:id="repButton">
+            <Button fx:id="repButton" alignment="CENTER" layoutX="236.0" layoutY="494.0" mnemonicParsing="false" onAction="#AffRep" prefHeight="53.0" prefWidth="329.0" text="Afficher la réponse" textAlignment="CENTER" textOverrun="LEADING_ELLIPSIS">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
+            <ImageView fitHeight="93.0" fitWidth="107.0" layoutX="348.0" layoutY="678.0" onMouseClicked="#leave" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/house.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="Ques" alignment="CENTER" layoutX="85.0" layoutY="80.0" prefHeight="180.0" prefWidth="620.0" style="-fx-border-color: #fa6000; -fx-border-width: 3; -fx-border-radius: 40;" text="Placeholder" textAlignment="CENTER">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Rep" alignment="CENTER" layoutX="85.0" layoutY="282.0" prefHeight="180.0" prefWidth="620.0" style="-fx-border-color: green; -fx-border-radius: 40; -fx-border-width: 3;" text="Placeholder" textAlignment="CENTER" visible="false">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
     </AnchorPane>
   </children>
