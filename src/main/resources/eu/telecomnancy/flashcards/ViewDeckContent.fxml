@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerDeckContent">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerDeckContent">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
@@ -31,9 +39,9 @@
       <top>
          <Pane prefHeight="120.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
-               <Label fx:id="deckNameLabel" layoutX="308.0" layoutY="28.0" text="Pile [nom]">
+               <Label fx:id="deckNameLabel" layoutX="307.0" layoutY="39.0" text="Pile [nom]">
                   <font>
-                     <Font size="36.0" />
+                     <Font name="Bookman Old Style Bold" size="36.0" />
                   </font>
                </Label>
                 <Label layoutX="192.0" layoutY="84.0" text="Questions">

@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerDeckList">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerDeckList">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
@@ -13,7 +22,7 @@
                <MenuItem mnemonicParsing="false" onAction="#switchToNewCard" text="Créer une carte" />
                     <MenuItem mnemonicParsing="false" onAction="#switchToNewDeck" text="Créer une pile" />
                <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quitter l'application" onAction="#quit"/>
+                  <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
                 </items>
             </Menu>
          <Menu mnemonicParsing="false" text="Configuration">
@@ -46,9 +55,9 @@
             <children>
                <Pane prefHeight="100.0" prefWidth="890.0">
                   <children>
-                     <Label layoutX="306.0" layoutY="28.0" text="Mes piles">
+                     <Label layoutX="313.0" layoutY="29.0" text="Mes piles">
                         <font>
-                           <Font size="36.0" />
+                           <Font name="Bookman Old Style Bold" size="36.0" />
                         </font>
                      </Label>
                   </children>
