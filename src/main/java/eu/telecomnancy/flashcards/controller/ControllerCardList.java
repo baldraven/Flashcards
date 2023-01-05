@@ -82,6 +82,12 @@ public class ControllerCardList extends AbstractControllerMenu implements Initia
         model.getViewChanger().setView("NewCard");
     }
 
+    @FXML
+    public void accesParam()
+    {
+        this.model.getViewChanger().setView("Param");
+    }
+
     @Override
     public void reagir() {
         this.displayCards();

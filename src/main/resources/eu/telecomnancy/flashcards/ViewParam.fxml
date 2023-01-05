@@ -44,46 +44,28 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerParam">
   <children>
     <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
+         <menus>
+            <Menu mnemonicParsing="false" text="Edition">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#leave" text="Retour à l'accueil" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Configuration">
+              <items>
+                <MenuItem mnemonicParsing="false" text="About" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Statistiques">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Stats Global" />
+              </items>
+            </Menu>
+         </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -92,27 +74,27 @@
                   <Font name="Bookman Old Style Bold" size="36.0" />
                </font>
             </Label>
-            <CheckBox layoutX="60.0" layoutY="107.0" mnemonicParsing="false" text="Faire le tour des cartes une seule fois">
+            <CheckBox fx:id="oneSelec" layoutX="60.0" layoutY="107.0" mnemonicParsing="false" text="Faire le tour des cartes une seule fois">
                <font>
                   <Font size="18.0" />
                </font>
             </CheckBox>
-            <CheckBox layoutX="60.0" layoutY="163.0" mnemonicParsing="false" text="Afficher la réponse après plusieurs secondes">
+            <CheckBox fx:id="isSec" layoutX="60.0" layoutY="163.0" mnemonicParsing="false" text="Afficher la réponse après plusieurs secondes" onAction="#changingEffect">
                <font>
                   <Font name="Bookman Old Style" size="18.0" />
                </font>
             </CheckBox>
-            <TextField layoutX="53.0" layoutY="222.0" prefHeight="33.0" prefWidth="51.0" promptText="10">
+            <TextField fx:id="sec" layoutX="53.0" layoutY="222.0" prefHeight="33.0" prefWidth="51.0" promptText="10">
                <font>
                   <Font name="Bookman Old Style" size="14.0" />
                </font>
             </TextField>
-            <Button layoutX="168.0" layoutY="304.0" mnemonicParsing="false" text="Enregistrer">
+            <Button layoutX="168.0" layoutY="304.0" mnemonicParsing="false" text="Enregistrer" onAction="#applyChange">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="371.0" layoutY="304.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="110.0" text="Retour">
+            <Button layoutX="371.0" layoutY="304.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="110.0" text="Retour" onAction="#leave">
                <font>
                   <Font name="Bookman Old Style" size="18.0" />
                </font>

@@ -44,4 +44,9 @@ public abstract class AbstractControllerMenu {
         model.setSelectedDeck(deck);
         model.getViewChanger().setView("Learning");
     }
+
+    public void switchToParam()
+    {
+        model.getViewChanger().setView("Param");
+    }
 }
