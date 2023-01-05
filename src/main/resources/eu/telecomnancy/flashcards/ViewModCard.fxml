@@ -79,6 +79,12 @@
                            <Image url="@../../../img/valid.png" />
                         </image>
                      </ImageView>
+                     <Button layoutX="333.0" layoutY="14.0" mnemonicParsing="false" onAction="#save" text="Sauvegarder">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Button>
+                     <Button layoutX="370.0" layoutY="69.0" mnemonicParsing="false" onAction="#switchToCardList" text="Retour" />
                   </children>
                </Pane>
             </children>

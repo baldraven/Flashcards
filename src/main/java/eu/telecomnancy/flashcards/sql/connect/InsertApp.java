@@ -106,6 +106,7 @@ public class InsertApp {
     /**
      * Insert a new row into the parameters table
      *
+     * @param parameterID
      * @param isSecond
      * @param oneTime
      * @param second
@@ -121,7 +122,36 @@ public class InsertApp {
             pstmt.setInt(4, second);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("InsertApp.insertRelationCardsDecks: " + e.getMessage());
+            System.out.println("InsertApp.insertParameters: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Insert a new row into the date stats table
+     *
+     * @param date
+     * @param created
+     * @param studied
+     * @param again
+     * @param hard
+     * @param good
+     * @param easy
+     */
+    public void insertStats(String date, Integer created, Integer studied, Integer again, Integer hard, Integer good, Integer easy) {
+        String sql = "INSERT INTO dateStats(date,created,studied,again,hard,good,easy) VALUES(?,?,?,?,?,?,?)";
+
+        try (Connection conn = this.connect();
+                PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, date);
+            pstmt.setInt(2, created);
+            pstmt.setInt(3, studied);
+            pstmt.setInt(4, again);
+            pstmt.setInt(5, hard);
+            pstmt.setInt(6, good);
+            pstmt.setInt(7, easy);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("InsertApp.insertStats: " + e.getMessage());
         }
     }
 }
