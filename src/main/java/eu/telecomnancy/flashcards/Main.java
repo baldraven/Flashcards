@@ -3,10 +3,6 @@ package eu.telecomnancy.flashcards;
 import eu.telecomnancy.flashcards.controller.*;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.Initialization;
-<<<<<<< HEAD
-//import eu.telecomnancy.flashcards.sql.connect.Reboot;
-=======
->>>>>>> 3847f993b2842e1f5ccc1f6d2b6b373132054517
 import eu.telecomnancy.flashcards.sql.connect.Reboot;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
