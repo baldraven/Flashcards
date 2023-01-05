@@ -81,6 +81,11 @@ public class ControllerParam implements Observer, Initializable
             param.setOneTime(oneSelec.isSelected());
             param.setSecond(i);
             param.updateParam();
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Enregistrer !");
+            alert.setContentText("Les paramètres ont été modifié avec succès !");
+            alert.showAndWait();
+            this.model.getViewChanger().setView("DeckList");
         }
         catch(NumberFormatException nfe)
         {
@@ -89,10 +94,6 @@ public class ControllerParam implements Observer, Initializable
             alert.setContentText("Le nombre de seconde indiqué est incorrecte.");
             alert.showAndWait();
         }
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Enregistrer !");
-        alert.setContentText("Les paramètres ont été modifié avec succès !");
-        alert.showAndWait();
     }
 
     @FXML
