@@ -175,5 +175,14 @@ public class Deck extends Observable {
         DeleteApp deleteApp = new DeleteApp();
         deleteApp.deleteCardFromDeck(question, this.name);
     }
+
+    public boolean isQuestionInDeck(String question) {
+        for (Card card : this.deck) {
+            if (card.getQuestion().equals(question)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 

@@ -77,16 +77,20 @@ public class ControllerCardList extends AbstractControllerMenu implements Initia
         if (deckNames.size() == 0) {
             return;
         }
+        String question = this.model.getSelectedCard().getQuestion();
+        String answer = this.model.getSelectedCard().getAnswer();
+
         ChoiceDialog<String> dialog = new ChoiceDialog<>(deckNames.get(0), deckNames);
         dialog.setTitle("TN's Flashcards");
         dialog.setHeaderText("Ajouter une carte à une pile");
-        dialog.setContentText("Choisissez la pile à laquelle vous souhaitez ajouter la carte :\nQuestion : " + this.model.getSelectedCard().getQuestion() + "\nRéponse : " + this.model.getSelectedCard().getAnswer());
+        dialog.setContentText("Choisissez la pile à laquelle vous souhaitez ajouter la carte :\nQuestion : " + question + "\nRéponse : " + answer);
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
-            InsertApp app = new InsertApp();
-            app.insertRelationCardsDecks(this.model.getSelectedCard().getQuestion(), result.get());
-
-            this.model.getDeckList().searchDeckByName(result.get()).addCard(this.model.getSelectedCard());
+            //InsertApp app = new InsertApp();
+            //app.insertRelationCardsDecks(this.model.getSelectedCard().getQuestion(), result.get());
+            if (!this.model.getDeckList().searchDeckByName(result.get()).isQuestionInDeck(question)) {
+                this.model.getDeckList().searchDeckByName(result.get()).addCard(this.model.getSelectedCard());
+            }
         }
 
     }

@@ -39,7 +39,7 @@ public class ControllerDeckContent extends AbstractControllerMenu implements Ini
             return;
         }
         for (Card card : this.model.getSelectedDeck().getDeck()) {
-            //System.out.println("Question : " + card.getQuestion());
+            System.out.println("Question : " + card.getQuestion());
 
             HBox hbox = new HBox();
 
