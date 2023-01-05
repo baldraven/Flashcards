@@ -1,11 +1,9 @@
 package eu.telecomnancy.flashcards.controller;
 
-import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.InsertApp;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -14,7 +12,7 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ControllerNewDeck extends AbstractControllerMenu implements Initializable, Observer {
+public class ControllerNewDeck extends AbstractControllerMenu {
 
     @FXML
     private TextField deckName;

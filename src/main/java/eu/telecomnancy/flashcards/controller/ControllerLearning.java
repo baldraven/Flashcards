@@ -1,6 +1,5 @@
 package eu.telecomnancy.flashcards.controller;
 
-import javafx.fxml.Initializable;
 import javafx.animation.PauseTransition;
 import javafx.animation.SequentialTransition;
 import javafx.application.Platform;
@@ -20,13 +19,12 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import eu.telecomnancy.flashcards.Observer;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.StatsAdmin;
 
-public class ControllerLearning extends AbstractControllerMenu implements Observer, Initializable
+public class ControllerLearning extends AbstractControllerMenu 
 {
     @FXML
     private Button repButton;

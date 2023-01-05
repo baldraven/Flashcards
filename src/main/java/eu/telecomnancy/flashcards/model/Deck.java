@@ -1,6 +1,5 @@
 package eu.telecomnancy.flashcards.model;
 
-import eu.telecomnancy.flashcards.Observable;
 import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
 import eu.telecomnancy.flashcards.sql.connect.InsertApp;
 import eu.telecomnancy.flashcards.sql.connect.SelectApp;
@@ -8,7 +7,7 @@ import eu.telecomnancy.flashcards.sql.connect.UpdateApp;
 
 import java.util.ArrayList;
 
-public class Deck extends Observable {
+public class Deck {
     
     private ArrayList<Card> deck;
     private String name;
