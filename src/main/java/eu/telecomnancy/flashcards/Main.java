@@ -24,8 +24,9 @@ public class Main extends Application {
         primaryStage.setHeight(800);
         
         //Database
-        new Reboot();
-        Initialization init = new Initialization(true);
+        Boolean reboot = false;
+        new Reboot(reboot);
+        Initialization init = new Initialization(reboot);
 
         ViewChanger viewChanger = new ViewChanger();
         ModelFlashcard model = new ModelFlashcard(viewChanger, init.getDeckList(), init.getCardList(), init.getParam());
