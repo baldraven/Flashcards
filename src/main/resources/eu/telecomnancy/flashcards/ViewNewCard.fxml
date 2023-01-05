@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerNewCard">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerNewCard">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
@@ -12,7 +21,7 @@
                     <MenuItem mnemonicParsing="false" onAction="#switchToCardList" text="Voir toutes les cartes" />
                <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Voir toutes les piles" />
                <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quitter l'application" onAction="#quit"/>
+                  <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
@@ -33,9 +42,9 @@
             <children>
                <Pane prefHeight="99.0" prefWidth="800.0">
                   <children>
-                     <Label layoutX="259.0" layoutY="28.0" text="Créer une carte">
+                     <Label layoutX="255.0" layoutY="28.0" text="Créer une carte">
                         <font>
-                           <Font size="36.0" />
+                           <Font name="Bookman Old Style Bold" size="36.0" />
                         </font>
                      </Label>
                   </children>

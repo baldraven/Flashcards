@@ -9,6 +9,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -20,7 +21,6 @@
                 <items>
                     <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Voir toutes les piles" />
                <MenuItem mnemonicParsing="false" onAction="#switchToNewCard" text="Créer une carte" />
-                    <MenuItem mnemonicParsing="false" onAction="#switchToNewDeck" text="Créer une pile" />
                <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
                 </items>
@@ -50,18 +50,18 @@
       <bottom>
          <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-               <Button layoutX="165.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToModCard" prefHeight="45.0" prefWidth="136.0" text="Modifier" />
-               <Button layoutX="503.0" layoutY="26.0" mnemonicParsing="false" onAction="#deleteCard" prefHeight="45.0" prefWidth="143.0" text="Supprimer" />
-               <Button layoutX="332.0" layoutY="26.0" mnemonicParsing="false" onAction="#switchToNewCard" prefHeight="45.0" prefWidth="136.0" text="Nouvelle" />
+               <Button onAction="#switchToModCard" layoutX="165.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Modifier" />
+               <Button onAction="#switchToNewCard" layoutX="503.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="143.0" text="Supprimer" />
+               <Button onAction="#deleteCard" layoutX="332.0" layoutY="26.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Nouvelle" />
             </children>
          </Pane>
       </bottom>
       <top>
           <Pane prefHeight="120.0" prefWidth="800.0" BorderPane.alignment="CENTER">
               <children>
-                  <Label layoutX="300.0" layoutY="39.0" text="Mes cartes">
+                  <Label layoutX="308.0" layoutY="28.0" text="Mes cartes">
                       <font>
-                          <Font name="Bookman Old Style Bold" size="36.0" />
+                          <Font size="36.0" />
                       </font>
                   </Label>
                   <Label layoutX="192.0" layoutY="84.0" text="Questions">

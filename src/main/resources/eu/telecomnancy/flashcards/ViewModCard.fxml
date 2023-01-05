@@ -41,9 +41,9 @@
             <children>
                <Pane prefHeight="99.0" prefWidth="800.0">
                   <children>
-                     <Label layoutX="259.0" layoutY="28.0" text="Modifier une carte">
+                     <Label layoutX="227.0" layoutY="28.0" text="Modifier une carte">
                         <font>
-                           <Font size="36.0" />
+                           <Font name="Bookman Old Style Bold" size="36.0" />
                         </font>
                      </Label>
                   </children>
@@ -68,12 +68,12 @@
                </Pane>
                <Pane prefHeight="164.0" prefWidth="800.0">
                   <children>
-                     <Button onAction="#save" layoutX="333.0" layoutY="14.0" mnemonicParsing="false"  text="Sauvegarder">
+                     <Button layoutX="333.0" layoutY="14.0" mnemonicParsing="false" onAction="#save" text="Sauvegarder">
                         <font>
                            <Font size="18.0" />
                         </font>
                      </Button>
-                     <Button onAction="#switchToCardList" layoutX="370.0" layoutY="69.0" mnemonicParsing="false" text="Retour"/>
+                     <Button layoutX="370.0" layoutY="69.0" mnemonicParsing="false" onAction="#switchToCardList" text="Retour" />
                   </children>
                </Pane>
             </children>
