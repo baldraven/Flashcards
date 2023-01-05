@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import javafx.beans.binding.When.BooleanConditionBuilder;
-
 /**
  *
  * @author sqlitetutorial.net

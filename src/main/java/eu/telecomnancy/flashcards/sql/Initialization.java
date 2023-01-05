@@ -38,8 +38,8 @@ public class Initialization {
         app.insertCard("5+1", "6", -1, 230, 0, 0, 0, 0, 0);
         app.insertCard("6+1", "7", -1, 230, 0, 0, 0, 0, 0);
 
-        app.insertDeck("Math", "Additions faciles", 0, 0, 0, 0);
-        app.insertDeck("Culture", "Questions culturelles", 0, 0, 0, 0);
+        app.insertDeck("Math", "Additions faciles", 6, 4, 2,1);
+        app.insertDeck("Culture", "Questions culturelles", 5, 2, 2, 3);
 
         app.insertRelationCardsDecks("Quel est la capitale du monde ?", "Culture");
         app.insertRelationCardsDecks("Arc-en-ciel en anglais", "Culture");
@@ -72,6 +72,7 @@ public class Initialization {
         for (Deck deck : this.deckList.getDeckList()) {
             deck = app.getCardsWithDeckName(deck, deck.getName());
             deck = app.getDescriptionWithDeckName(deck, deck.getName());
+            deck = app.getDeckParameters(deck, deck.getName());
             for (Card card : deck.getDeck()) {
                 if (!this.cardList.isQuestionInCardList(card.getQuestion())) {
                     this.cardList.addCard(card);

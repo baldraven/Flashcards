@@ -115,19 +115,19 @@ public class Deck extends Observable {
         return this.currentView;
     }
 
-    public double getAgain() {
+    public Integer getAgain() {
         return this.again;
     }
 
-    public double getHard() {
+    public Integer getHard() {
         return this.hard;
     }
 
-    public double getGood() {
+    public Integer getGood() {
         return this.good;
     }
 
-    public double getEasy() {
+    public Integer getEasy() {
         return this.easy;
     }
 
