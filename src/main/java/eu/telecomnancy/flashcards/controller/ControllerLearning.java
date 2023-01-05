@@ -69,20 +69,24 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         gridP.setVisible(true);
         repButton.setVisible(false);
         affTimer.setVisible(false);
+        tempHard.setVisible(true);
+        tempEasy.setVisible(true);
+        tempCor.setVisible(true);
+        tempRev.setVisible(true);
         if(card.getInterval() == -1)
         {
-          /*   tempRev.setText("1 min");
+            tempRev.setText("1 min");
             tempCor.setText("10 min");
             tempHard.setText("6 min");
-            tempEasy.setText("4 jour"); */
+            tempEasy.setText("4 jour"); 
         }
         else
         {
-           /*  DecimalFormat df = new DecimalFormat("0.0");
+            DecimalFormat df = new DecimalFormat("0.0");
             tempRev.setText(df.format(card.getInterval()*0.5) + " min");
-            tempCor.setText(df.format(card.getInterval() * card.getEase()) + " min");
+            tempCor.setText(df.format(card.getInterval() * (card.getEase()/100)) + " min");
             tempHard.setText(df.format(card.getInterval() * 1.2) + " min");
-            tempEasy.setText(df.format(card.getInterval() * card.getEase()) + " min"); */
+            tempEasy.setText(df.format(card.getInterval() * (card.getEase()/100)) + " min"); 
         }
     }
 
@@ -112,7 +116,7 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         }
         else
         {
-            card.setInterval(card.getInterval() * card.getEase());;
+            card.setInterval(card.getInterval() * (card.getEase()/100));;
         }
         card.setGood(card.getGood() + 1);
         card.updateParameters();
@@ -145,9 +149,10 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
         }
         else
         {
-            card.setInterval(card.getInterval() * card.getEase());
+            card.setInterval(card.getInterval() * (card.getEase()/100));
         }
         card.setEasy(card.getEasy() + 1);
+        card.setEase(card.getEase()+20);
         card.updateParameters();
         this.reagirAction();
     }
@@ -196,6 +201,10 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
             if(leng == doneCards.size())
             {
                 doneCards.clear();
+                if(model.getParam().getOneTime())
+                {
+                    model.getViewChanger().setView("DeckList");
+                }
             }
             long unixtime = System.currentTimeMillis() / (1000L*60L);
             double max = Double.NEGATIVE_INFINITY;
@@ -250,6 +259,7 @@ public class ControllerLearning extends AbstractControllerMenu implements Observ
                 pause.setOnFinished(action -> affTimer());
                 var timer = new SequentialTransition(pause);
                 timer.setCycleCount(secondTimer);
+                secondTimer--;
                 timer.setOnFinished(action -> AffRep(null));
                 timer.play();
             }
