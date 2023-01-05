@@ -24,6 +24,14 @@ public class DeckList extends Observable {
         return this.deckList;
     }
 
+    public ArrayList<String> getDeckNames() {
+        ArrayList<String> deckNames = new ArrayList<>();
+        for (Deck deck : this.deckList) {
+            deckNames.add(deck.getName());
+        }
+        return deckNames;
+    }
+
     public Deck searchDeckByName(String searchedName) {
         for (Deck deck : this.deckList) {
             if (deck.getName().equals(searchedName)) {

@@ -24,7 +24,7 @@ public class Main extends Application {
         primaryStage.setHeight(800);
         
         //Database
-        Boolean reboot = false;
+        Boolean reboot = true;
         new Reboot(reboot);
         Initialization init = new Initialization(reboot);
 
@@ -71,6 +71,11 @@ public class Main extends Application {
         loaderParam.setControllerFactory(iC->new ControllerParam(model));
         Parent rootParam = loaderParam.load();
 
+        FXMLLoader loaderStats = new FXMLLoader();
+        loaderStats.setLocation(getClass().getResource("ViewStatistics.fxml"));
+        loaderStats.setControllerFactory(iC->new ControllerStatistics(model));
+        Parent rootStats = loaderStats.load();
+
         viewChanger.addRoot("DeckList", rootDeckList);
         viewChanger.addRoot("CardList", rootCardList);
         viewChanger.addRoot("DeckContent", rootDeckContent);
@@ -79,6 +84,7 @@ public class Main extends Application {
         viewChanger.addRoot("Learning", rootLearning);
         viewChanger.addRoot("ModCard", rootModCard);
         viewChanger.addRoot("Param", rootParam);
+        viewChanger.addRoot("Stats", rootStats);
 
         Scene scene = new Scene(rootDeckList);
         model.getViewChanger().setScene(scene);

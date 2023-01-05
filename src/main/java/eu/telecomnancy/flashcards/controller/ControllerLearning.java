@@ -30,7 +30,7 @@ import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 
-public class ControllerLearning implements Observer, Initializable
+public class ControllerLearning extends AbstractControllerMenu implements Observer, Initializable
 {
     @FXML
     private Button repButton;
@@ -52,14 +52,13 @@ public class ControllerLearning implements Observer, Initializable
     private Label affTimer;
     private int secondTimer;
     private Deck deck;
-    private ModelFlashcard model;
     private Card card;
     private long time;
     private ArrayList<Card> doneCards;
 
     public ControllerLearning(ModelFlashcard model)
     {
-        this.model = model;
+        super(model);
         this.model.getViewChanger().ajouterObs("Learning", this);
         doneCards = new ArrayList<Card>();
     }

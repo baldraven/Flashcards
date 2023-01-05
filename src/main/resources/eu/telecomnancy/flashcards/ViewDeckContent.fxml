@@ -17,12 +17,12 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Paramètre" onAction="#accesParam" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToParam" text="Paramètre" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToStats" text="Dashboard" />
                 </items>
             </Menu>
         </menus>
@@ -58,9 +58,19 @@
       <bottom>
          <Pane prefHeight="150.0" prefWidth="800.0" BorderPane.alignment="CENTER">
             <children>
-               <Button layoutX="304.0" layoutY="50.0" mnemonicParsing="false" onAction="#removeCardInDeck" prefHeight="50.0" prefWidth="193.0" text="Retirer du deck">
+               <Button layoutX="74.0" layoutY="50.0" mnemonicParsing="false" onAction="#removeCardInDeck" prefHeight="50.0" prefWidth="193.0" text="Retirer de la pile">
                   <font>
-                     <Font size="18.0" />
+                     <Font size="16.0" />
+                  </font>
+               </Button>
+               <Button layoutX="549.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="207.0" text="Changer la description">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Button>
+               <Button layoutX="312.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="193.0" text="Renommer la pile">
+                  <font>
+                     <Font size="16.0" />
                   </font>
                </Button>
             </children></Pane>

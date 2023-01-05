@@ -26,12 +26,12 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Paramètre" onAction="#accesParam" />
+                    <MenuItem mnemonicParsing="false" text="Paramètre" onAction="#switchToParam" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Action 1" />
+                    <MenuItem onAction="#switchToStats" mnemonicParsing="false" text="Dashboard" />
                 </items>
             </Menu>
         </menus>

@@ -50,7 +50,7 @@
          <menus>
             <Menu mnemonicParsing="false" text="Edition">
               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#leave" text="Retour à l'accueil" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Retour à l'accueil" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
               </items>
@@ -62,7 +62,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
               <items>
-                <MenuItem mnemonicParsing="false" text="Stats Global" />
+                <MenuItem onAction="#switchToStats" mnemonicParsing="false" text="Dashboard" />
               </items>
             </Menu>
          </menus>
@@ -94,7 +94,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="371.0" layoutY="304.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="110.0" text="Retour" onAction="#leave">
+            <Button layoutX="371.0" layoutY="304.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="110.0" text="Retour" onAction="#switchToDeckList">
                <font>
                   <Font name="Bookman Old Style" size="18.0" />
                </font>

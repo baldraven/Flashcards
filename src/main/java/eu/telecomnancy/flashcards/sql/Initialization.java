@@ -73,7 +73,9 @@ public class Initialization {
             deck = app.getCardsWithDeckName(deck, deck.getName());
             deck = app.getDescriptionWithDeckName(deck, deck.getName());
             for (Card card : deck.getDeck()) {
-                this.cardList.addCard(card);
+                if (!this.cardList.isQuestionInCardList(card.getQuestion())) {
+                    this.cardList.addCard(card);
+                }
                 card = app.getAnswerWithCardQuestion(card, card.getQuestion());
             }
         }

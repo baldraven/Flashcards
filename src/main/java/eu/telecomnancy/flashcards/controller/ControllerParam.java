@@ -69,12 +69,6 @@ public class ControllerParam extends AbstractControllerMenu implements Observer,
     }
 
     @FXML
-    public void leave()
-    {
-        this.model.getViewChanger().setView("DeckList");
-    }
-
-    @FXML
     public void applyChange()
     {
         try
@@ -112,9 +106,4 @@ public class ControllerParam extends AbstractControllerMenu implements Observer,
         }
     }
 
-    @FXML
-    public void quit()
-    {
-        Platform.exit();
-    }
 }
