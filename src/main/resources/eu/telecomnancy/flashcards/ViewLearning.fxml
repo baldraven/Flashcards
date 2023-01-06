@@ -48,7 +48,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="810.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerLearning">
+<VBox prefHeight="810.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerLearning">
   <children>
     <MenuBar VBox.vgrow="NEVER">
          <menus>
@@ -61,14 +61,14 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
               <items>
-              <MenuItem mnemonicParsing="false" text="Paramètres" onAction="#accesParam" />
+              <MenuItem mnemonicParsing="false" onAction="#accesParam" text="Paramètres" />
                   <SeparatorMenuItem mnemonicParsing="false" />
                 <MenuItem mnemonicParsing="false" text="About" />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
               <items>
-                <MenuItem onAction="#switchToStats" mnemonicParsing="false" text="Dashboard" />
+                <MenuItem mnemonicParsing="false" onAction="#switchToStats" text="Dashboard" />
               </items>
             </Menu>
          </menus>
@@ -141,7 +141,7 @@
                   <Font name="Bookman Old Style Bold" size="24.0" />
                </font>
             </Label>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="30.0" layoutY="20.0" onMouseClicked="#leave" pickOnBounds="true" preserveRatio="true" fx:id="home">
+            <ImageView fx:id="home" fitHeight="60.0" fitWidth="60.0" layoutX="30.0" layoutY="20.0" onMouseClicked="#leave" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/house.png" />
                </image>

@@ -27,6 +27,9 @@ public class ControllerNewCard extends AbstractControllerMenu {
     @FXML
     private ImageView home;
 
+    @FXML
+    private ImageView add;
+
     public ControllerNewCard(ModelFlashcard model) {
         super(model);
         this.model.getViewChanger().ajouterObs("NewCard", this);
@@ -49,6 +52,8 @@ public class ControllerNewCard extends AbstractControllerMenu {
         this.loadDeckNames();
         Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
         tooltip.install(home, tooltip);
+        Tooltip tooltip1 = new Tooltip("Ajouter une carte");
+        tooltip1.install(add, tooltip1);
     }
 
     public void loadDeckNames() {
@@ -73,7 +78,7 @@ public class ControllerNewCard extends AbstractControllerMenu {
         String question = this.getQuestion().getText();
         String answer = this.getAnswer().getText();
 
-        Card card = new Card(question, answer, 320, -1, 0, 0, 0, 0, 0);
+        Card card = new Card(question, answer, 230, -1, 0, 0, 0, 0, 0);
         System.out.println(
                 "Question : " + question +
                 "\nRéponse : " + answer +
