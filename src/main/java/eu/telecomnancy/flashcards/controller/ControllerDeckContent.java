@@ -41,6 +41,7 @@ public class ControllerDeckContent extends AbstractControllerMenu {
         if (this.model.getSelectedDeck() == null) {
             return;
         }
+        this.deckNameLabel.setText("Pile " + this.model.getSelectedDeck().getName());
         for (Card card : this.model.getSelectedDeck().getDeck()) {
             //System.out.println("Question : " + card.getQuestion());
 
@@ -69,8 +70,6 @@ public class ControllerDeckContent extends AbstractControllerMenu {
 
             //Button removeButton = new Button("Retirer");
             //removeButton.setOnAction(action -> removeCardInDeck(card));
-
-            this.deckNameLabel.setText("Pile " + this.model.getSelectedDeck().getName());
 
             hbox.getChildren().addAll(questionLabel, answerLabel);
             this.content.getItems().add(hbox);

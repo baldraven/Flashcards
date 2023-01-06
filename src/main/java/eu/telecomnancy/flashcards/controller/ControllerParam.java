@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.model.Param;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
@@ -73,6 +74,8 @@ public class ControllerParam extends AbstractControllerMenu
         }
         sec.setText(String.valueOf(param.getsecond()));
         slideSec.setValue(param.getsecond());
+        ChangeListener<Object> updatelistener = (obs, oldValue, newValue) -> {valueChange();};
+        slideSec.valueProperty().addListener(updatelistener);
     }
 
     @FXML
@@ -93,7 +96,7 @@ public class ControllerParam extends AbstractControllerMenu
     @FXML
     public void valueChange()
     {
-        sec.setText(String.valueOf(slideSec.getValue()));
+        sec.setText(String.valueOf((int)slideSec.getValue()));
     }
 
     @FXML

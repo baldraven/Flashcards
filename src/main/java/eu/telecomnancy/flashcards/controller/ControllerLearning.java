@@ -56,6 +56,8 @@ public class ControllerLearning extends AbstractControllerMenu
     public ImageView home;
     private int secondTimer;
     private Deck deck;
+    private PauseTransition pause = new PauseTransition(Duration.seconds(1));
+    private SequentialTransition timer = new SequentialTransition(pause);
     private Card card;
     private long time;
     private ArrayList<Card> doneCards;
@@ -187,6 +189,12 @@ public class ControllerLearning extends AbstractControllerMenu
         secondTimer--;
     }
 
+    public void endTimer()
+    {
+        affTimer.setVisible(false);
+        timer.stop();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) 
     {
@@ -277,9 +285,7 @@ public class ControllerLearning extends AbstractControllerMenu
                 repButton.setVisible(false);
                 affTimer.setVisible(true);
                 affTimer.setText(String.valueOf(secondTimer));
-                var pause = new PauseTransition(Duration.seconds(1));
                 pause.setOnFinished(action -> affTimer());
-                var timer = new SequentialTransition(pause);
                 timer.setCycleCount(secondTimer);
                 secondTimer--;
                 timer.setOnFinished(action -> AffRep(null));
@@ -294,6 +300,8 @@ public class ControllerLearning extends AbstractControllerMenu
 
     public void reagir(){
         this.deck = this.model.getSelectedDeck();
+        endTimer();
+        doneCards.clear();
         this.reagirAction();
     }
 
