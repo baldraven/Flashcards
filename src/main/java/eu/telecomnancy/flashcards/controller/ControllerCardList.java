@@ -13,10 +13,7 @@ import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
@@ -26,12 +23,34 @@ public class ControllerCardList extends AbstractControllerMenu {
     protected ListView<HBox> content;
     @FXML
     private ImageView home;
+    @FXML
+    private ImageView add;
+    @FXML
+    private ImageView stack;
+    @FXML
+    private ImageView modify;
+    @FXML
+    private ImageView trash;
+
+    @FXML
+    private TextField searchBar;
+
+    private ArrayList<Card> displayedCards;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.displayCards();
+        this.displayCards(this.model.getCardList().getCardList());
         Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
         tooltip.install(home, tooltip);
+        Tooltip tooltip1 = new Tooltip("Ajouter une carte");
+        tooltip1.install(add, tooltip1);
+        Tooltip tooltip2 = new Tooltip("Ajouter la carte selectionnée à une pile");
+        tooltip2.install(stack, tooltip2);
+        Tooltip tooltip3 = new Tooltip("Modifier la carte selectionnée");
+        tooltip3.install(modify, tooltip3);
+        Tooltip tooltip4 = new Tooltip("Supprimer la carte selectionnée");
+        tooltip4.install(trash, tooltip4);
+        this.content.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     public ControllerCardList(ModelFlashcard model) {
@@ -39,9 +58,10 @@ public class ControllerCardList extends AbstractControllerMenu {
         this.model.getViewChanger().ajouterObs("CardList", this);
     }
 
-    public void displayCards() {
+    public void displayCards(ArrayList<Card> cards) {
         this.content.getItems().clear();
-        for (Card card : this.model.getCardList().getCardList()) {
+        int cardNumber = 0;
+        for (Card card : cards) {
             HBox hbox = new HBox();
 
             hbox.setMinHeight(40);
@@ -52,7 +72,7 @@ public class ControllerCardList extends AbstractControllerMenu {
 
             Label questionLabel = new Label(card.getQuestion());
             Label answerLabel = new Label(card.getAnswer());
-            
+            Label hiddenNumber = new Label(String.valueOf(cardNumber));
 
             questionLabel.setStyle("-fx-font-size: 18;");
             questionLabel.setPrefWidth(240);
@@ -66,33 +86,48 @@ public class ControllerCardList extends AbstractControllerMenu {
             answerLabel.setWrapText(true);
             answerLabel.setTooltip(new Tooltip(answerLabel.getText()));
 
-            hbox.getChildren().addAll(questionLabel, answerLabel);
+            hiddenNumber.setVisible(false); // Le contenu du Label est invisible
+            hiddenNumber.setManaged(false); // Enlève la place occupée par ce Label sur la vue ViewCardList
+
+            hbox.getChildren().addAll(questionLabel, answerLabel, hiddenNumber);
             this.content.getItems().add(hbox);
+
+            cardNumber++;
         }
     }
 
     @FXML
     public void addCardToDeck() {
         if (content.getSelectionModel().getSelectedIndex() == -1) return;
-        int card_id = content.getSelectionModel().getSelectedIndex();
-        this.model.setSelectedCard(model.getCardList().getCardList().get(card_id));
         ArrayList<String> deckNames = this.model.getDeckList().getDeckNames();
         if (deckNames.size() == 0) {
             return;
         }
-        String question = this.model.getSelectedCard().getQuestion();
-        String answer = this.model.getSelectedCard().getAnswer();
+        ArrayList<Integer> indicesList = new ArrayList<>();
+        ArrayList<String> questionsList = new ArrayList<>();
+
+        for (int i = 0; i < this.content.getSelectionModel().getSelectedIndices().size(); i++) {
+            //System.out.println("Index : " + this.content.getSelectionModel().getSelectedIndices().get(i));
+
+            int card_id = this.content.getSelectionModel().getSelectedIndices().get(i);
+            indicesList.add(card_id);
+            this.model.setSelectedCard(model.getCardList().getCardList().get(card_id));
+
+            String question = this.model.getSelectedCard().getQuestion();
+            questionsList.add(question);
+        }
 
         ChoiceDialog<String> dialog = new ChoiceDialog<>(deckNames.get(0), deckNames);
         dialog.setTitle("TN's Flashcards");
-        dialog.setHeaderText("Ajouter une carte à une pile");
-        dialog.setContentText("Choisissez la pile à laquelle vous souhaitez ajouter la carte :\nQuestion : " + question + "\nRéponse : " + answer);
+        dialog.setHeaderText("Ajouter une / des carte(s) à une pile");
+        dialog.setContentText("Choisissez la pile à laquelle vous souhaitez ajouter la ou les cartes :");
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
-            //InsertApp app = new InsertApp();
-            //app.insertRelationCardsDecks(this.model.getSelectedCard().getQuestion(), result.get());
-            if (!this.model.getDeckList().searchDeckByName(result.get()).isQuestionInDeck(question)) {
-                this.model.getDeckList().searchDeckByName(result.get()).addCard(this.model.getSelectedCard());
+            for (int i = 0; i < questionsList.size(); i++)  {
+                this.model.setSelectedCard(model.getCardList().getCardList().get(indicesList.get(i)));
+                if (!this.model.getDeckList().searchDeckByName(result.get()).isQuestionInDeck(questionsList.get(i))) {
+                    this.model.getDeckList().searchDeckByName(result.get()).addCard(this.model.getSelectedCard());
+                }
             }
         }
 
@@ -127,9 +162,23 @@ public class ControllerCardList extends AbstractControllerMenu {
         reagir();
     }
 
+    @FXML
+    public void researchCards() {
+        System.out.println("Search bar : " + this.searchBar.getText());
+        if (this.searchBar.getText().length() == 0) {
+            this.reagir();
+        }
+        ArrayList<Card> foundCards = new ArrayList<>();
+        for (Card card : this.model.getCardList().getCardList()) {
+            if (card.getQuestion().contains(this.searchBar.getText())) {
+                foundCards.add(card);
+            }
+        }
+        this.displayCards(foundCards);
+    }
 
     @Override
     public void reagir() {
-        this.displayCards();
+        this.displayCards(this.model.getCardList().getCardList());
     }
 }

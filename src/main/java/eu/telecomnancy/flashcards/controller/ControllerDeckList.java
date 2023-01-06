@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
@@ -20,6 +21,8 @@ public class ControllerDeckList extends AbstractControllerMenu {
 
     @FXML
     protected ListView<HBox> content;
+    @FXML
+    private ImageView add;
 
     public ControllerDeckList(ModelFlashcard model) {
         super(model);
@@ -29,6 +32,8 @@ public class ControllerDeckList extends AbstractControllerMenu {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.displayDecks();
+        Tooltip tooltip1 = new Tooltip("Ajouter une pile");
+        tooltip1.install(add, tooltip1);
     }
 
     public void displayDecks() {

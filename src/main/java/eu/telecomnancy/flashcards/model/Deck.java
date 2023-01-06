@@ -17,8 +17,6 @@ public class Deck {
     private Integer good;
     private Integer easy;
 
-    private String currentView = "DeckList";
-
     public Deck(String name, String description, Integer again, Integer hard, Integer good, Integer easy) {
         this.deck = new ArrayList<Card>();
         this.name = name;
@@ -108,10 +106,6 @@ public class Deck {
 
     public String getDescription() {
         return this.description;
-    }
-
-    public String getCurrentView() {
-        return this.currentView;
     }
 
     public Integer getAgain() {

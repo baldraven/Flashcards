@@ -5,9 +5,11 @@ import java.util.ResourceBundle;
 
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.model.Param;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.Alert.AlertType;
@@ -23,6 +25,12 @@ public class ControllerParam extends AbstractControllerMenu
     private TextField sec;
     @FXML
     private ImageView home;
+    @FXML
+    private ImageView enreIcon;
+    @FXML
+    private ImageView annul;
+    @FXML
+    private Slider slideSec;
     private Param param;
 
     public ControllerParam(ModelFlashcard model)
@@ -42,6 +50,13 @@ public class ControllerParam extends AbstractControllerMenu
     {
         Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
         tooltip.install(home, tooltip);
+        Tooltip tooltip2 = new Tooltip("Enregistrer les modifications");
+        tooltip.install(enreIcon, tooltip2);
+        Tooltip tooltip3 = new Tooltip("Annuler les modifications");
+        tooltip.install(annul, tooltip3);
+        Tooltip secondeTooltip = new Tooltip("Nombre de secondes");
+        sec.setTooltip(secondeTooltip);
+        slideSec.setTooltip(secondeTooltip);
         if(param.getOneTime())
         {
             oneSelec.setSelected(true);
@@ -49,13 +64,18 @@ public class ControllerParam extends AbstractControllerMenu
         if(param.getisSecond())
         {
             sec.setDisable(false);
+            slideSec.setDisable(false);
             isSec.setSelected(true);
         }
         else
         {
             sec.setDisable(true);
+            slideSec.setDisable(true);
         }
         sec.setText(String.valueOf(param.getsecond()));
+        slideSec.setValue(param.getsecond());
+        ChangeListener<Object> updatelistener = (obs, oldValue, newValue) -> {valueChange();};
+        slideSec.valueProperty().addListener(updatelistener);
     }
 
     @FXML
@@ -64,11 +84,19 @@ public class ControllerParam extends AbstractControllerMenu
         if(isSec.isSelected())
         {
             sec.setDisable(false);
+            slideSec.setDisable(false);
         }
         else
         {
             sec.setDisable(true);
+            slideSec.setDisable(true);
         }
+    }
+
+    @FXML
+    public void valueChange()
+    {
+        sec.setText(String.valueOf((int)slideSec.getValue()));
     }
 
     @FXML

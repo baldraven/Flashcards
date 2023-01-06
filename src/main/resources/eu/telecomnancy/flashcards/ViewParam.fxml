@@ -38,6 +38,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -85,26 +86,27 @@
                   <Font name="Bookman Old Style" size="18.0" />
                </font>
             </CheckBox>
-            <TextField fx:id="sec" layoutX="53.0" layoutY="222.0" prefHeight="33.0" prefWidth="51.0" promptText="10">
+            <TextField fx:id="sec" layoutX="461.0" layoutY="204.0" prefHeight="33.0" prefWidth="51.0" promptText="10">
                <font>
                   <Font name="Bookman Old Style" size="14.0" />
                </font>
             </TextField>
-            <Label layoutX="118.0" layoutY="228.0" text="secondes avant affichage réponse (Plage : 3 - 60)">
+            <Label layoutX="173.0" layoutY="245.0" text="secondes avant affichage réponse">
                <font>
                   <Font name="Bookman Old Style" size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="184.0" layoutY="274.0" onMouseClicked="#applyChange" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="enreIcon" fitHeight="60.0" fitWidth="60.0" layoutX="184.0" layoutY="286.0" onMouseClicked="#applyChange" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/valid.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="396.0" layoutY="274.0" onMouseClicked="#switchToDeckList" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="annul" fitHeight="60.0" fitWidth="60.0" layoutX="396.0" layoutY="286.0" onMouseClicked="#switchToDeckList" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/retour.png" />
                </image>
             </ImageView>
+            <Slider fx:id="slideSec" blockIncrement="1.0" layoutX="60.0" layoutY="196.0" majorTickUnit="3.0" max="60.0" min="3.0" onDragOver="#valueChange" prefHeight="49.0" prefWidth="389.0" showTickLabels="true" value="10.0" />
       </children>
     </AnchorPane>
   </children>

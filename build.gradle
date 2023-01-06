@@ -5,6 +5,7 @@ plugins {
     id 'org.beryx.jlink' version '2.24.1'
     id "io.gitlab.plunts.plantuml" version "2.0.1"
     id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'com.adarshr.test-logger' version '3.1.0'
 }
 
 group 'eu.telecomnancy'
@@ -24,8 +25,6 @@ targetCompatibility = '17'
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
-
-
 
 application {
     //mainModule = 'eu.telecomnancy.flashcards'
@@ -47,27 +46,57 @@ dependencies {
     implementation('org.controlsfx:controlsfx:11.1.1')
     implementation('org.xerial:sqlite-jdbc:3.40.0.0')
 
-    implementation("org.testfx:testfx-core:4.0.16-alpha")
-    implementation('org.junit.jupiter:junit-jupiter-api:5.5.1')
-    implementation("org.testfx:testfx-junit5:4.0.16-alpha")
+    //implementation("org.testfx:testfx-core:4.0.16-alpha")
+    //implementation('org.junit.jupiter:junit-jupiter-api:5.5.1')
+    //implementation("org.testfx:testfx-junit5:4.0.16-alpha")
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
 
     implementation("com.opencsv:opencsv:5.7.1")
 
 }
 
-test {
-    useJUnitPlatform()
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['test']
+        }
+    }
 }
 
-task fatJar(type: Jar) {
-    manifest {
-        attributes 'Main-Class': 'eu.telecomnancy.flashcards.Main'
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
     }
-    archiveBaseName = "${rootProject.name}"
-    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } 
-    setDuplicatesStrategy(DuplicatesStrategy.INCLUDE) }
-    with jar
 }
+
+testlogger {
+    theme 'mocha'
+    showExceptions true
+    showStackTraces true
+    showFullStackTraces false
+    showCauses true
+    slowThreshold 5000
+    showSummary true
+    showSimpleNames false
+    showPassed true
+    showSkipped true
+    showFailed true
+    showStandardStreams false
+    showPassedStandardStreams true
+    showSkippedStandardStreams true
+    showFailedStandardStreams true
+}
+
+
 
 classDiagrams {
   diagram {

@@ -6,7 +6,7 @@ module eu.telecomnancy.flashcards {
     requires java.sql;
     requires com.opencsv;
 
-    opens eu.telecomnancy.flashcards to javafx.fxml, java.sql, org.testfx, org.junit.jupiter.api, com.opencsv;
+    opens eu.telecomnancy.flashcards to javafx.fxml, java.sql, com.opencsv;
 
     exports eu.telecomnancy.flashcards;
     exports eu.telecomnancy.flashcards.controller;
