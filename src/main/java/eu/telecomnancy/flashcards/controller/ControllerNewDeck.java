@@ -4,6 +4,7 @@ import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.InsertApp;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -42,8 +43,27 @@ public class ControllerNewDeck extends AbstractControllerMenu {
     }
 
     public void createDeck() {
-        String name = this.deckName.getText();
-        String description = this.deckDescription.getText();
+        String name = this.deckName.getText().trim();
+        String description = this.deckDescription.getText().trim();
+        if (name.length() == 0 || description.length() == 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("TN's Flashcards");
+            alert.setHeaderText("Nom de pile et/ou description non saisi(e)");
+            alert.setContentText("Vous n'avez pas saisi de nom de pile et/ou de description.\nVeuillez remplir les deux champs ci-dessous.\nLes noms uniquement composés d'espaces ne sont pas acceptés.");
+            alert.showAndWait();
+            return;
+        }
+        String legalChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+        for (int i = 0; i < name.length(); i++) {
+            if (legalChars.indexOf(name.charAt(i)) == -1) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("TN's Flashcards");
+                alert.setHeaderText("Nom de pile incorrect saisi");
+                alert.setContentText("Vous avez saisi un nom de pile interdit.\nLes caractères autorisés sont :\n\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n0123456789_");
+                alert.showAndWait();
+                return;
+            }
+        }
         //System.out.println(this.model.getDeckList().searchDeckByName(name));
         if (this.model.getDeckList().searchDeckByName(name) == null) { // Le nom de la pile est libre
             InsertApp app = new InsertApp();
