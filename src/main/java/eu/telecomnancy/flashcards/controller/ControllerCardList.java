@@ -103,6 +103,8 @@ public class ControllerCardList extends AbstractControllerMenu {
             Label label = (Label) hbox.getChildren().get(0);
             String question = label.getText();
             Card card = model.getCardList().getCardByQuestion(question);
+
+            selectedCardList.add(card);
         }
 
         ChoiceDialog<String> dialog = new ChoiceDialog<>(deckNames.get(0), deckNames);
@@ -113,7 +115,6 @@ public class ControllerCardList extends AbstractControllerMenu {
         Deck selectedDeck = model.getDeckList().searchDeckByName(result.get());
         if (result.isPresent()) {
             for (Card card : selectedCardList)  {
-                System.out.println(card.getQuestion());
                 if (!selectedDeck.isQuestionInDeck(card.getQuestion()))
                    selectedDeck.addCard(card);
             }
