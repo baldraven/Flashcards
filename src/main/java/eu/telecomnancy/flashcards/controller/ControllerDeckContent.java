@@ -3,6 +3,7 @@ package eu.telecomnancy.flashcards.controller;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
+import eu.telecomnancy.flashcards.sql.connect.ExportApp;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -124,6 +125,13 @@ public class ControllerDeckContent extends AbstractControllerMenu {
                 return; 
             }
         }
+    }
+
+    @FXML
+    public void exporter() {
+        ExportApp exportApp = new ExportApp();
+        exportApp.exportCards(this.model.getSelectedDeck().getName(), this.model.getSelectedDeck().getDeck());
+        exportApp.exportDeck(this.model.getSelectedDeck());
     }
 
     @Override
