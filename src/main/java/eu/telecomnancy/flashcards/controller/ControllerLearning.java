@@ -43,6 +43,14 @@ public class ControllerLearning extends AbstractControllerMenu
     @FXML
     private Label tempCor;
     @FXML
+    private ImageView Rev;
+    @FXML
+    private ImageView Easy;
+    @FXML
+    private ImageView Hard;
+    @FXML
+    private ImageView Cor;
+    @FXML
     private Label affTimer;
     @FXML
     public ImageView home;
@@ -193,6 +201,14 @@ public class ControllerLearning extends AbstractControllerMenu
         tempRev.setVisible(false);
         Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
         tooltip.install(home, tooltip);
+        Tooltip tooltip1 = new Tooltip("Facile");
+        tooltip1.install(Easy, tooltip1);
+        Tooltip tooltip2 = new Tooltip("Difficile");
+        tooltip2.install(Hard, tooltip2);
+        Tooltip tooltip3 = new Tooltip("A revoir");
+        tooltip3.install(Rev, tooltip3);
+        Tooltip tooltip4 = new Tooltip("Correct");
+        tooltip4.install(Cor, tooltip4);
     }
 
     public void reagirAction()

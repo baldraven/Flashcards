@@ -48,7 +48,7 @@
                                     <Font name="Bookman Old Style Bold" size="36.0" />
                                 </font>
                             </Label>
-                     <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="39.0" layoutY="20.0" onMouseClicked="#switchToCardList" pickOnBounds="true" preserveRatio="true" fx:id="home">
+                     <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="39.0" layoutY="20.0" onMouseClicked="#switchToDeckList" pickOnBounds="true" preserveRatio="true" fx:id="home">
                         <image>
                            <Image url="@../../../img/house.png" />
                         </image>

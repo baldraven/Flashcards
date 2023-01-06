@@ -88,7 +88,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Difficile" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <ImageView fx:id="Hard" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Difficile" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <image>
                               <Image url="@../../../img/hard.png" />
                            </image>
@@ -113,17 +113,17 @@
                            <Font size="16.0" />
                         </font>
                         </Label>
-                        <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Revoir" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <ImageView fx:id="Rev" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Revoir" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <image>
                               <Image url="@../../../img/Again.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Correct" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <ImageView fx:id="Cor" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Correct" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <image>
                               <Image url="@../../../img/correct.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Facile" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
+                        <ImageView fx:id="Easy" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#Facile" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <image>
                               <Image url="@../../../img/easy.png" />
                            </image>
