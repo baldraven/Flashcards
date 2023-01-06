@@ -10,6 +10,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.net.URL;
 import java.util.Optional;
@@ -114,16 +116,15 @@ public class ControllerDeckContent extends AbstractControllerMenu {
         Optional<String> result = dialog.showAndWait();
         if(result.isPresent())
         {
-            this.model.getSelectedDeck().setDescription(result.get());
             if(result.get().length() < 1)
             {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("TN's Flashcards");
                 alert.setHeaderText("Description non saisie");
                 alert.setContentText("Vous n'avez pas saisi de description.");
-                alert.showAndWait();
                 return; 
             }
+            this.model.getSelectedDeck().setDescription(result.get());
         }
     }
 
