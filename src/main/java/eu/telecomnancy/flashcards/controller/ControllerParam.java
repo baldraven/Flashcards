@@ -100,6 +100,34 @@ public class ControllerParam extends AbstractControllerMenu
     }
 
     @FXML
+    public void retourParam()
+    {
+        if(param.getOneTime())
+        {
+            oneSelec.setSelected(true);
+        }
+        else
+        {
+            oneSelec.setSelected(false);
+        }
+        if(param.getisSecond())
+        {
+            sec.setDisable(false);
+            slideSec.setDisable(false);
+            isSec.setSelected(true);
+        }
+        else
+        {
+            isSec.setSelected(false);
+            sec.setDisable(true);
+            slideSec.setDisable(true);
+        }
+        sec.setText(String.valueOf(param.getsecond()));
+        slideSec.setValue(param.getsecond());
+        this.switchToDeckList();
+    }
+
+    @FXML
     public void applyChange()
     {
         try
