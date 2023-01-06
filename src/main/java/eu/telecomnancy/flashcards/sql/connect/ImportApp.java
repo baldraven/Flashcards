@@ -50,11 +50,6 @@ public class ImportApp {
             }
         } catch (FileNotFoundException e) {
             System.out.println(e);
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("TN's Flashcards");
-            alert.setHeaderText("Dossier non reconnu");
-            alert.setContentText("Le dossier selectionné est incorrect, veuillez recommencer.");
-            alert.showAndWait();
         }
 
         List<String[]> contentCard = new ArrayList<>();
@@ -97,8 +92,6 @@ public class ImportApp {
         }
         for(String name : model.getDeckList().getDeckNames())
         {
-            System.out.println(contentDeck.get(0)[0].replace("\"", ""));
-            System.out.println(name);
             if(name.contentEquals(contentDeck.get(0)[0].replace("\"", "")))
             {
                 return;
