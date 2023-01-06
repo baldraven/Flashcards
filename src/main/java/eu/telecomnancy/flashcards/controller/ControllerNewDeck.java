@@ -22,6 +22,9 @@ public class ControllerNewDeck extends AbstractControllerMenu {
 
     @FXML
     private ImageView home;
+    
+    @FXML
+    private ImageView add;
 
     public ControllerNewDeck(ModelFlashcard model) {
         super(model);
@@ -33,6 +36,8 @@ public class ControllerNewDeck extends AbstractControllerMenu {
         this.reagir();
         Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
         tooltip.install(home, tooltip);
+        Tooltip tooltip1 = new Tooltip("Ajouter une pile");
+        tooltip1.install(add, tooltip1);
     }
 
     @FXML
