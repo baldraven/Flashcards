@@ -172,5 +172,6 @@ public class ControllerCardList extends AbstractControllerMenu {
     @Override
     public void reagir() {
         this.displayCards(this.model.getCardList().getCardList());
+        searchBar.clear();
     }
 }
