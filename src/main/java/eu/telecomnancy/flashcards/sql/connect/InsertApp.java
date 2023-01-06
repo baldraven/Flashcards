@@ -57,7 +57,7 @@ public class InsertApp {
             pstmt.setInt(9, easy);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("InsertApp.insertCard: " + e.getMessage());
+            //System.out.println("InsertApp.insertCard: " + e.getMessage());
         }
     }
 
@@ -80,7 +80,7 @@ public class InsertApp {
             pstmt.setInt(6, easy);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("InsertApp.insertDeck: " + e.getMessage());
+            //System.out.println("InsertApp.insertDeck: " + e.getMessage());
         }
     }
 
@@ -99,7 +99,7 @@ public class InsertApp {
             pstmt.setString(2, name);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("InsertApp.insertRelationCardsDecks: " + e.getMessage());
+            //System.out.println("InsertApp.insertRelationCardsDecks: " + e.getMessage());
         }
     }
 
@@ -122,7 +122,7 @@ public class InsertApp {
             pstmt.setInt(4, second);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("InsertApp.insertParameters: " + e.getMessage());
+            //System.out.println("InsertApp.insertParameters: " + e.getMessage());
         }
     }
 
@@ -151,7 +151,7 @@ public class InsertApp {
             pstmt.setInt(7, easy);
             pstmt.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("InsertApp.insertStats: " + e.getMessage());
+            //System.out.println("InsertApp.insertStats: " + e.getMessage());
         }
     }
 }
