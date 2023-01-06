@@ -38,4 +38,13 @@ public class CardList {
         }
         return false;
     }
+
+    public Card getCardByQuestion(String question){
+        for (Card card : this.cardList) {
+            if (card.getQuestion().equals(question)) {
+                return card;
+            }
+        }
+        return null;
+    }
 }

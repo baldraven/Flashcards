@@ -16,3 +16,5 @@ Cette configuration peut également être importer dans IntelliJ pour créer un 
 ## Tests
 
 Pour  lancer les tests dans le dossier test/, lancer la commande './gradlew cleanTest test'.
+
+Il a été tenté d'intégrer la librairie TestFX pour les tests, mais cela a mené à des problemes d'intégration avec gradlew. Cela a donc été abandonné, et les tests fonctionnels sont effectués manuellement.

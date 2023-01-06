@@ -60,7 +60,6 @@ public class ControllerCardList extends AbstractControllerMenu {
 
     public void displayCards(ArrayList<Card> cards) {
         this.content.getItems().clear();
-        int cardNumber = 0;
         for (Card card : cards) {
             HBox hbox = new HBox();
 
@@ -72,7 +71,6 @@ public class ControllerCardList extends AbstractControllerMenu {
 
             Label questionLabel = new Label(card.getQuestion());
             Label answerLabel = new Label(card.getAnswer());
-            Label hiddenNumber = new Label(String.valueOf(cardNumber));
 
             questionLabel.setStyle("-fx-font-size: 18;");
             questionLabel.setPrefWidth(240);
@@ -86,13 +84,8 @@ public class ControllerCardList extends AbstractControllerMenu {
             answerLabel.setWrapText(true);
             answerLabel.setTooltip(new Tooltip(answerLabel.getText()));
 
-            hiddenNumber.setVisible(false); // Le contenu du Label est invisible
-            hiddenNumber.setManaged(false); // Enlève la place occupée par ce Label sur la vue ViewCardList
-
-            hbox.getChildren().addAll(questionLabel, answerLabel, hiddenNumber);
+            hbox.getChildren().addAll(questionLabel, answerLabel);
             this.content.getItems().add(hbox);
-
-            cardNumber++;
         }
     }
 
@@ -103,18 +96,13 @@ public class ControllerCardList extends AbstractControllerMenu {
         if (deckNames.size() == 0) {
             return;
         }
-        ArrayList<Integer> indicesList = new ArrayList<>();
-        ArrayList<String> questionsList = new ArrayList<>();
+        ArrayList<Card> selectedCardList = new ArrayList<>();
 
-        for (int i = 0; i < this.content.getSelectionModel().getSelectedIndices().size(); i++) {
-            //System.out.println("Index : " + this.content.getSelectionModel().getSelectedIndices().get(i));
+        for (HBox hbox : content.getSelectionModel().getSelectedItems()) { //We get all selected cards !!
 
-            int card_id = this.content.getSelectionModel().getSelectedIndices().get(i);
-            indicesList.add(card_id);
-            this.model.setSelectedCard(model.getCardList().getCardList().get(card_id));
-
-            String question = this.model.getSelectedCard().getQuestion();
-            questionsList.add(question);
+            Label label = (Label) hbox.getChildren().get(0);
+            String question = label.getText();
+            Card card = model.getCardList().getCardByQuestion(question);
         }
 
         ChoiceDialog<String> dialog = new ChoiceDialog<>(deckNames.get(0), deckNames);
@@ -122,43 +110,46 @@ public class ControllerCardList extends AbstractControllerMenu {
         dialog.setHeaderText("Ajouter une / des carte(s) à une pile");
         dialog.setContentText("Choisissez la pile à laquelle vous souhaitez ajouter la ou les cartes :");
         Optional<String> result = dialog.showAndWait();
+        Deck selectedDeck = model.getDeckList().searchDeckByName(result.get());
         if (result.isPresent()) {
-            for (int i = 0; i < questionsList.size(); i++)  {
-                this.model.setSelectedCard(model.getCardList().getCardList().get(indicesList.get(i)));
-                if (!this.model.getDeckList().searchDeckByName(result.get()).isQuestionInDeck(questionsList.get(i))) {
-                    this.model.getDeckList().searchDeckByName(result.get()).addCard(this.model.getSelectedCard());
-                }
+            for (Card card : selectedCardList)  {
+                System.out.println(card.getQuestion());
+                if (!selectedDeck.isQuestionInDeck(card.getQuestion()))
+                   selectedDeck.addCard(card);
             }
         }
-
     }
 
     @FXML
     public void switchToModCard(){
         if (content.getSelectionModel().getSelectedIndex() == -1) return;
-        int card_id = content.getSelectionModel().getSelectedIndex(); //gets the index of the selected card in ListView
-        model.setSelectedCard(model.getCardList().getCardList().get(card_id));
+        String question = getQuestionFromList();
+        Card card = model.getCardList().getCardByQuestion(question);
+
+        model.setSelectedCard(card);
         model.getViewChanger().setView("ModCard");
+    }
+
+    public String getQuestionFromList() {
+        Label label = (Label) content.getSelectionModel().getSelectedItem().getChildren().get(0);
+        return label.getText();
     }
 
     @FXML
     public void deleteCard(){
         if (content.getSelectionModel().getSelectedIndex() == -1) return;
-        int card_id = content.getSelectionModel().getSelectedIndex(); //gets the index of the selected card in ListView
-        this.model.setSelectedCard(this.model.getCardList().getCardList().get(card_id));
-
-        String question = this.model.getSelectedCard().getQuestion();
+        String question = getQuestionFromList();
+        Card card = model.getCardList().getCardByQuestion(question);
 
         DeleteApp app = new DeleteApp();
         app.deleteCard(question);
         app.deleteCardInRelationWithQuestion(question);
 
-        //System.out.println("Deleted card : " + question);
         for (Deck deck : this.model.getDeckList().getDeckList()) {
             deck.removeCardByQuestion(question);
         }
 
-        model.getCardList().getCardList().remove(card_id);
+        model.getCardList().getCardList().remove(card);
         reagir();
     }
 
