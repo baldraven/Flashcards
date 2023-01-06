@@ -13,10 +13,7 @@ import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.ChoiceDialog;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
@@ -32,6 +29,7 @@ public class ControllerCardList extends AbstractControllerMenu {
         this.displayCards();
         Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
         tooltip.install(home, tooltip);
+        this.content.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     public ControllerCardList(ModelFlashcard model) {
@@ -74,25 +72,36 @@ public class ControllerCardList extends AbstractControllerMenu {
     @FXML
     public void addCardToDeck() {
         if (content.getSelectionModel().getSelectedIndex() == -1) return;
-        int card_id = content.getSelectionModel().getSelectedIndex();
-        this.model.setSelectedCard(model.getCardList().getCardList().get(card_id));
         ArrayList<String> deckNames = this.model.getDeckList().getDeckNames();
         if (deckNames.size() == 0) {
             return;
         }
-        String question = this.model.getSelectedCard().getQuestion();
-        String answer = this.model.getSelectedCard().getAnswer();
+        ArrayList<Integer> indicesList = new ArrayList<>();
+        ArrayList<String> questionsList = new ArrayList<>();
+
+        for (int i = 0; i < this.content.getSelectionModel().getSelectedIndices().size(); i++) {
+            //System.out.println("Index : " + this.content.getSelectionModel().getSelectedIndices().get(i));
+
+            int card_id = this.content.getSelectionModel().getSelectedIndices().get(i);
+            indicesList.add(card_id);
+            this.model.setSelectedCard(model.getCardList().getCardList().get(card_id));
+
+            String question = this.model.getSelectedCard().getQuestion();
+            questionsList.add(question);
+        }
 
         ChoiceDialog<String> dialog = new ChoiceDialog<>(deckNames.get(0), deckNames);
         dialog.setTitle("TN's Flashcards");
-        dialog.setHeaderText("Ajouter une carte à une pile");
-        dialog.setContentText("Choisissez la pile à laquelle vous souhaitez ajouter la carte :\nQuestion : " + question + "\nRéponse : " + answer);
+        dialog.setHeaderText("Ajouter une / des carte(s) à une pile");
+        //dialog.setContentText("Choisissez la pile à laquelle vous souhaitez ajouter la carte :\nQuestion : " + question + "\nRéponse : " + answer);
+        dialog.setContentText("Choisissez la pile à laquelle vous souhaitez ajouter la ou les cartes :");
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
-            //InsertApp app = new InsertApp();
-            //app.insertRelationCardsDecks(this.model.getSelectedCard().getQuestion(), result.get());
-            if (!this.model.getDeckList().searchDeckByName(result.get()).isQuestionInDeck(question)) {
-                this.model.getDeckList().searchDeckByName(result.get()).addCard(this.model.getSelectedCard());
+            for (int i = 0; i < questionsList.size(); i++)  {
+                this.model.setSelectedCard(model.getCardList().getCardList().get(indicesList.get(i)));
+                if (!this.model.getDeckList().searchDeckByName(result.get()).isQuestionInDeck(questionsList.get(i))) {
+                    this.model.getDeckList().searchDeckByName(result.get()).addCard(this.model.getSelectedCard());
+                }
             }
         }
 
