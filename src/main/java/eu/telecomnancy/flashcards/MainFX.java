@@ -1,5 +1,7 @@
 package eu.telecomnancy.flashcards;
 
+import java.io.File;
+
 import eu.telecomnancy.flashcards.controller.*;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.Initialization;
@@ -26,7 +28,13 @@ public class MainFX extends Application {
         primaryStage.setHeight(850);
         
         //Database
-        Boolean reboot = false;
+        File file = new File("database.db");
+        Boolean reboot;
+        if (file.exists()) {
+            reboot = false;
+        } else {
+            reboot = true;
+        }
         new Reboot(reboot);
         Initialization init = new Initialization(reboot);
 
