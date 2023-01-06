@@ -5,15 +5,18 @@ import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
 import eu.telecomnancy.flashcards.sql.connect.ImportApp;
+import javafx.beans.binding.When.BooleanConditionBuilder;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -68,13 +71,21 @@ public class ControllerDeckList extends AbstractControllerMenu {
 
     public void deleteDeck(Deck deck) {
         //System.out.println("Deleted deck : " + deck.getName());
-        DeleteApp app = new DeleteApp();
-        for (Card card : deck.getDeck()) {
-            app.deleteCardFromDeck(card.getQuestion(), deck.getName());
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("TN's Flashcards");
+        alert.setHeaderText("Supprimer pile "+ deck.getName());
+        alert.setContentText("Êtes vous sûr de vouloir supprimer la pile?");
+        Optional<ButtonType> conf = alert.showAndWait();
+        if(conf.isPresent() && conf.get() == ButtonType.OK)
+        {
+            DeleteApp app = new DeleteApp();
+            for (Card card : deck.getDeck()) {
+                app.deleteCardFromDeck(card.getQuestion(), deck.getName());
+            }
+            deck.delete();
+            this.model.getDeckList().deleteDeckByName(deck.getName());
+            this.reagir();
         }
-        deck.delete();
-        this.model.getDeckList().deleteDeckByName(deck.getName());
-        this.reagir();
     }
 
     @FXML
