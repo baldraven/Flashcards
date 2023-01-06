@@ -23,6 +23,14 @@ public class ControllerCardList extends AbstractControllerMenu {
     protected ListView<HBox> content;
     @FXML
     private ImageView home;
+    @FXML
+    private ImageView add;
+    @FXML
+    private ImageView stack;
+    @FXML
+    private ImageView modify;
+    @FXML
+    private ImageView trash;
 
     @FXML
     private TextField searchBar;
@@ -34,6 +42,14 @@ public class ControllerCardList extends AbstractControllerMenu {
         this.displayCards(this.model.getCardList().getCardList());
         Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
         tooltip.install(home, tooltip);
+        Tooltip tooltip1 = new Tooltip("Ajouter une carte");
+        tooltip1.install(add, tooltip1);
+        Tooltip tooltip2 = new Tooltip("Ajouter la carte selectionnée à une pile");
+        tooltip2.install(stack, tooltip2);
+        Tooltip tooltip3 = new Tooltip("Modifier la carte selectionnée");
+        tooltip3.install(modify, tooltip3);
+        Tooltip tooltip4 = new Tooltip("Supprimer la carte selectionnée");
+        tooltip4.install(trash, tooltip4);
         this.content.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 

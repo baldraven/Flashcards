@@ -17,6 +17,10 @@ public class ControllerModCard extends AbstractControllerMenu {
     private TextArea answer;
     @FXML
     private ImageView home;
+    @FXML
+    private ImageView enreIcon;
+    @FXML
+    private ImageView retour;
 
     private Card card;
 
@@ -43,6 +47,10 @@ public class ControllerModCard extends AbstractControllerMenu {
     public void initialize(URL location, ResourceBundle resources) {
         Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
         tooltip.install(home, tooltip);
+        Tooltip tooltip2 = new Tooltip("Enregistrer les modifications");
+        tooltip.install(enreIcon, tooltip2);
+        Tooltip tooltip3 = new Tooltip("Annuler les modifications");
+        tooltip.install(retour, tooltip3);
     }
 
     public void save() {

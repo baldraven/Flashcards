@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerNewDeck">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerNewDeck">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
@@ -48,7 +48,7 @@
                                     <Font name="Bookman Old Style Bold" size="36.0" />
                                 </font>
                             </Label>
-                     <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="39.0" layoutY="20.0" onMouseClicked="#switchToDeckList" pickOnBounds="true" preserveRatio="true" fx:id="home">
+                     <ImageView fx:id="home" fitHeight="60.0" fitWidth="60.0" layoutX="39.0" layoutY="20.0" onMouseClicked="#switchToDeckList" pickOnBounds="true" preserveRatio="true">
                         <image>
                            <Image url="@../../../img/house.png" />
                         </image>
@@ -74,7 +74,7 @@
                     </Pane>
                     <Pane prefHeight="280.0" prefWidth="800.0">
                   <children>
-                     <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="370.0" layoutY="14.0" onMouseClicked="#createDeck" pickOnBounds="true" preserveRatio="true">
+                     <ImageView fx:id="add" fitHeight="60.0" fitWidth="60.0" layoutX="370.0" layoutY="14.0" onMouseClicked="#createDeck" pickOnBounds="true" preserveRatio="true">
                         <image>
                            <Image url="@../../../img/add.png" />
                         </image>
