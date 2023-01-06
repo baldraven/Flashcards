@@ -1,5 +1,23 @@
 # Coding Week 2023 - Telecom Nancy Flashcards
 
+## Description
+
+Flashcards est une application qui permet l'étude de cartes via la méthode Active Recall, très efficace pour la mémorisation. L'application supporte notamment les fonctionnalitées suivantes :
+- Gestions de cartes
+- Gestions de piles de cartes
+- Etude de piles
+- Paramètrage de l'étude
+- Consulter les statistiques
+- Importer/exporter des piles
+
+## Lancement
+
+Il suffit d'exécuter le .jar disponible à la racine du projet, avec par exemple la commande `java -jar Flashcards.jar`
+
+## Utilisation
+
+Merci de consulter la vidéo explicative à venir !
+
 ## Compilation
 
 Configuration Gradle inspirée du projet MOCI DP de M. Charoy :
@@ -15,6 +33,10 @@ Cette configuration peut également être importer dans IntelliJ pour créer un 
 
 ## Tests
 
-Pour  lancer les tests dans le dossier test/, lancer la commande './gradlew cleanTest test'.
+Pour  lancer les tests dans le dossier test/, lancer la commande `./gradlew cleanTest test` (méthode inspirée de celle des TP java de M. Oster).
 
-Il a été tenté d'intégrer la librairie TestFX pour les tests, mais cela a mené à des problemes d'intégration avec gradlew. Cela a donc été abandonné, et les tests fonctionnels sont effectués manuellement.
+Il a été tenté d'intégrer la librairie TestFX pour les tests, mais cela a mené à des problemes d'intégration avec gradle et de dépendances. Cela a donc été abandonné (malgré les heures passées dessus !), et les tests sur l'interface graphique sont effectués manuellement.
+
+## Remerciements
+
+Merci à notre cliente pour ses retours et aux contributeurs du projet pour leur dévouement durant 4 jours.
