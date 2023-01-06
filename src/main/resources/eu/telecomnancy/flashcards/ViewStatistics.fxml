@@ -1,45 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.StackedBarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerCardList">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerCardList">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Voir toutes les piles" />
-               <MenuItem mnemonicParsing="false" onAction="#switchToNewCard" text="Créer une carte" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToDeckList" text="Retour à l'accueil" />
                <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter l'application" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Configuration">
                 <items>
-                    <MenuItem mnemonicParsing="false" text="Paramètres" onAction="#switchToParam" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToParam" text="Paramètres" />
                 </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Statistiques">
                 <items>
-                    <MenuItem onAction="#switchToStats" mnemonicParsing="false" text="Dashboard" />
+                    <MenuItem mnemonicParsing="false" onAction="#switchToStats" text="Dashboard" />
                 </items>
             </Menu>
         </menus>
@@ -61,7 +44,7 @@
             <children>
                <HBox prefHeight="40.0" prefWidth="800.0">
                   <children>
-                     <Label fx:id="nbDecks" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="400.0" text="Nombre de decks:">
+                     <Label fx:id="nbDecks" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="400.0" text="Nombre de piles:">
                         <font>
                            <Font size="16.0" />
                         </font>

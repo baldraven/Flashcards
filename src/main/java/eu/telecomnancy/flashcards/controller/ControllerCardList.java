@@ -155,7 +155,7 @@ public class ControllerCardList extends AbstractControllerMenu {
 
     @FXML
     public void researchCards() {
-        System.out.println("Search bar : " + this.searchBar.getText());
+        //System.out.println("Search bar : " + this.searchBar.getText());
         if (this.searchBar.getText().length() == 0) {
             this.reagir();
         }

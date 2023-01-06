@@ -137,7 +137,7 @@
                   <Font size="24.0" />
                </font>
             </Button>
-            <Label fx:id="affTimer" alignment="CENTER" layoutX="360.0" layoutY="450.0" text="Timer" textAlignment="CENTER" visible="false">
+            <Label fx:id="affTimer" alignment="CENTER" layoutX="363.0" layoutY="433.0" text="Timer" textAlignment="CENTER">
                <font>
                   <Font name="Bookman Old Style Bold" size="24.0" />
                </font>

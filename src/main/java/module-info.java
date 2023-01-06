@@ -4,8 +4,9 @@ module eu.telecomnancy.flashcards {
     requires transitive javafx.graphics;
     requires transitive org.controlsfx.controls;
     requires java.sql;
+    requires com.opencsv;
 
-    opens eu.telecomnancy.flashcards to javafx.fxml, java.sql;
+    opens eu.telecomnancy.flashcards to javafx.fxml, java.sql, com.opencsv;
 
     exports eu.telecomnancy.flashcards;
     exports eu.telecomnancy.flashcards.controller;

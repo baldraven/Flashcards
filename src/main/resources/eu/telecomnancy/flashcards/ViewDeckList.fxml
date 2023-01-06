@@ -35,6 +35,11 @@
                     <MenuItem mnemonicParsing="false" onAction="#switchToStats" text="Dashboard" />
                 </items>
             </Menu>
+         <Menu mnemonicParsing="false" text="Importer">
+           <items>
+             <MenuItem mnemonicParsing="false" onAction="#importer" text="Importer une pile" />
+           </items>
+         </Menu>
         </menus>
     </MenuBar>
    <BorderPane layoutY="26.0" prefHeight="774.0" prefWidth="800.0">

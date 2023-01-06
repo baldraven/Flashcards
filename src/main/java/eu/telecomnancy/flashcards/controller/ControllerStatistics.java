@@ -54,9 +54,9 @@ public class ControllerStatistics extends AbstractControllerMenu {
         this.results.getData().clear();
         SelectApp selectApp = new SelectApp();
         nbCards.setText("Nombre de cartes: " + selectApp.selectCardCount());
-        nbDecks.setText("Nombre de decks: " + selectApp.selectDeckCount());
+        nbDecks.setText("Nombre de piles: " + selectApp.selectDeckCount());
         for (Deck deck : this.model.getDeckList().getDeckList()) {
-            System.out.println(deck.getName());
+            //System.out.println(deck.getName());
             PieChart.Data slice = new PieChart.Data(deck.getName(), deck.getDeck().size());
             repartition.getData().add(slice);
             for (Card card : deck.getDeck()) {
@@ -86,7 +86,7 @@ public class ControllerStatistics extends AbstractControllerMenu {
 
         ArrayList<DateStats> statList = selectApp.getAllStats();
         for (DateStats stat : statList) {
-            System.out.println(stat.getDate() + " " + stat.getStudied());
+            //System.out.println(stat.getDate() + " " + stat.getStudied());
             dataSeries1.getData().add(new XYChart.Data<String, Number>(stat.getDate(), stat.getStudied()));
             dataSeries2.getData().add(new XYChart.Data<String, Number>(stat.getDate(), stat.getCreated()));
         }

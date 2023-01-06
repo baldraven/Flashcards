@@ -3,6 +3,7 @@ package eu.telecomnancy.flashcards.controller;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
+import eu.telecomnancy.flashcards.sql.connect.StatsAdmin;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
@@ -87,6 +88,10 @@ public class ControllerNewCard extends AbstractControllerMenu {
             alert.showAndWait();
             return;
         }
+
+        //Update stats
+        StatsAdmin admin = new StatsAdmin();
+        admin.incrementStats(1,0,0,0,0,0);
 
         Card card = new Card(question, answer, 230, -1, 0, 0, 0, 0, 0);
         /*System.out.println(

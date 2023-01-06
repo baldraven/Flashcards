@@ -3,6 +3,7 @@ package eu.telecomnancy.flashcards;
 import eu.telecomnancy.flashcards.controller.*;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.Initialization;
+import eu.telecomnancy.flashcards.sql.connect.ExportApp;
 import eu.telecomnancy.flashcards.sql.connect.Reboot;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,9 +21,9 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("TN's Flashcards");
-        primaryStage.setResizable(false);
+        //primaryStage.setResizable(false);
         primaryStage.setWidth(800);
-        primaryStage.setHeight(820);
+        primaryStage.setHeight(850);
         
         //Database
         Boolean reboot = false;
