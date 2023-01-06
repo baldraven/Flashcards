@@ -4,12 +4,15 @@ import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
+import eu.telecomnancy.flashcards.sql.connect.ImportApp;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -72,6 +75,12 @@ public class ControllerDeckList extends AbstractControllerMenu {
         deck.delete();
         this.model.getDeckList().deleteDeckByName(deck.getName());
         this.reagir();
+    }
+
+    @FXML
+    public void importer() throws IOException {
+        ImportApp importApp = new ImportApp();
+        importApp.importData(this.model);
     }
 
     @FXML

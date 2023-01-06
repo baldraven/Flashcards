@@ -3,6 +3,7 @@ package eu.telecomnancy.flashcards.controller;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.connect.DeleteApp;
+import eu.telecomnancy.flashcards.sql.connect.ExportApp;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,6 +21,10 @@ public class ControllerDeckContent extends AbstractControllerMenu {
     protected ListView<HBox> content;
     @FXML
     private ImageView home;
+    @FXML
+    private ImageView trash;
+    @FXML
+    private ImageView rename;
 
     @FXML
     private Label deckNameLabel;
@@ -29,6 +34,10 @@ public class ControllerDeckContent extends AbstractControllerMenu {
         this.displayCards();
         Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
         tooltip.install(home, tooltip);
+        Tooltip tooltip3 = new Tooltip("Modifier la description de la pile");
+        tooltip3.install(rename, tooltip3);
+        Tooltip tooltip4 = new Tooltip("Supprimer la carte de la pile");
+        tooltip4.install(trash, tooltip4);
     }
 
     public ControllerDeckContent(ModelFlashcard model) {
@@ -97,17 +106,20 @@ public class ControllerDeckContent extends AbstractControllerMenu {
     }
 
     @FXML
-    public void renameDeck() {
+    public void descChanger() {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("TN's Flashcards");
-        dialog.setHeaderText("Renommer la pile");
+        dialog.setHeaderText("Renommer la description de la pile pile");
         dialog.setContentText("Saisissez le nouveau nom de la pile : ");
         Optional<String> result = dialog.showAndWait();
-        if (result.isPresent()) {
-            System.out.println(result.get());
-            this.model.getSelectedDeck().updateName(result.get());
-            this.reagir();
-        }
+        this.model.getSelectedDeck().setDescription(String.valueOf(result));
+    }
+
+    @FXML
+    public void exporter() {
+        ExportApp exportApp = new ExportApp();
+        exportApp.exportCards(this.model.getSelectedDeck().getName(), this.model.getSelectedDeck().getDeck());
+        exportApp.exportDeck(this.model.getSelectedDeck());
     }
 
     @Override
