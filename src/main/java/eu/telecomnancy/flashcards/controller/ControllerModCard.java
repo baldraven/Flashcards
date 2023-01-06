@@ -58,6 +58,7 @@ public class ControllerModCard extends AbstractControllerMenu {
         String answer = this.getAnswer().getText();
         card.updateQuestion(question);
         card.updateAnswer(answer);
+        this.switchToCardList();
     }
 
     @Override
