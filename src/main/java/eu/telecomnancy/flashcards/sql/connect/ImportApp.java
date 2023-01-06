@@ -14,6 +14,7 @@ import java.util.List;
 import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
+import javafx.scene.control.Alert;
 import javafx.stage.DirectoryChooser;
 
 public class ImportApp {
@@ -49,6 +50,11 @@ public class ImportApp {
             }
         } catch (FileNotFoundException e) {
             System.out.println(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("TN's Flashcards");
+            alert.setHeaderText("Dossier non reconnu");
+            alert.setContentText("Le dossier selectionné est incorrect, veuillez recommencer.");
+            alert.showAndWait();
         }
 
         List<String[]> contentCard = new ArrayList<>();
@@ -70,6 +76,11 @@ public class ImportApp {
             }
         } catch (FileNotFoundException e) {
             System.out.println(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("TN's Flashcards");
+            alert.setHeaderText("Dossier non reconnu");
+            alert.setContentText("Le dossier selectionné est incorrect, veuillez recommencer.");
+            alert.showAndWait();
         }
 
         InsertApp insertApp = new InsertApp();
@@ -84,7 +95,15 @@ public class ImportApp {
             model.getCardList().addCard(card);
             deck.addCard(card);
         }
-
+        for(String name : model.getDeckList().getDeckNames())
+        {
+            System.out.println(contentDeck.get(0)[0].replace("\"", ""));
+            System.out.println(name);
+            if(name.contentEquals(contentDeck.get(0)[0].replace("\"", "")))
+            {
+                return;
+            }
+        }
         model.getDeckList().addDeck(deck);
     }
 }
