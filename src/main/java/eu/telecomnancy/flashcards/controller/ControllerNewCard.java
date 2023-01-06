@@ -4,6 +4,7 @@ import eu.telecomnancy.flashcards.model.Card;
 import eu.telecomnancy.flashcards.model.Deck;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
@@ -50,7 +51,7 @@ public class ControllerNewCard extends AbstractControllerMenu {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.loadDeckNames();
-        Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
+        Tooltip tooltip = new Tooltip("Retour à la liste de piles");
         tooltip.install(home, tooltip);
         Tooltip tooltip1 = new Tooltip("Ajouter une carte");
         tooltip1.install(add, tooltip1);
@@ -75,30 +76,45 @@ public class ControllerNewCard extends AbstractControllerMenu {
 
     public void addNewCard() {
 
-        String question = this.getQuestion().getText();
-        String answer = this.getAnswer().getText();
+        String question = this.getQuestion().getText().trim();
+        String answer = this.getAnswer().getText().trim();
+
+        if (question.length() == 0 || answer.length() == 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("TN's Flashcards");
+            alert.setHeaderText("Question et/ou réponse non saisi(e)");
+            alert.setContentText("Vous n'avez pas saisi de question et/ou de réponse.\nVeuillez remplir les deux champs ci-dessous.\nLes noms uniquement composés d'espaces ne sont pas acceptés.");
+            alert.showAndWait();
+            return;
+        }
 
         Card card = new Card(question, answer, 230, -1, 0, 0, 0, 0, 0);
-        System.out.println(
+        /*System.out.println(
                 "Question : " + question +
                 "\nRéponse : " + answer +
                 "\nDeck : " + this.getSelectedDeck()
-        );
+        );*/
 
         if (!this.model.getCardList().getQuestions().contains(question)) {
-            System.out.println("Ajout dans la card list");
+            //System.out.println("Ajout dans la card list");
             this.model.getCardList().addCard(card);
         }
 
         if (!this.model.getDeckList().searchDeckByName(this.getSelectedDeck()).getQuestionsFromDeck().contains(question)) {
-            System.out.println("Ajout dans le deck " + this.getSelectedDeck());
+            //System.out.println("Ajout dans le deck " + this.getSelectedDeck());
             this.model.getDeckList().searchDeckByName(this.getSelectedDeck()).addCard(card);
         }
+
+        this.reagir();
+
     }
 
     @Override
     public void reagir() {
         this.loadDeckNames();
+        this.question.clear();
+        this.answer.clear();
+        this.question.requestFocus();
     }
 
 

@@ -32,9 +32,14 @@ public class ControllerCardList extends AbstractControllerMenu {
     @FXML
     private ImageView trash;
 
+    @FXML
+    private TextField searchBar;
+
+    private ArrayList<Card> displayedCards;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.displayCards();
+        this.displayCards(this.model.getCardList().getCardList());
         Tooltip tooltip = new Tooltip("Retour à la liste de piles.");
         tooltip.install(home, tooltip);
         Tooltip tooltip1 = new Tooltip("Ajouter une carte");
@@ -53,9 +58,10 @@ public class ControllerCardList extends AbstractControllerMenu {
         this.model.getViewChanger().ajouterObs("CardList", this);
     }
 
-    public void displayCards() {
+    public void displayCards(ArrayList<Card> cards) {
         this.content.getItems().clear();
-        for (Card card : this.model.getCardList().getCardList()) {
+        int cardNumber = 0;
+        for (Card card : cards) {
             HBox hbox = new HBox();
 
             hbox.setMinHeight(40);
@@ -66,7 +72,7 @@ public class ControllerCardList extends AbstractControllerMenu {
 
             Label questionLabel = new Label(card.getQuestion());
             Label answerLabel = new Label(card.getAnswer());
-            
+            Label hiddenNumber = new Label(String.valueOf(cardNumber));
 
             questionLabel.setStyle("-fx-font-size: 18;");
             questionLabel.setPrefWidth(240);
@@ -80,8 +86,13 @@ public class ControllerCardList extends AbstractControllerMenu {
             answerLabel.setWrapText(true);
             answerLabel.setTooltip(new Tooltip(answerLabel.getText()));
 
-            hbox.getChildren().addAll(questionLabel, answerLabel);
+            hiddenNumber.setVisible(false); // Le contenu du Label est invisible
+            hiddenNumber.setManaged(false); // Enlève la place occupée par ce Label sur la vue ViewCardList
+
+            hbox.getChildren().addAll(questionLabel, answerLabel, hiddenNumber);
             this.content.getItems().add(hbox);
+
+            cardNumber++;
         }
     }
 
@@ -109,7 +120,6 @@ public class ControllerCardList extends AbstractControllerMenu {
         ChoiceDialog<String> dialog = new ChoiceDialog<>(deckNames.get(0), deckNames);
         dialog.setTitle("TN's Flashcards");
         dialog.setHeaderText("Ajouter une / des carte(s) à une pile");
-        //dialog.setContentText("Choisissez la pile à laquelle vous souhaitez ajouter la carte :\nQuestion : " + question + "\nRéponse : " + answer);
         dialog.setContentText("Choisissez la pile à laquelle vous souhaitez ajouter la ou les cartes :");
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
@@ -152,9 +162,23 @@ public class ControllerCardList extends AbstractControllerMenu {
         reagir();
     }
 
+    @FXML
+    public void researchCards() {
+        System.out.println("Search bar : " + this.searchBar.getText());
+        if (this.searchBar.getText().length() == 0) {
+            this.reagir();
+        }
+        ArrayList<Card> foundCards = new ArrayList<>();
+        for (Card card : this.model.getCardList().getCardList()) {
+            if (card.getQuestion().contains(this.searchBar.getText())) {
+                foundCards.add(card);
+            }
+        }
+        this.displayCards(foundCards);
+    }
 
     @Override
     public void reagir() {
-        this.displayCards();
+        this.displayCards(this.model.getCardList().getCardList());
     }
 }

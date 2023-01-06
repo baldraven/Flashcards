@@ -29,7 +29,7 @@ public class ControllerDeckList extends AbstractControllerMenu {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.displayDecks();
-        Tooltip tooltip1 = new Tooltip("Ajouter une carte");
+        Tooltip tooltip1 = new Tooltip("Ajouter une pile");
         tooltip1.install(add, tooltip1);
     }
 
