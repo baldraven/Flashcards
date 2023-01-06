@@ -1,6 +1,6 @@
 # Coding Week 2023 - Telecom Nancy Flashcards
 
-# Compilation
+## Compilation
 
 Configuration Gradle inspirée du projet MOCI DP de M. Charoy :
 
@@ -12,3 +12,7 @@ Il se peut que vous rencontriez des problèmes. Voici quelques solutions :
 - Gradle ne supportant pas encore Java 19, il faut utiliser une version 17 ou 18 du Java Development Kit (JDK) (utiliser la commande `java --version` ou un `./gradlew --version` pour vérifier votre version actuelle du JDK.)
 
 Cette configuration peut également être importer dans IntelliJ pour créer un projet fonctionnelle à partir de celle-ci. Pour cela, lors de la création de votre projet IntelliJ, il faut sélectionner le fichier `build.gradle` et non pas uniquement le répertoire du projet."
+
+## Tests
+
+Pour  lancer les tests dans le dossier test/, lancer la commande './gradlew cleanTest test'.

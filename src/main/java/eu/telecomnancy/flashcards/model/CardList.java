@@ -30,16 +30,6 @@ public class CardList {
         return questionsList;
     }
 
-    public void deleteCardByQuestion(String question) {
-        ArrayList<Card> cardListCopy = new ArrayList<>();
-        for (Card card : this.cardList) {
-            if (!card.getQuestion().equals(question)) {
-                cardListCopy.add(card);
-            }
-        }
-        this.cardList = cardListCopy;
-    }
-
     public boolean isQuestionInCardList(String question) {
         for (Card card : this.cardList) {
             if (card.getQuestion().equals(question)) {

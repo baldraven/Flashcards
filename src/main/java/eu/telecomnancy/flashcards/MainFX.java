@@ -24,7 +24,7 @@ public class MainFX extends Application {
         primaryStage.setHeight(800);
         
         //Database
-        Boolean reboot = true;
+        Boolean reboot = false;
         new Reboot(reboot);
         Initialization init = new Initialization(reboot);
 
