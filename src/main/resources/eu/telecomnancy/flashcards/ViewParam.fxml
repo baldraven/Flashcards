@@ -101,7 +101,7 @@
                   <Image url="@../../../img/valid.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="annul" fitHeight="60.0" fitWidth="60.0" layoutX="396.0" layoutY="286.0" onMouseClicked="#switchToDeckList" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="annul" fitHeight="60.0" fitWidth="60.0" layoutX="396.0" layoutY="286.0" onMouseClicked="#retourParam" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../img/retour.png" />
                </image>

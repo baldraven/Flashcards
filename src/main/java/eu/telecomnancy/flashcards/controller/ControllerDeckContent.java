@@ -109,10 +109,22 @@ public class ControllerDeckContent extends AbstractControllerMenu {
     public void descChanger() {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("TN's Flashcards");
-        dialog.setHeaderText("Renommer la description de la pile pile");
-        dialog.setContentText("Saisissez le nouveau nom de la pile : ");
+        dialog.setHeaderText("Renommer la description de la pile "+ this.model.getSelectedDeck().getName());
+        dialog.setContentText("Saisissez la description de la pile : ");
         Optional<String> result = dialog.showAndWait();
-        this.model.getSelectedDeck().setDescription(String.valueOf(result));
+        if(result.isPresent())
+        {
+            this.model.getSelectedDeck().setDescription(result.get());
+            if(result.get().length() < 1)
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("TN's Flashcards");
+                alert.setHeaderText("Description non saisie");
+                alert.setContentText("Vous n'avez pas saisi de description.");
+                alert.showAndWait();
+                return; 
+            }
+        }
     }
 
     @FXML
