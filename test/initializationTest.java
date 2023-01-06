@@ -1,5 +1,6 @@
 package eu.telecomnancy.flashcards;
 
+import eu.telecomnancy.flashcards.sql.connect.Reboot;
 import org.junit.jupiter.api.Test;
 
 import eu.telecomnancy.flashcards.model.*;
@@ -15,6 +16,6 @@ public class initializationTest {
     @Test
     void correctlyImported() {
         assertEquals(2, deckList.getDeckList().size());
-        assertEquals(12, cardList.geetCardList().size());
+        assertEquals(12, cardList.getCardList().size());
     }
 }
