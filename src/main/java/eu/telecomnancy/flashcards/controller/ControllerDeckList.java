@@ -70,6 +70,11 @@ public class ControllerDeckList extends AbstractControllerMenu {
     }
 
     @FXML
+    public void importer() {
+
+    }
+
+    @FXML
     public void accesParam()
     {
         this.model.getViewChanger().setView("Param");

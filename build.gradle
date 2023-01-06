@@ -51,6 +51,8 @@ dependencies {
     implementation('org.junit.jupiter:junit-jupiter-api:5.5.1')
     implementation("org.testfx:testfx-junit5:4.0.16-alpha")
 
+    implementation("com.opencsv:opencsv:5.7.1")
+
 }
 
 test {

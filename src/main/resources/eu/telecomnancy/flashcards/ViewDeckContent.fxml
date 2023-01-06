@@ -36,6 +36,11 @@
                     <MenuItem mnemonicParsing="false" onAction="#switchToStats" text="Dashboard" />
                 </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="Exporter">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#exporter" text="Exporter une pile" />
+                </items>
+            </Menu>
         </menus>
     </MenuBar>
    <BorderPane layoutY="27.0" prefHeight="773.0" prefWidth="800.0">

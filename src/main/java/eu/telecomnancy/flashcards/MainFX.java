@@ -3,6 +3,7 @@ package eu.telecomnancy.flashcards;
 import eu.telecomnancy.flashcards.controller.*;
 import eu.telecomnancy.flashcards.model.ModelFlashcard;
 import eu.telecomnancy.flashcards.sql.Initialization;
+import eu.telecomnancy.flashcards.sql.connect.ExportApp;
 import eu.telecomnancy.flashcards.sql.connect.Reboot;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
