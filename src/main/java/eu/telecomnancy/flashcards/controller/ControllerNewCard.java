@@ -81,19 +81,25 @@ public class ControllerNewCard extends AbstractControllerMenu {
         );
 
         if (!this.model.getCardList().getQuestions().contains(question)) {
-            System.out.println("Ajout dans la card list");
+            //System.out.println("Ajout dans la card list");
             this.model.getCardList().addCard(card);
         }
 
         if (!this.model.getDeckList().searchDeckByName(this.getSelectedDeck()).getQuestionsFromDeck().contains(question)) {
-            System.out.println("Ajout dans le deck " + this.getSelectedDeck());
+            //System.out.println("Ajout dans le deck " + this.getSelectedDeck());
             this.model.getDeckList().searchDeckByName(this.getSelectedDeck()).addCard(card);
         }
+
+        this.reagir();
+
     }
 
     @Override
     public void reagir() {
         this.loadDeckNames();
+        this.question.clear();
+        this.answer.clear();
+        this.question.requestFocus();
     }
 
 
