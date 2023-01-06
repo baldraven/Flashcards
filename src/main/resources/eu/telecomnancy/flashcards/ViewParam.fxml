@@ -106,7 +106,7 @@
                   <Image url="@../../../img/retour.png" />
                </image>
             </ImageView>
-            <Slider fx:id="slideSec" blockIncrement="1.0" layoutX="60.0" layoutY="196.0" max="60.0" min="3.0" onDragOver="#valueChange" prefHeight="49.0" prefWidth="389.0" showTickLabels="true" value="10.0" />
+            <Slider fx:id="slideSec" blockIncrement="1.0" layoutX="60.0" layoutY="196.0" majorTickUnit="3.0" max="60.0" min="3.0" onDragOver="#valueChange" prefHeight="49.0" prefWidth="389.0" showTickLabels="true" value="10.0" />
       </children>
     </AnchorPane>
   </children>
