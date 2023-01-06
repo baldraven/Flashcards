@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerCardList">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="eu.telecomnancy.flashcards.controller.ControllerCardList">
     <MenuBar prefHeight="27.0" prefWidth="800.0" VBox.vgrow="NEVER">
         <menus>
             <Menu mnemonicParsing="false" text="Edition">
@@ -50,30 +50,33 @@
       <bottom>
          <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-               <Button layoutX="423.0" layoutY="63.0" mnemonicParsing="false" onAction="#switchToModCard" prefHeight="55.0" prefWidth="165.0" text="Modifier">
-                  <font>
-                     <Font size="16.0" />
-                  </font></Button>
-               <Button layoutX="609.0" layoutY="63.0" mnemonicParsing="false" onAction="#deleteCard" prefHeight="55.0" prefWidth="165.0" text="Supprimer">
-                  <font>
-                     <Font size="16.0" />
-                  </font></Button>
-               <Button layoutX="36.0" layoutY="63.0" mnemonicParsing="false" onAction="#switchToNewCard" prefHeight="55.0" prefWidth="165.0" text="Nouvelle carte">
-                  <font>
-                     <Font size="16.0" />
-                  </font></Button>
-               <Button layoutX="235.0" layoutY="63.0" mnemonicParsing="false" onAction="#addCardToDeck" prefHeight="55.0" prefWidth="165.0" text="Ajouter à une pile">
-                  <font>
-                     <Font size="16.0" />
-                  </font>
-               </Button>
+               <ImageView fx:id="add" fitHeight="60.0" fitWidth="60.0" layoutX="155.0" layoutY="61.0" onMouseClicked="#switchToNewCard" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../img/add.png" />
+                  </image>
+               </ImageView>
+               <ImageView fx:id="stack" fitHeight="70.0" fitWidth="70.0" layoutX="282.0" layoutY="56.0" onMouseClicked="#addCardToDeck" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../img/stack.png" />
+                  </image>
+               </ImageView>
+               <ImageView fx:id="modify" fitHeight="60.0" fitWidth="60.0" layoutX="441.0" layoutY="61.0" onMouseClicked="#switchToModCard" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../img/modify.png" />
+                  </image>
+               </ImageView>
+               <ImageView fx:id="trash" fitHeight="60.0" fitWidth="60.0" layoutX="581.0" layoutY="61.0" onMouseClicked="#deleteCard" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@../../../img/supp.png" />
+                  </image>
+               </ImageView>
             </children>
          </Pane>
       </bottom>
       <top>
           <Pane prefHeight="120.0" prefWidth="800.0" BorderPane.alignment="CENTER">
               <children>
-                  <Label layoutX="300.0" layoutY="39.0" text="Mes cartes">
+                  <Label layoutX="300.0" text="Mes cartes">
                       <font>
                           <Font name="Bookman Old Style Bold" size="36.0" />
                       </font>
@@ -88,11 +91,16 @@
                           <Font size="22.0" />
                       </font>
                   </Label>
-               <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="40.0" layoutY="31.0" onMouseClicked="#switchToDeckList" pickOnBounds="true" preserveRatio="true" fx:id="home">
+               <ImageView fx:id="home" fitHeight="60.0" fitWidth="60.0" layoutX="40.0" layoutY="31.0" onMouseClicked="#switchToDeckList" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../../../img/house.png" />
                   </image>
                </ImageView>
+               <TextField fx:id="searchBar" layoutX="206.0" layoutY="46.0" prefHeight="25.0" prefWidth="389.0" promptText="Question de la carte rechercher...">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </TextField>
               </children>
           </Pane>
       </top>
