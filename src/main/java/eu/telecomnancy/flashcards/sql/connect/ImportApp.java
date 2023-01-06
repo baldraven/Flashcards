@@ -43,8 +43,7 @@ public class ImportApp {
 
         List<String[]> contentDeck = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(fileDeck))) {
-            String line = "";
-            line = br.readLine();
+            String line = br.readLine();
             while ((line = br.readLine()) != null) {
                 contentDeck.add(line.split(","));
             }
@@ -54,23 +53,34 @@ public class ImportApp {
 
         List<String[]> contentCard = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(fileCard))) {
-            String line = "";
-            line = br.readLine();
+            String line = br.readLine();
             while ((line = br.readLine()) != null) {
-                contentCard.add(line.split(","));
+                String[] container = line.split(",");
+                System.out.println(container[0]);
+                int count = 0;
+                for (String str  : container) {
+                    System.out.println(str);
+                    String newStr = str.replace("\"", "");
+                    System.out.println(newStr);
+                    container[count] = newStr;
+                    count++;
+                }
+                System.out.println(container[0]);
+                contentCard.add(container);
             }
         } catch (FileNotFoundException e) {
             System.out.println(e);
         }
 
         InsertApp insertApp = new InsertApp();
-        insertApp.insertDeck(contentDeck.get(0)[0], contentDeck.get(0)[1], Integer.valueOf(contentDeck.get(0)[2]), Integer.valueOf(contentDeck.get(0)[3]), Integer.valueOf(contentDeck.get(0)[4]), Integer.valueOf(contentDeck.get(0)[5]));
-        Deck deck = new Deck(contentDeck.get(0)[0], contentDeck.get(0)[1], Integer.valueOf(contentDeck.get(0)[2]), Integer.valueOf(contentDeck.get(0)[3]), Integer.valueOf(contentDeck.get(0)[4]), Integer.valueOf(contentDeck.get(0)[5]));
+        insertApp.insertDeck(contentDeck.get(0)[0].replace("\"", ""), contentDeck.get(0)[1].replace("\"", ""), Integer.valueOf(contentDeck.get(0)[2].replace("\"", "")), Integer.valueOf(contentDeck.get(0)[3].replace("\"", "")), Integer.valueOf(contentDeck.get(0)[4].replace("\"", "")), Integer.valueOf(contentDeck.get(0)[5].replace("\"", "")));
+        Deck deck = new Deck(contentDeck.get(0)[0].replace("\"", ""), contentDeck.get(0)[1].replace("\"", ""), Integer.valueOf(contentDeck.get(0)[2].replace("\"", "")), Integer.valueOf(contentDeck.get(0)[3].replace("\"", "")), Integer.valueOf(contentDeck.get(0)[4].replace("\"", "")), Integer.valueOf(contentDeck.get(0)[5].replace("\"", "")));
 
         for (String[] rowCard : contentCard) {
-            insertApp.insertCard(rowCard[0], rowCard[1], Double.valueOf(rowCard[2]), Double.valueOf(rowCard[3]), Long.valueOf(rowCard[4]), Integer.valueOf(rowCard[5]), Integer.valueOf(rowCard[6]), Integer.valueOf(rowCard[7]), Integer.valueOf(rowCard[8]));
-            insertApp.insertRelationCardsDecks(rowCard[0], contentDeck.get(1)[0]);
-            Card card = new Card(rowCard[0], rowCard[1], Double.valueOf(rowCard[2]), Double.valueOf(rowCard[3]), Long.valueOf(rowCard[4]), Integer.valueOf(rowCard[5]), Integer.valueOf(rowCard[6]), Integer.valueOf(rowCard[7]), Integer.valueOf(rowCard[8]));
+            System.out.println(rowCard[0]);
+            insertApp.insertCard(rowCard[0].replace("\"", ""), rowCard[1].replace("\"", ""), Double.valueOf(rowCard[2].replace("\"", "")), Double.valueOf(rowCard[3].replace("\"", "")), Long.valueOf(rowCard[4].replace("\"", "")), Integer.valueOf(rowCard[5].replace("\"", "")), Integer.valueOf(rowCard[6].replace("\"", "")), Integer.valueOf(rowCard[7].replace("\"", "")), Integer.valueOf(rowCard[8].replace("\"", "")));
+            insertApp.insertRelationCardsDecks(rowCard[0].replace("\"", ""), contentDeck.get(0)[0].replace("\"", ""));
+            Card card = new Card(rowCard[0].replace("\"", ""), rowCard[1].replace("\"", ""), Double.valueOf(rowCard[2].replace("\"", "")), Double.valueOf(rowCard[3].replace("\"", "")), Long.valueOf(rowCard[4]), Integer.valueOf(rowCard[5].replace("\"", "")), Integer.valueOf(rowCard[6].replace("\"", "")), Integer.valueOf(rowCard[7].replace("\"", "")), Integer.valueOf(rowCard[8].replace("\"", "")));
             model.getCardList().addCard(card);
             deck.addCard(card);
         }

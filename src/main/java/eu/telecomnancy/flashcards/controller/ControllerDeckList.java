@@ -75,7 +75,7 @@ public class ControllerDeckList extends AbstractControllerMenu {
     @FXML
     public void importer() throws IOException {
         ImportApp importApp = new ImportApp();
-        importApp.importData();
+        importApp.importData(this.model);
     }
 
     @FXML
