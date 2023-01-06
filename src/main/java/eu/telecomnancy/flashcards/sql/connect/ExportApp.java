@@ -89,9 +89,9 @@ public class ExportApp {
      */
     public void exportCards(String deckName, ArrayList<Card> cardList){
         try {
-            Path path = Paths.get("data/");
+            Path path = Paths.get("data/"+deckName+"/");
             Files.createDirectories(path);
-            File file = new File("data/"+deckName+"Cartes.csv");
+            File file = new File("data/"+deckName+"/"+deckName+"Cartes.csv");
 
             // create FileWriter object with file as parameter
             FileWriter outputfile = new FileWriter(file);
@@ -122,9 +122,9 @@ public class ExportApp {
      */
     public void exportDeck(Deck deck){
         try {
-            Path path = Paths.get("data/");
+            Path path = Paths.get("data/"+deck.getName()+"/");
             Files.createDirectories(path);
-            File file = new File("data/"+deck.getName()+".csv");
+            File file = new File("data/"+deck.getName()+"/"+deck.getName()+".csv");
 
             // create FileWriter object with file as parameter
             FileWriter outputfile = new FileWriter(file);
