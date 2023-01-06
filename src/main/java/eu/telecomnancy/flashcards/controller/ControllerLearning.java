@@ -75,7 +75,7 @@ public class ControllerLearning extends AbstractControllerMenu
         gridP.setVisible(true);
         repButton.setVisible(false);
         affTimer.setVisible(false);
-        tempHard.setVisible(true);
+        /*tempHard.setVisible(true);
         tempEasy.setVisible(true);
         tempCor.setVisible(true);
         tempRev.setVisible(true);
@@ -93,7 +93,7 @@ public class ControllerLearning extends AbstractControllerMenu
             tempCor.setText(df.format(card.getInterval() * (card.getEase()/100)) + " min");
             tempHard.setText(df.format(card.getInterval() * 1.2) + " min");
             tempEasy.setText(df.format(card.getInterval() * (card.getEase()/100)) + " min"); 
-        }
+        }*/
     }
 
     @FXML

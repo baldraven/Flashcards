@@ -20,8 +20,9 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("TN's Flashcards");
+        primaryStage.setResizable(false);
         primaryStage.setWidth(800);
-        primaryStage.setHeight(800);
+        primaryStage.setHeight(820);
         
         //Database
         Boolean reboot = false;
