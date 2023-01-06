@@ -54,7 +54,7 @@ public class ControllerStatistics extends AbstractControllerMenu {
         this.results.getData().clear();
         SelectApp selectApp = new SelectApp();
         nbCards.setText("Nombre de cartes: " + selectApp.selectCardCount());
-        nbDecks.setText("Nombre de decks: " + selectApp.selectDeckCount());
+        nbDecks.setText("Nombre de piles: " + selectApp.selectDeckCount());
         for (Deck deck : this.model.getDeckList().getDeckList()) {
             System.out.println(deck.getName());
             PieChart.Data slice = new PieChart.Data(deck.getName(), deck.getDeck().size());
