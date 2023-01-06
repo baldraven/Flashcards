@@ -58,13 +58,13 @@ public class ControllerNewDeck extends AbstractControllerMenu {
             alert.showAndWait();
             return;
         }
-        String legalChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+        String legalChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_ ÉÈÀéèàçê";
         for (int i = 0; i < name.length(); i++) {
             if (legalChars.indexOf(name.charAt(i)) == -1) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("TN's Flashcards");
                 alert.setHeaderText("Nom de pile incorrect saisi");
-                alert.setContentText("Vous avez saisi un nom de pile interdit.\nLes caractères autorisés sont :\n\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n0123456789_");
+                alert.setContentText("Vous avez saisi un nom de pile interdit.\nLes caractères autorisés sont :\n\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\n0123456789_ ÉÈÀéèàçê");
                 alert.showAndWait();
                 return;
             }
