@@ -16,7 +16,9 @@ Il suffit d'exécuter le .jar disponible à la racine du projet, avec par exempl
 
 ## Utilisation
 
-Merci de consulter la vidéo explicative à venir !
+Merci de consulter la vidéo explicative ci-dessous !
+
+lien : https://www.youtube.com/watch?v=RoNNlyUJxgQ
 
 ## Compilation
 
