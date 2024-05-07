@@ -2,8 +2,8 @@
 
 
 <p align="center">
-  <img src="https://i.imgur.com/Iw8D3JF.jpg" height="500" />
-  <img src="https://i.imgur.com/ZUX9XRb.jpg" height="500" />
+  <img src="https://i.imgur.com/Iw8D3JF.jpg" height="40%" />
+  <img src="https://i.imgur.com/ZUX9XRb.jpg" height="40%" />
 </p>
 
 # TN Flashcards
