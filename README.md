@@ -1,4 +1,4 @@
-![build, test]](https://github.com/baldraven/Flashcards/actions/workflows/gradle.yml/badge.svg)
+![build, test](https://github.com/baldraven/Flashcards/actions/workflows/gradle.yml/badge.svg)
 
 
 <p align="center">
@@ -17,3 +17,4 @@ Flashcards is an application that lets you study cards using the Active Recall m
 - View statistics
 - Import/export stacks
 
+It was made by a team of 4 as a school project.
