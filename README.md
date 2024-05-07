@@ -1,27 +1,19 @@
-![Java CI with Gradle](https://github.com/baldraven/Flashcards/actions/workflows/gradle.yml/badge.svg)
-
-# Coding Week 2023 - Telecom Nancy Flashcards
-
-## Description
-
-Flashcards est une application qui permet l'étude de cartes via la méthode Active Recall, très efficace pour la mémorisation. L'application supporte notamment les fonctionnalitées suivantes :
-- Gestions de cartes
-- Gestions de piles de cartes
-- Etude de piles
-- Paramètrage de l'étude
-- Consulter les statistiques
-- Importer/exporter des piles
-
-## Lancement
-
-Il suffit d'exécuter le .jar disponible à la racine du projet, avec par exemple la commande `java -jar Flashcards.jar`
-
-## Utilisation
-
-Merci de consulter la vidéo explicative ci-dessous !
-lien : https://www.youtube.com/watch?v=RoNNlyUJxgQ
+![build, test]](https://github.com/baldraven/Flashcards/actions/workflows/gradle.yml/badge.svg)
 
 
-## Tests
+<p align="center">
+  <img src="https://i.imgur.com/Iw8D3JF.jpg" height="588" />
+<!--   <img src="https://i.imgur.com/xVlWDjt.jpg" height="588" />
+ -->  <img src="https://i.imgur.com/ZUX9XRb.jpg" height="588" />
+</p>
 
-Pour  lancer les tests dans le dossier test/, lancer la commande `./gradlew cleanTest test` (méthode inspirée de celle des TP java de M. Oster).
+# TN Flashcards
+
+Flashcards is an application that lets you study cards using the Active Recall method, a highly effective memory aid. The application supports the following functions in particular:
+- Card management
+- Card stack management
+- Stack study
+- Study parameters
+- View statistics
+- Import/export stacks
+
